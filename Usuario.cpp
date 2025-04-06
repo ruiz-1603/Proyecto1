@@ -1,0 +1,36 @@
+//
+// Created by bryan on 26/03/2025.
+//
+
+#include "Usuario.h"
+
+int Usuario::get_id() const {
+    return id;
+}
+
+void Usuario::set_id(int id) {
+    this->id = id;
+}
+
+string Usuario::get_nombre_completo() const {
+    return nombreCompleto;
+}
+
+void Usuario::set_nombre_completo(const string &nombre_completo) {
+    nombreCompleto = nombre_completo;
+}
+
+bool Usuario::is_estado() const {
+    return estado;
+}
+
+void Usuario::set_estado(bool estado) {
+    this->estado = estado;
+}
+string Usuario::mostrar() {
+    stringstream ss;
+    ss << "Cedula: " << get_id() << "\n"
+       << "Nombre: " << get_nombre_completo() << "\n"
+       << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << "\n";
+    return ss.str();
+}

@@ -1,0 +1,12 @@
+# ninja log v6
+21	842	7647317166510892	CMakeFiles/Proyecto1.dir/Revista.cpp.obj	5bacda93d6320c4b
+27	820	7647317166571142	CMakeFiles/Proyecto1.dir/Articulo.cpp.obj	dd8a6e7b6ba529e3
+13	849	7647317166426843	CMakeFiles/Proyecto1.dir/Materiales.cpp.obj	99e46b883e1b6d58
+41	172	7647291818398370	CMakeFiles/Proyecto1.dir/Video.cpp.obj	1f524478968c099a
+12	771	7647291818107099	CMakeFiles/Proyecto1.dir/main.cpp.obj	67d1dbba5dc15062
+51	865	7647291818501204	CMakeFiles/Proyecto1.dir/Utilities.cpp.obj	cf1c6c7a886cd5a6
+17	807	7647317166477130	CMakeFiles/Proyecto1.dir/Libro.cpp.obj	ac8148ff441b839c
+30	804	7647317166607151	CMakeFiles/Proyecto1.dir/MaterialDigital.cpp.obj	36f8f86480078f5b
+77	669	7651481987610677	CMakeFiles/Proyecto1.dir/Usuario.cpp.obj	47aae72b151c57af
+34	914	7647317166641676	CMakeFiles/Proyecto1.dir/MaterialFisico.cpp.obj	2df9b7829dd39a9a
+914	1061	7647317175440662	Proyecto1.exe	f3aa79ddf145310d
