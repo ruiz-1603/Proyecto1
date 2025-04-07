@@ -296,6 +296,30 @@ Materiales.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Materiales.cpp.s
 .PHONY : Materiales.cpp.s
 
+Prestamo.obj: Prestamo.cpp.obj
+.PHONY : Prestamo.obj
+
+# target to build an object file
+Prestamo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj
+.PHONY : Prestamo.cpp.obj
+
+Prestamo.i: Prestamo.cpp.i
+.PHONY : Prestamo.i
+
+# target to preprocess a source file
+Prestamo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Prestamo.cpp.i
+.PHONY : Prestamo.cpp.i
+
+Prestamo.s: Prestamo.cpp.s
+.PHONY : Prestamo.s
+
+# target to generate assembly for a file
+Prestamo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Prestamo.cpp.s
+.PHONY : Prestamo.cpp.s
+
 Revista.obj: Revista.cpp.obj
 .PHONY : Revista.obj
 
@@ -446,6 +470,9 @@ help:
 	@echo ... Materiales.obj
 	@echo ... Materiales.i
 	@echo ... Materiales.s
+	@echo ... Prestamo.obj
+	@echo ... Prestamo.i
+	@echo ... Prestamo.s
 	@echo ... Revista.obj
 	@echo ... Revista.i
 	@echo ... Revista.s

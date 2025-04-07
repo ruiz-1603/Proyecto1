@@ -1,5 +1,8 @@
-CMakeFiles/Proyecto1.dir/main.cpp.obj: \
- C:\Users\castr\Desktop\Proyecto1\main.cpp \
+CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj: \
+ C:\Users\castr\Desktop\Proyecto1\Prestamo.cpp \
+ C:\Users\castr\Desktop\Proyecto1\Prestamo.h \
+ C:\Users\castr\Desktop\Proyecto1\Usuario.h \
+ C:\Users\castr\Desktop\Proyecto1\Utilities.h \
  C:/msys64/mingw64/include/c++/13.1.0/iostream \
  C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -144,9 +147,6 @@ CMakeFiles/Proyecto1.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/mingw64/include/c++/13.1.0/istream \
  C:/msys64/mingw64/include/c++/13.1.0/bits/istream.tcc \
- C:\Users\castr\Desktop\Proyecto1\Prestamo.h \
- C:\Users\castr\Desktop\Proyecto1\Usuario.h \
- C:\Users\castr\Desktop\Proyecto1\Utilities.h \
  C:/msys64/mingw64/include/c++/13.1.0/sstream \
  C:/msys64/mingw64/include/c++/13.1.0/bits/sstream.tcc \
  C:/msys64/mingw64/include/c++/13.1.0/fstream \
