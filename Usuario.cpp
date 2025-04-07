@@ -27,7 +27,7 @@ bool Usuario::is_estado() const {
 void Usuario::set_estado(bool estado) {
     this->estado = estado;
 }
-string Usuario::mostrar() {
+string Usuario::toString() {
     stringstream ss;
     ss << "Cedula: " << get_id() << "\n"
        << "Nombre: " << get_nombre_completo() << "\n"

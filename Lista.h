@@ -44,7 +44,7 @@ string Lista<tipo>::mostrar() {
     stringstream ss;
     actual = primero;
     while (actual != nullptr) {
-        ss << actual->getDato()->mostrar() << "\n";
+        ss << actual->getDato()->toString() << "\n";
         actual = actual->getSiguiente();
     }
     return ss.str();
@@ -60,7 +60,7 @@ tipo* Lista<tipo>::buscarEnLista(const string& nombre) {
     actual = primero;
     Materiales* aux = nullptr;
     while (actual != nullptr) {
-        if (actual->getDato()->getTitle() == nombre) {
+        if (actual->getDato()->get_titulo() == nombre) {
             aux = actual->getDato();
         }
         actual = actual->getSiguiente();

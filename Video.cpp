@@ -10,11 +10,11 @@ Video::Video(int numCal, int numCat, string titulo, string autor, string palClav
 : MaterialDigital(numCal, numCat, titulo, autor, palClaves, estado, tipoMaterial, formatoMaterial, _estado) {}
 Video::~Video() {}
 
-string Video::getTipo() override {
+string Video::getTipo() {
     return "Video";
 }
 
-string Video::toString() override {
+string Video::toString() {
     stringstream ss;
     ss << MaterialDigital::toString();
     return ss.str();

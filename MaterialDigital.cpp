@@ -44,7 +44,7 @@ string MaterialDigital::toString() {
        ss << "Tipo de Material: " << get_tipo_material() << "\n"
        << "Formato: " << get_formato_material() << "\n"
       // << "Dias de Prestamo: " << get_dia_prestamo() << "\n"
-       << "Estado: " << (get_estado() ? "Activo" : "Inactivo")  << "\n";
+       << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << "\n";
     return ss.str();
 }
 

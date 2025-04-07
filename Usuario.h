@@ -28,7 +28,7 @@ public:
 
     void set_estado(bool estado);
 
-    string mostrar();
+    string toString();
 };
 
 

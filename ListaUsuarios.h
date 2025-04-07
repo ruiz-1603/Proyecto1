@@ -5,7 +5,7 @@
 #ifndef LISTAUSUARIOS_H
 #define LISTAUSUARIOS_H
 
-#include "Lista.h""
+#include "Lista.h"
 #include "Usuario.h"
 
 class ListaUsuarios {
