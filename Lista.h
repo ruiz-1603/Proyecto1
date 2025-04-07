@@ -20,8 +20,10 @@ public:
     void limpiarLista();
     tipo* buscarEnLista(const string& nombre);
     tipo* buscarEnListaUsua(int);
+    bool eliminar(int);
     void eliminarEnLista(const string& nombre);
     void eliminarEnListaUsua(int);
+    // revisar si eliminarEnListaUsua(int) puede cambiarse por eliminar(int), es más genérico
     void eliminarPrimero();
     Nodo<tipo>* obtenerPrimero();
     tipo* buscarPorNumero(int num);
@@ -116,6 +118,27 @@ void Lista<tipo>::eliminarEnListaUsua(int id) {
         anterior = temp;
         temp = temp->getSiguiente();
     }
+}
+template<class tipo>
+bool Lista<tipo>::eliminar(int id) {
+    Nodo<tipo>* temp = primero;
+    Nodo<tipo>* anterior = nullptr;
+
+    while (temp) {
+        if (temp->getDato()->getId() == id) {
+            if (anterior) {
+                anterior->setSiguiente(temp->getSiguiente());
+            } else {
+                primero = temp->getSiguiente();
+            }
+            delete temp->getDato();
+            delete temp;
+            return true;
+        }
+        anterior = temp;
+        temp = temp->getSiguiente();
+    }
+    return false;
 }
 template<class tipo>
 Nodo<tipo>* Lista<tipo>::obtenerPrimero() {

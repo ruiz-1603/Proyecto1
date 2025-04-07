@@ -4,13 +4,15 @@
 
 #include "Prestamo.h"
 
-Prestamo::Prestamo(Usuario* usuario, Materiales* material, string fPrestamo, string fVencimiento) {
+Prestamo::Prestamo(int id, Usuario* usuario, Materiales* material, string fPrestamo, string fVencimiento) {
+  this->id = id;
   this->usuario = usuario;
   this->material = material;
   this->fechaPrestamo = fPrestamo;
   this->fechaVencimiento = fVencimiento;
 }
 Prestamo::Prestamo() {
+  this->id = -1;
   this->usuario = nullptr;
   this->material = nullptr;
   this->fechaPrestamo = "00-00-0000";
@@ -33,11 +35,13 @@ bool Prestamo::estaVencido() {
   return fecha_vencimiento < fecha_hoy;
 }
 
+int Prestamo::getId() { return id; }
 Usuario* Prestamo::getUsuario() { return usuario; }
 Materiales* Prestamo::getMaterial() { return material; }
 string Prestamo::getFechaPrestamo() { return fechaPrestamo; }
 string Prestamo::getFechaVencimiento() { return fechaVencimiento; }
 
+void Prestamo::setId(int id) { this->id = id;}
 void Prestamo::setUsuario(Usuario* usuario) { this->usuario = usuario; }
 void Prestamo::setMaterial(Materiales* material) { this->material = material; };
 void Prestamo::setFechaPrestamo(string fPrestamo) { this->fechaPrestamo = fPrestamo; }

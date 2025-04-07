@@ -10,7 +10,7 @@
 class Biblioteca {
     private:
     Lista<Materiales>* lista;
-    public:
+    public: // agregar destructor?
     Biblioteca();
     void agregarMaterial(Materiales* material);
     void mostrarMateriales();

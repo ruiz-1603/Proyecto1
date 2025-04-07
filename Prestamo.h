@@ -12,23 +12,26 @@
 
 class Prestamo {
 private:
+  int id;
   Usuario* usuario;
   Materiales* material;
   string fechaPrestamo;
   string fechaVencimiento;
 
 public:
-  Prestamo(Usuario*, Materiales*, string, string);
+  Prestamo(int, Usuario*, Materiales*, string, string);
   Prestamo();
   ~Prestamo();
 
   bool estaVencido();
 
+  int getId();
   Usuario* getUsuario();
   Materiales* getMaterial();
   string getFechaPrestamo();
   string getFechaVencimiento();
 
+  void setId(int);
   void setUsuario(Usuario*);
   void setMaterial(Materiales*);
   void setFechaPrestamo(string);

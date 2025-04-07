@@ -1,7 +1,7 @@
-#include <iostream>
 #include "Prestamo.h"
 
 int main() {
+    //PRUEBA
     // Prestamo* p1 = new Prestamo();
     // p1->setFechaPrestamo("01-04-2025");
     // p1->setFechaVencimiento("06-04-2025");
