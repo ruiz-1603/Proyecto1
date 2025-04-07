@@ -12,9 +12,9 @@ private:
     string tipoMaterial;
     string formatoMaterial;
     bool estado;
-    public:
+public:
     MaterialDigital(string tipoMaterial = "", string formatoMaterial = "", bool estado = false);
-    MaterialDigital(int, int, string, string,string,string,string,string,bool);
+    MaterialDigital(int, int, string, string, string, string, string, string, bool);
 
     string get_tipo_material() const;
 

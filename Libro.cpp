@@ -18,3 +18,5 @@ string Libro::toString() {
     return ss.str();
 }
 
+int Libro::diasPrestamo() { return 7;}
+
