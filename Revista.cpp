@@ -30,7 +30,7 @@ string Revista::getTipo() {
 string Revista::toString() {
     stringstream ss;
     ss << MaterialFisico::toString();
-    ss << "Numero de Revista: " << get_num_revista() << "\n";
-    ss << "Numero de Volumen" << get_volumen_revista() << "\n";
+    ss << "Numero de Revista: " << get_num_revista() << ",";
+    ss << "Numero de Volumen" << get_volumen_revista() << ",";
     return ss.str();
 }

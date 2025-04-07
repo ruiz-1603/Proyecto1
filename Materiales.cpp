@@ -60,13 +60,13 @@ void Materiales::set_estado(string estado) {
 }
 string Materiales::toString() {
     stringstream ss;
-    ss << "Tipo: " << getTipo() << "\n"
-       << "Titulo: " << get_titulo() << "\n"
-       << "Autor: " << get_autor() << "\n"
-       << "Estado: " << get_estado() << "\n"
-       << "Numero de Calificacion: " << get_num_calificacion() << "\n"
-       << "Numero de Catalogo: " << get_num_catalogo() << "\n"
-       << "Palabras Claves: " << get_palabras_claves() << "\n";
+    ss << "Tipo: " << getTipo() << ","
+       << "Titulo: " << get_titulo() << ","
+       << "Autor: " << get_autor() << ","
+       << "Estado: " << get_estado() << ","
+       << "Numero de Calificacion: " << get_num_calificacion() << ","
+       << "Numero de Catalogo: " << get_num_catalogo() << ","
+       << "Palabras Claves: " << get_palabras_claves() << ",";
 
     return ss.str();
 }

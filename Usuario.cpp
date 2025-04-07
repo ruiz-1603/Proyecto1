@@ -29,8 +29,8 @@ void Usuario::set_estado(bool estado) {
 }
 string Usuario::toString() {
     stringstream ss;
-    ss << "Cedula: " << get_id() << "\n"
-       << "Nombre: " << get_nombre_completo() << "\n"
-       << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << "\n";
+    ss << "Cedula: " << get_id() << ","
+       << "Nombre: " << get_nombre_completo() << ","
+       << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << ",";
     return ss.str();
 }

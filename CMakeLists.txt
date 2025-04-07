@@ -27,4 +27,6 @@ add_executable(Proyecto1 main.cpp
         ListaUsuarios.cpp
         ListaUsuarios.h
         Prestamo.cpp
-        Prestamo.h)
+        Prestamo.h
+        GestorArchivos.cpp
+        GestorArchivos.h)
