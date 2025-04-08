@@ -1,5 +1,5 @@
-CMakeFiles/Proyecto1.dir/main.cpp.obj: \
- C:\Users\castr\Desktop\Proyecto1\main.cpp \
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj: \
+ C:\Users\castr\Desktop\Proyecto1\Coleccion.cpp \
  C:\Users\castr\Desktop\Proyecto1\Coleccion.h \
  C:\Users\castr\Desktop\Proyecto1\Biblioteca.h \
  C:\Users\castr\Desktop\Proyecto1\Lista.h \

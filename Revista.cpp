@@ -34,3 +34,5 @@ string Revista::toString() {
     ss << "Numero de Volumen" << get_volumen_revista() << "\n";
     return ss.str();
 }
+
+int Revista::diasPrestamo() { return 2;}

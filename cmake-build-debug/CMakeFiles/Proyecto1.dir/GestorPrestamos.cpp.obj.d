@@ -1,10 +1,8 @@
-CMakeFiles/Proyecto1.dir/main.cpp.obj: \
- C:\Users\castr\Desktop\Proyecto1\main.cpp \
- C:\Users\castr\Desktop\Proyecto1\Coleccion.h \
- C:\Users\castr\Desktop\Proyecto1\Biblioteca.h \
- C:\Users\castr\Desktop\Proyecto1\Lista.h \
- C:\Users\castr\Desktop\Proyecto1\Nodo.h \
- C:\Users\castr\Desktop\Proyecto1\Materiales.h \
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj: \
+ C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.cpp \
+ C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.h \
+ C:\Users\castr\Desktop\Proyecto1\Prestamo.h \
+ C:\Users\castr\Desktop\Proyecto1\Usuario.h \
  C:\Users\castr\Desktop\Proyecto1\Utilities.h \
  C:/msys64/mingw64/include/c++/13.1.0/iostream \
  C:/msys64/mingw64/include/c++/13.1.0/bits/requires_hosted.h \
@@ -157,10 +155,7 @@ CMakeFiles/Proyecto1.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/basic_file.h \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++io.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/fstream.tcc \
- C:\Users\castr\Desktop\Proyecto1\Usuario.h \
- C:\Users\castr\Desktop\Proyecto1\ListaUsuarios.h \
- C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.h \
- C:\Users\castr\Desktop\Proyecto1\Prestamo.h \
+ C:\Users\castr\Desktop\Proyecto1\Materiales.h \
  C:/msys64/mingw64/include/c++/13.1.0/iomanip \
  C:/msys64/mingw64/include/c++/13.1.0/locale \
  C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets_nonio.h \
@@ -170,9 +165,5 @@ CMakeFiles/Proyecto1.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets_nonio.tcc \
  C:/msys64/mingw64/include/c++/13.1.0/bits/locale_conv.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/quoted_string.h \
- C:\Users\castr\Desktop\Proyecto1\Libro.h \
- C:\Users\castr\Desktop\Proyecto1\MaterialFisico.h \
- C:\Users\castr\Desktop\Proyecto1\Articulo.h \
- C:\Users\castr\Desktop\Proyecto1\Revista.h \
- C:\Users\castr\Desktop\Proyecto1\Video.h \
- C:\Users\castr\Desktop\Proyecto1\MaterialDigital.h
+ C:\Users\castr\Desktop\Proyecto1\Lista.h \
+ C:\Users\castr\Desktop\Proyecto1\Nodo.h

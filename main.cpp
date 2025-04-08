@@ -1,14 +1,10 @@
-#include "Prestamo.h"
+#include "Coleccion.h"
 
 int main() {
-    //PRUEBA
-    // Prestamo* p1 = new Prestamo();
-    // p1->setFechaPrestamo("01-04-2025");
-    // p1->setFechaVencimiento("06-04-2025");
-    //
-    // cout << p1->estaVencido() << endl;
-    //
-    // delete p1;
+    Coleccion* interfaz = new Coleccion();
+    interfaz->agregarInventario();
+    delete interfaz;
+
 
 
     return 0;

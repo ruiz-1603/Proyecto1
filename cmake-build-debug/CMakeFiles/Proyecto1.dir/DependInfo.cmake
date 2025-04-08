@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/castr/Desktop/Proyecto1/Articulo.cpp" "CMakeFiles/Proyecto1.dir/Articulo.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/Articulo.cpp.obj.d"
   "C:/Users/castr/Desktop/Proyecto1/Biblioteca.cpp" "CMakeFiles/Proyecto1.dir/Biblioteca.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/Biblioteca.cpp.obj.d"
+  "C:/Users/castr/Desktop/Proyecto1/Coleccion.cpp" "CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj.d"
+  "C:/Users/castr/Desktop/Proyecto1/GestorPrestamos.cpp" "CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj.d"
   "C:/Users/castr/Desktop/Proyecto1/Libro.cpp" "CMakeFiles/Proyecto1.dir/Libro.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/Libro.cpp.obj.d"
   "C:/Users/castr/Desktop/Proyecto1/ListaUsuarios.cpp" "CMakeFiles/Proyecto1.dir/ListaUsuarios.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/ListaUsuarios.cpp.obj.d"
   "C:/Users/castr/Desktop/Proyecto1/MaterialDigital.cpp" "CMakeFiles/Proyecto1.dir/MaterialDigital.cpp.obj" "gcc" "CMakeFiles/Proyecto1.dir/MaterialDigital.cpp.obj.d"

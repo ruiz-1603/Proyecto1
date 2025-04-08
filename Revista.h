@@ -26,6 +26,8 @@ public:
     string getTipo() override;
 
     string toString() override;
+
+    int diasPrestamo() override;
 };
 
 

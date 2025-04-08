@@ -250,6 +250,34 @@ CMakeFiles/Proyecto1.dir/Prestamo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto1.dir/Prestamo.cpp.s"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\castr\Desktop\Proyecto1\Prestamo.cpp -o CMakeFiles\Proyecto1.dir\Prestamo.cpp.s
 
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj: CMakeFiles/Proyecto1.dir/flags.make
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj: C:/Users/castr/Desktop/Proyecto1/Coleccion.cpp
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj: CMakeFiles/Proyecto1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\castr\Desktop\Proyecto1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj -MF CMakeFiles\Proyecto1.dir\Coleccion.cpp.obj.d -o CMakeFiles\Proyecto1.dir\Coleccion.cpp.obj -c C:\Users\castr\Desktop\Proyecto1\Coleccion.cpp
+
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto1.dir/Coleccion.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\castr\Desktop\Proyecto1\Coleccion.cpp > CMakeFiles\Proyecto1.dir\Coleccion.cpp.i
+
+CMakeFiles/Proyecto1.dir/Coleccion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto1.dir/Coleccion.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\castr\Desktop\Proyecto1\Coleccion.cpp -o CMakeFiles\Proyecto1.dir\Coleccion.cpp.s
+
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj: CMakeFiles/Proyecto1.dir/flags.make
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj: C:/Users/castr/Desktop/Proyecto1/GestorPrestamos.cpp
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj: CMakeFiles/Proyecto1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\castr\Desktop\Proyecto1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj -MF CMakeFiles\Proyecto1.dir\GestorPrestamos.cpp.obj.d -o CMakeFiles\Proyecto1.dir\GestorPrestamos.cpp.obj -c C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.cpp
+
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.cpp > CMakeFiles\Proyecto1.dir\GestorPrestamos.cpp.i
+
+CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\castr\Desktop\Proyecto1\GestorPrestamos.cpp -o CMakeFiles\Proyecto1.dir\GestorPrestamos.cpp.s
+
 # Object files for target Proyecto1
 Proyecto1_OBJECTS = \
 "CMakeFiles/Proyecto1.dir/main.cpp.obj" \
@@ -264,7 +292,9 @@ Proyecto1_OBJECTS = \
 "CMakeFiles/Proyecto1.dir/Usuario.cpp.obj" \
 "CMakeFiles/Proyecto1.dir/Biblioteca.cpp.obj" \
 "CMakeFiles/Proyecto1.dir/ListaUsuarios.cpp.obj" \
-"CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj"
+"CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj" \
+"CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj" \
+"CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj"
 
 # External object files for target Proyecto1
 Proyecto1_EXTERNAL_OBJECTS =
@@ -282,11 +312,13 @@ Proyecto1.exe: CMakeFiles/Proyecto1.dir/Usuario.cpp.obj
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/Biblioteca.cpp.obj
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/ListaUsuarios.cpp.obj
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj
+Proyecto1.exe: CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj
+Proyecto1.exe: CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/build.make
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/linkLibs.rsp
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/objects1.rsp
 Proyecto1.exe: CMakeFiles/Proyecto1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\castr\Desktop\Proyecto1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Proyecto1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\castr\Desktop\Proyecto1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable Proyecto1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Proyecto1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

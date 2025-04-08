@@ -176,6 +176,54 @@ Biblioteca.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Biblioteca.cpp.s
 .PHONY : Biblioteca.cpp.s
 
+Coleccion.obj: Coleccion.cpp.obj
+.PHONY : Coleccion.obj
+
+# target to build an object file
+Coleccion.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Coleccion.cpp.obj
+.PHONY : Coleccion.cpp.obj
+
+Coleccion.i: Coleccion.cpp.i
+.PHONY : Coleccion.i
+
+# target to preprocess a source file
+Coleccion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Coleccion.cpp.i
+.PHONY : Coleccion.cpp.i
+
+Coleccion.s: Coleccion.cpp.s
+.PHONY : Coleccion.s
+
+# target to generate assembly for a file
+Coleccion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Coleccion.cpp.s
+.PHONY : Coleccion.cpp.s
+
+GestorPrestamos.obj: GestorPrestamos.cpp.obj
+.PHONY : GestorPrestamos.obj
+
+# target to build an object file
+GestorPrestamos.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.obj
+.PHONY : GestorPrestamos.cpp.obj
+
+GestorPrestamos.i: GestorPrestamos.cpp.i
+.PHONY : GestorPrestamos.i
+
+# target to preprocess a source file
+GestorPrestamos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.i
+.PHONY : GestorPrestamos.cpp.i
+
+GestorPrestamos.s: GestorPrestamos.cpp.s
+.PHONY : GestorPrestamos.s
+
+# target to generate assembly for a file
+GestorPrestamos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorPrestamos.cpp.s
+.PHONY : GestorPrestamos.cpp.s
+
 Libro.obj: Libro.cpp.obj
 .PHONY : Libro.obj
 
@@ -455,6 +503,12 @@ help:
 	@echo ... Biblioteca.obj
 	@echo ... Biblioteca.i
 	@echo ... Biblioteca.s
+	@echo ... Coleccion.obj
+	@echo ... Coleccion.i
+	@echo ... Coleccion.s
+	@echo ... GestorPrestamos.obj
+	@echo ... GestorPrestamos.i
+	@echo ... GestorPrestamos.s
 	@echo ... Libro.obj
 	@echo ... Libro.i
 	@echo ... Libro.s

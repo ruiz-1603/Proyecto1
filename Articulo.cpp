@@ -15,3 +15,5 @@ string Articulo::toString() {
     ss << MaterialFisico::toString();
     return ss.str();
 }
+
+int Articulo::diasPrestamo() { return 7;}

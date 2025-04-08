@@ -8,9 +8,9 @@
 #include "Lista.h"
 
 class Biblioteca {
-    private:
+private:
     Lista<Materiales>* lista;
-    public: // agregar destructor?
+public: // agregar destructor?
     Biblioteca();
     void agregarMaterial(Materiales* material);
     void mostrarMateriales();
@@ -19,7 +19,5 @@ class Biblioteca {
     Materiales* buscarMaterialPorNumero(int num);
     Lista<Materiales>* getBiblioteca(){return lista;}
 };
-
-
 
 #endif //BIBLIOTECA_H
