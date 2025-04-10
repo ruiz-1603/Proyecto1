@@ -1,9 +1,8 @@
-#include "Coleccion.h"
+#include "Menu.h"
 
 int main() {
-    Coleccion* interfaz = new Coleccion();
-    //interfaz->agregarInventario();
-    delete interfaz;
-
+    Menu* menu = new Menu();
+    menu->menuPrincipal();
+    delete menu;
     return 0;
 }

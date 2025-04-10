@@ -21,9 +21,9 @@ public:
     tipo* buscarEnLista(const string& nombre);
     tipo* buscarEnListaUsua(int);
     bool eliminar(int);
+    bool eliminarEnListaPrestamo(int);
     void eliminarEnLista(const string& nombre);
     void eliminarEnListaUsua(int);
-    // revisar si eliminarEnListaUsua(int) puede cambiarse por eliminar(int), es más genérico
     void eliminarPrimero();
     Nodo<tipo>* obtenerPrimero();
     tipo* buscarPorNumero(int num);
@@ -74,7 +74,7 @@ tipo* Lista<tipo>::buscarEnListaUsua(int id) {
     actual = primero;
     Usuario* aux = nullptr;
     while (actual != nullptr) {
-        if (actual->getDato()->get_id() == id) {
+        if (actual->getDato()->getId() == id) {
             aux = actual->getDato();
         }
         actual = actual->getSiguiente();
@@ -106,7 +106,7 @@ void Lista<tipo>::eliminarEnListaUsua(int id) {
     Nodo<Usuario>* anterior = nullptr;
 
     while (temp) {
-        if (temp->getDato()->get_id() == id) {
+        if (temp->getDato()->getId() == id) {
             if (anterior) {
                 anterior->setSiguiente(temp->getSiguiente());
             } else {
@@ -132,6 +132,26 @@ bool Lista<tipo>::eliminar(int id) {
                 primero = temp->getSiguiente();
             }
             delete temp->getDato();
+            delete temp;
+            return true;
+        }
+        anterior = temp;
+        temp = temp->getSiguiente();
+    }
+    return false;
+}
+template<class tipo>
+bool Lista<tipo>::eliminarEnListaPrestamo(int id) {
+    Nodo<tipo>* temp = primero;
+    Nodo<tipo>* anterior = nullptr;
+
+    while (temp) {
+        if (temp->getDato()->getId() == id) {
+            if (anterior) {
+                anterior->setSiguiente(temp->getSiguiente());
+            } else {
+                primero = temp->getSiguiente();
+            }
             delete temp;
             return true;
         }

@@ -577,6 +577,40 @@ void Coleccion::modificarMaterial() {
   }
 }
 
+void Coleccion::eliminarMaterial() {
+  int tipo;
+  cout << "Ingrese el tipo de material que desea eliminar: ";
+  cout << "1. Fisico" << endl;
+  cout << "2. Digital" << endl;
+  cin >> tipo;
+
+  switch (tipo) {
+    case 1: {
+      cout << "Materiales fisicos:" << endl;
+      inventario->mostrarMaterialesPorTipo("Fisico");
+      cout << endl;
+      string titulo;
+      cout << "Ingrese el titulo del material fisico que desea eliminar: ";
+      cin.ignore();
+      getline(cin, titulo);
+      inventario->eliminarMaterialPorTitulo(titulo);
+      break;
+    }
+    case 2: {
+      cout << "Materiales digitales:" << endl;
+      inventario->mostrarMaterialesPorTipo("Digital");
+      cout << endl;
+      string titulo;
+      cout << "Ingrese el titulo del material digital que desea eliminar: ";
+      cin.ignore();
+      getline(cin, titulo);
+      inventario->eliminarMaterialPorTitulo(titulo);
+      break;
+    }
+  }
+}
+
+
 void Coleccion::agregarUsuario() {
   int id;
   string nom;
@@ -639,6 +673,16 @@ void Coleccion::modificarUsuario() {
     cout << "Usuario no encontrado" << endl;
   }
 }
+
+void Coleccion::eliminarUsuario() {
+  int id;
+  cout << "Usuarios: " << endl;
+  usuarios->mostrarUsuarios();
+  cout << "Ingrese el id del usuario que desea eliminar: ";
+  cin >> id;
+  usuarios->eliminarUsuarioPorId(id);
+}
+
 
 void Coleccion::mostrarDisponiblesPorTipo(string tipoBuscado) {
   Nodo<Materiales>* nodo = inventario->getBiblioteca()->obtenerPrimero();
@@ -845,7 +889,36 @@ void Coleccion::reporteMaterialesPrestados() {
   cout << endl;
 }
 
-void Coleccion::reportePrestamoPorUsuario() {
+void Coleccion::reporteMaterialesPorTipo() {
+  int tipo;
+  cout << "\tIngrese el tipo de material:" << endl;
+  cout << "1. Libros" << endl;
+  cout << "2. Revistas" << endl;
+  cout << "3. Articulos" << endl;
+  cout << "4. Videos" << endl;
+  cin >> tipo;
+
+  switch (tipo) {
+    case 1:
+      system("cls");
+      inventario->mostrarMaterialesPorTipo("Libro");
+      break;
+    case 2:
+      system("cls");
+      inventario->mostrarMaterialesPorTipo("Revista");
+      break;
+    case 3:
+      system("cls");
+      inventario->mostrarMaterialesPorTipo("Articulo");
+      break;
+    case 4:
+      system("cls");
+      inventario->mostrarMaterialesPorTipo("Video");
+      break;
+  }
+}
+
+void Coleccion::reportePrestamosPorUsuario() {
   int id;
   cout << "Ingrese el ID del usuario: ";
   cin >> id;

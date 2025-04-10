@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Proyecto1.dir/MaterialFisico.cpp.obj.d"
   "CMakeFiles/Proyecto1.dir/Materiales.cpp.obj"
   "CMakeFiles/Proyecto1.dir/Materiales.cpp.obj.d"
+  "CMakeFiles/Proyecto1.dir/Menu.cpp.obj"
+  "CMakeFiles/Proyecto1.dir/Menu.cpp.obj.d"
   "CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj"
   "CMakeFiles/Proyecto1.dir/Prestamo.cpp.obj.d"
   "CMakeFiles/Proyecto1.dir/Revista.cpp.obj"

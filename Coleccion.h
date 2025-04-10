@@ -25,9 +25,11 @@ public:
 
   void agregarInventario();
   void modificarMaterial();
+  void eliminarMaterial();
 
   void agregarUsuario();
   void modificarUsuario();
+  void eliminarUsuario();
 
   void mostrarDisponiblesPorTipo(string);
 
@@ -37,7 +39,8 @@ public:
   void reporteInventario();
   void reporteUsuarios();
   void reporteMaterialesPrestados();
-  void reportePrestamoPorUsuario();
+  void reporteMaterialesPorTipo();
+  void reportePrestamosPorUsuario();
 };
 
 #endif //COLECCION_H

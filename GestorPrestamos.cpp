@@ -40,7 +40,7 @@ void GestorPrestamos::mostrarPrestamosPorUsuario(Usuario* usuario) {
 
   while (aux != nullptr) {
     Prestamo* prestamo = aux->getDato();
-    if (prestamo->getUsuario()->get_id() == usuario->get_id()) {
+    if (prestamo->getUsuario()->getId() == usuario->getId()) {
       cout << ++cont << ". " << prestamo->toString() << endl;
     }
     aux = aux->getSiguiente();
@@ -70,7 +70,7 @@ void GestorPrestamos::mostrarPrestamosVencidos() {
 }
 
 bool GestorPrestamos::eliminarPrestamo(int idPrestamo) {
-  return prestamos->eliminar(idPrestamo);
+  return prestamos->eliminarEnListaPrestamo(idPrestamo);
 }
 
 Lista<Prestamo>* GestorPrestamos::getPrestamos() { return prestamos; }

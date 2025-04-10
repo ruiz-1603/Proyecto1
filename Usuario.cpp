@@ -16,7 +16,7 @@ Usuario::Usuario(int id, string nom, bool est) {
     this->estado = est;
 }
 
-int Usuario::get_id() const {
+int Usuario::getId() const {
     return id;
 }
 
@@ -41,7 +41,7 @@ void Usuario::set_estado(bool estado) {
 }
 string Usuario::toString() {
     stringstream ss;
-    ss << "Cedula: " << get_id() << ","
+    ss << "Cedula: " << getId() << ","
        << "Nombre: " << get_nombre_completo() << ","
        << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << ",";
     return ss.str();

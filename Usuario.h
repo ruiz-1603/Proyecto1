@@ -16,7 +16,7 @@ public:
     Usuario();
     Usuario(int, string, bool);
 
-    int get_id() const;
+    int getId() const;
 
     void set_id(int id);
 

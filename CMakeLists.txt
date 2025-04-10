@@ -34,4 +34,6 @@ add_executable(Proyecto1 main.cpp
         GestorPrestamos.cpp
         Lista.h
         GestorArchivos.cpp
-        GestorArchivos.h)
+        GestorArchivos.h
+        Menu.cpp
+        Menu.h)

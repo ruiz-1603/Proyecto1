@@ -14,6 +14,25 @@ void Biblioteca::agregarMaterial(Materiales* material) {
 void Biblioteca::mostrarMateriales() {
      cout << lista->mostrar() << endl;
 }
+
+void Biblioteca::mostrarMaterialesPorTipo(string material) {
+    Nodo<Materiales>* aux = lista->obtenerPrimero();
+    int cont = 0;
+    cout << "Inventario de " << material << "s:" << endl; // revisar como queda en consola
+
+    while (aux != nullptr) {
+        Materiales* bib = aux->getDato();
+        if (bib->getTipo() == material) {
+            cout << ++cont << ". " << bib->toString() << endl;
+        }
+        aux = aux->getSiguiente();
+    }
+
+    if (cont == 0) {
+        cout << "\tNo hay materiales de tipo " << material << "." << endl;
+    }
+}
+
 void Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
     lista->eliminarEnLista(titulo);
 }

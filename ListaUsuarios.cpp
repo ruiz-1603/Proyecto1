@@ -18,5 +18,5 @@ Usuario* ListaUsuarios::buscarUsuarioPorId(int id) {
     return usuarios->buscarEnListaUsua(id);
 }
 void ListaUsuarios::eliminarUsuarioPorId(int id) {
-    usuarios->eliminarEnListaUsua(id);
+    usuarios->eliminar(id);
 }

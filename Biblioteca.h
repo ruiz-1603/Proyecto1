@@ -14,6 +14,7 @@ public: // agregar destructor?
     Biblioteca();
     void agregarMaterial(Materiales* material);
     void mostrarMateriales();
+    void mostrarMaterialesPorTipo(string);
     void eliminarMaterialPorTitulo(const std::string& titulo);
     Materiales* buscarMaterialPorTitulo(const std::string& titulo);
     Materiales* buscarMaterialPorNumero(int num);
