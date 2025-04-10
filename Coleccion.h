@@ -29,8 +29,10 @@ public:
   void agregarUsuario();
   void modificarUsuario();
 
-  bool registrarPrestamo();
-//  bool registrarDevolucion();
+  void mostrarDisponiblesPorTipo(string);
+
+  void registrarPrestamo();
+  void registrarDevolucion();
 
   void reporteInventario();
   void reporteUsuarios();

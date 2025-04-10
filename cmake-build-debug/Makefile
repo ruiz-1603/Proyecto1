@@ -200,6 +200,30 @@ Coleccion.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/Coleccion.cpp.s
 .PHONY : Coleccion.cpp.s
 
+GestorArchivos.obj: GestorArchivos.cpp.obj
+.PHONY : GestorArchivos.obj
+
+# target to build an object file
+GestorArchivos.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorArchivos.cpp.obj
+.PHONY : GestorArchivos.cpp.obj
+
+GestorArchivos.i: GestorArchivos.cpp.i
+.PHONY : GestorArchivos.i
+
+# target to preprocess a source file
+GestorArchivos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorArchivos.cpp.i
+.PHONY : GestorArchivos.cpp.i
+
+GestorArchivos.s: GestorArchivos.cpp.s
+.PHONY : GestorArchivos.s
+
+# target to generate assembly for a file
+GestorArchivos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto1.dir\build.make CMakeFiles/Proyecto1.dir/GestorArchivos.cpp.s
+.PHONY : GestorArchivos.cpp.s
+
 GestorPrestamos.obj: GestorPrestamos.cpp.obj
 .PHONY : GestorPrestamos.obj
 
@@ -506,6 +530,9 @@ help:
 	@echo ... Coleccion.obj
 	@echo ... Coleccion.i
 	@echo ... Coleccion.s
+	@echo ... GestorArchivos.obj
+	@echo ... GestorArchivos.i
+	@echo ... GestorArchivos.s
 	@echo ... GestorPrestamos.obj
 	@echo ... GestorPrestamos.i
 	@echo ... GestorPrestamos.s

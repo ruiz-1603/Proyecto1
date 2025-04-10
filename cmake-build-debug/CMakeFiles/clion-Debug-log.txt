@@ -11,6 +11,6 @@
 -- Check for working CXX compiler: C:/msys64/mingw64/bin/c++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (4.1s)
+-- Configuring done (3.1s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/castr/Desktop/Proyecto1/cmake-build-debug

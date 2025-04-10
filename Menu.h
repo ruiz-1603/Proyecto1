@@ -11,7 +11,14 @@ class Menu {
 private:
   Coleccion* interfaz;
 public:
+	Menu();
+    ~Menu();
 
+    void menuPrincipal();
+
+    void subMenuInventario();
+    void subMenuUsuarios();
+    void subMenuPrestamos();
 };
 
 

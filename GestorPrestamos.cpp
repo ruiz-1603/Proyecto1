@@ -72,3 +72,5 @@ void GestorPrestamos::mostrarPrestamosVencidos() {
 bool GestorPrestamos::eliminarPrestamo(int idPrestamo) {
   return prestamos->eliminar(idPrestamo);
 }
+
+Lista<Prestamo>* GestorPrestamos::getPrestamos() { return prestamos; }

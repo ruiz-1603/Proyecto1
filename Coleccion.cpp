@@ -638,26 +638,203 @@ void Coleccion::modificarUsuario() {
   } else {
     cout << "Usuario no encontrado" << endl;
   }
-
 }
 
-bool Coleccion::registrarPrestamo() {
+void Coleccion::mostrarDisponiblesPorTipo(string tipoBuscado) {
+  Nodo<Materiales>* nodo = inventario->getBiblioteca()->obtenerPrimero();
+
+  while (nodo != nullptr) {
+    Materiales* material = nodo->getDato();
+
+    // Verificar si el material no está prestado y si su tipo coincide con el buscado
+    bool estaPrestado = false;
+    Nodo<Prestamo>* prestamoNodo = gestorPrestamos->getPrestamos()->obtenerPrimero();
+    while (prestamoNodo != nullptr) {
+      Prestamo* prestamo = prestamoNodo->getDato();
+      if (prestamo->getMaterial() == material) {
+        estaPrestado = true;
+        break;
+      }
+      prestamoNodo = prestamoNodo->getSiguiente();
+    }
+
+    if (!estaPrestado && material->getTipo() == tipoBuscado) {
+      cout << material->toString() << endl;
+    }
+
+    nodo = nodo->getSiguiente();
+  }
+}
+
+void Coleccion::registrarPrestamo() {
   int idUsuario;
+  string formatoMaterial;
   cout << "Ingrese el id del usuario que solicita el prestamo: ";
   cin >> idUsuario;
   Usuario* usuario = usuarios->buscarUsuarioPorId(idUsuario);
 
-  cout << "Ingrese el material que desea: ";
+  cout << "Ingrese el formato del material que desea (Fisico, Digital): ";
+  cin >> formatoMaterial;
+  for (char& c : formatoMaterial) {
+    c = tolower(c);
+  }
+  if (formatoMaterial == "fisico") {
+    int opcion;
+    cout << "Ingrese el tipo de material: ";
+    cout << "1. Libro" << endl;
+    cout << "2. Revista" << endl;
+    cout << "3. Articulo" << endl;
+    cin >> opcion;
+    switch (opcion) {
+      case 1: {
+        string nom;
+        int idPrestamo;
 
+        cout << "Libros disponibles: " << endl;
+        mostrarDisponiblesPorTipo("Libro");
+        cout << endl;
+        cout << "Ingrese el titulo del libro que desea solicitar: ";
+        cin.ignore();
+        getline(cin, nom);
+        Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
 
-  time_t fecha_hoy = time(nullptr);
-  int diasPrestamos = 5 * 86400; // agregar get_prestamo_dias
-  fecha_hoy += diasPrestamos;
-  tm* fechalocal = localtime(&fecha_hoy);
-  cout << "Prestamo hecho exitosamente. Fecha de devolucion: " << put_time(fechalocal, "%d-%m-%Y") << endl;
-  return true;
+        cout << "Ingrese un id para el prestamo: ";
+        cin >> idPrestamo;
+
+        // obtener fecha del prestamo
+        time_t fecha_hoy = time(nullptr);
+        tm* fechaFormato = localtime(&fecha_hoy);
+        stringstream ssfechaPrestamo;
+        ssfechaPrestamo << put_time(fechaFormato, "%d/%m/%Y");
+        string fPrestamo = ssfechaPrestamo.str();
+
+        // obtener fecha de vencimiento
+        time_t fecha_hoy2 = time(nullptr);
+        int diasPrestamos = matSolicitado->diasPrestamo() * 86400;
+        fecha_hoy2 += diasPrestamos;
+        tm* fechaFormato2 = localtime(&fecha_hoy2);
+        stringstream ssfVencimiento;
+        ssfVencimiento << put_time(fechaFormato2, "%d/%m/%Y");
+        string fVencimiento = ssfVencimiento.str();
+
+        gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
+        cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+      }
+      case 2: {
+        string nom;
+        int idPrestamo;
+
+        cout << "Revistas disponibles: " << endl;
+        mostrarDisponiblesPorTipo("Revista");
+        cout << endl;
+        cout << "Ingrese el titulo de la revista que desea solicitar: ";
+        cin.ignore();
+        getline(cin, nom);
+        Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
+
+        cout << "Ingrese un id para el prestamo: ";
+        cin >> idPrestamo;
+
+        // obtener fecha del prestamo
+        time_t fecha_hoy = time(nullptr);
+        tm* fechaFormato = localtime(&fecha_hoy);
+        stringstream ssfechaPrestamo;
+        ssfechaPrestamo << put_time(fechaFormato, "%d/%m/%Y");
+        string fPrestamo = ssfechaPrestamo.str();
+
+        // obtener fecha de vencimiento
+        time_t fecha_hoy2 = time(nullptr);
+        int diasPrestamos = matSolicitado->diasPrestamo() * 86400;
+        fecha_hoy2 += diasPrestamos;
+        tm* fechaFormato2 = localtime(&fecha_hoy2);
+        stringstream ssfVencimiento;
+        ssfVencimiento << put_time(fechaFormato2, "%d/%m/%Y");
+        string fVencimiento = ssfVencimiento.str();
+
+        gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
+        cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+      }
+      case 3: {
+        string nom;
+        int idPrestamo;
+
+        cout << "Articulos disponibles: " << endl;
+        mostrarDisponiblesPorTipo("Articulo");
+        cout << endl;
+        cout << "Ingrese el titulo del articulo que desea solicitar: ";
+        cin.ignore();
+        getline(cin, nom);
+        Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
+
+        cout << "Ingrese un id para el prestamo: ";
+        cin >> idPrestamo;
+
+        // obtener fecha del prestamo
+        time_t fecha_hoy = time(nullptr);
+        tm* fechaFormato = localtime(&fecha_hoy);
+        stringstream ssfechaPrestamo;
+        ssfechaPrestamo << put_time(fechaFormato, "%d/%m/%Y");
+        string fPrestamo = ssfechaPrestamo.str();
+
+        // obtener fecha de vencimiento
+        time_t fecha_hoy2 = time(nullptr);
+        int diasPrestamos = matSolicitado->diasPrestamo() * 86400;
+        fecha_hoy2 += diasPrestamos;
+        tm* fechaFormato2 = localtime(&fecha_hoy2);
+        stringstream ssfVencimiento;
+        ssfVencimiento << put_time(fechaFormato2, "%d/%m/%Y");
+        string fVencimiento = ssfVencimiento.str();
+
+        gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
+        cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+      }
+    }
+  } else if (formatoMaterial == "digital") {
+    string nom;
+    int idPrestamo;
+
+    cout << "Libros disponibles: " << endl;
+    mostrarDisponiblesPorTipo("Video");
+    cout << endl;
+    cout << "Ingrese el titulo del video que desea solicitar: ";
+    cin.ignore();
+    getline(cin, nom);
+    Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
+
+    cout << "Ingrese un id para el prestamo: ";
+    cin >> idPrestamo;
+
+    // obtener fecha del prestamo
+    time_t fecha_hoy = time(nullptr);
+    tm* fechaFormato = localtime(&fecha_hoy);
+    stringstream ssfechaPrestamo;
+    ssfechaPrestamo << put_time(fechaFormato, "%d/%m/%Y");
+    string fPrestamo = ssfechaPrestamo.str();
+
+    // obtener fecha de vencimiento
+    time_t fecha_hoy2 = time(nullptr);
+    int diasPrestamos = matSolicitado->diasPrestamo() * 86400;
+    fecha_hoy2 += diasPrestamos;
+    tm* fechaFormato2 = localtime(&fecha_hoy2);
+    stringstream ssfVencimiento;
+    ssfVencimiento << put_time(fechaFormato2, "%d/%m/%Y");
+    string fVencimiento = ssfVencimiento.str();
+
+    gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
+    cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+
+  } else {
+    cout << "Tipo de material incorrecto" << endl; // exception
+  }
 }
-//bool Coleccion::registrarDevolucion() {}
+void Coleccion::registrarDevolucion() {
+  int id;
+  gestorPrestamos->mostrarPrestamosGeneral();
+  cout << endl;
+  cout << "Ingrese el ID del prestamo que desea regresar: ";
+  cin >> id;
+  gestorPrestamos->eliminarPrestamo(id);
+}
 
 void Coleccion::reporteInventario() { inventario->mostrarMateriales(); }
 void Coleccion::reporteUsuarios() { usuarios->mostrarUsuarios(); }

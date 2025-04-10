@@ -3,3 +3,12 @@
 //
 
 #include "Menu.h"
+
+Menu();
+~Menu();
+
+void menuPrincipal();
+
+void subMenuInventario();
+void subMenuUsuarios();
+void subMenuPrestamos();

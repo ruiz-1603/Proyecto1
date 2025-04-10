@@ -22,6 +22,7 @@ public:
   void mostrarPrestamosPorUsuario(Usuario*);
   void mostrarPrestamosVencidos();
   bool eliminarPrestamo(int);
+  Lista<Prestamo>* getPrestamos();
 };
 
 #endif //GESTORPRESTAMOS_H
