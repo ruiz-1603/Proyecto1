@@ -30,6 +30,8 @@ add_executable(Proyecto1 main.cpp
         Prestamo.h
         Coleccion.cpp
         Coleccion.h
-        GestorPrestamos.cpp
         GestorPrestamos.h
-        Lista.h)
+        GestorPrestamos.cpp
+        Lista.h
+        GestorArchivos.cpp
+        GestorArchivos.h)

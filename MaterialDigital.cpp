@@ -41,10 +41,10 @@ int MaterialDigital::get_dia_prestamo() const {
 string MaterialDigital::toString() {
     stringstream ss;
     ss << Materiales::toString();
-       ss << "Tipo de Material: " << get_tipo_material() << "\n"
-       << "Formato: " << get_formato_material() << "\n"
-      // << "Dias de Prestamo: " << get_dia_prestamo() << "\n"
-       << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << "\n";
+       ss << "Tipo de Material: " << get_tipo_material() << ","
+       << "Formato: " << get_formato_material() << ","
+      // << "Dias de Prestamo: " << get_dia_prestamo() << ","
+       << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << ",";
     return ss.str();
 }
 
