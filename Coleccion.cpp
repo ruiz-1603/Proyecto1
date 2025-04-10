@@ -6,8 +6,8 @@
 
 Coleccion::Coleccion() {
   this->inventario = new Biblioteca();
-  this->usuarios = new Lista<ListaUsuarios>();
-  this->gestorPrestamos = new Lista<GestorPrestamos>();
+  this->usuarios = new ListaUsuarios();
+  this->gestorPrestamos = new GestorPrestamos();
 }
 Coleccion::~Coleccion() {
   delete this->inventario;
@@ -209,31 +209,470 @@ void Coleccion::agregarInventario() {
     cout << "Tipo de material desconocido" << endl; // exception?
   }
 }
+void Coleccion::modificarMaterial() {
+  int tipo;
+  cout << "Ingrese el tipo de material que desea modificar: ";
+  cout << "1. Fisico" << endl;
+  cout << "2. Digital" << endl;
+  cin >> tipo;
+  switch (tipo) {
+    case 1:
+      int material;
+      cout << "Ingrese el tipo de material que desea modificar: ";
+      cout << "1. Libro" << endl;
+      cout << "2. Revista" << endl;
+      cout << "3. Articulo" << endl;
+      cin >> material;
+      switch (material) {
+        case 1: {
+          string tituloLib;
+          cout << "Ingrese el titulo del libro que desea modificar: ";
+          cin.ignore();
+          getline(cin, tituloLib);
+          Materiales* material = inventario->buscarMaterialPorTitulo(tituloLib);
+          Libro* libro = dynamic_cast<Libro*>(material);
+
+          if (libro != nullptr) {
+            int opcion;
+            libro->toString();
+            cout << "Que desea modificar del libro: " << endl;
+            cout << "1. Numero de calificacion" << endl;
+            cout << "2. Numero de catalogo" << endl;
+            cout << "3. Titulo" << endl;
+            cout << "4. Autor" << endl;
+            cout << "5. Palabras clave" << endl;
+            cout << "6. Estado" << endl;
+            cout << "7. Direccion" << endl;
+            cin >> opcion;
+
+            switch (opcion) {
+              case 1: {
+                int numCalLib;
+                cout << "Ingrese el nuevo numero de calificacion del libro: ";
+                cin >> numCalLib;
+                libro->set_num_calificacion(numCalLib);
+                break;
+              }
+              case 2: {
+                int numCatalogLib;
+                cout << "Ingrese el nuevo numero de catalogo del libro: ";
+                cin >> numCatalogLib;
+                libro->set_num_catalogo(numCatalogLib);
+                break;
+              }
+              case 3: {
+                string tituloLib;
+                cout << "Ingrese el nuevo titulo del libro: ";
+                cin.ignore();
+                getline(cin, tituloLib);
+                libro->set_titulo(tituloLib);
+                break;
+              }
+              case 4: {
+                string autorLib;
+                cout << "Ingrese el nuevo autor: ";
+                cin.ignore();
+                getline(cin, autorLib);
+                libro->set_autor(autorLib);
+                break;
+              }
+              case 5: {
+                string palabrasLib;
+                cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
+                cin.ignore();
+                getline(cin, palabrasLib);
+                libro->set_palabras_claves(palabrasLib);
+                break;
+              }
+              case 6: {
+                string estadoLib;
+                cout << "Ingrese el estado del libro (buen estado, regular, mal estado): ";
+                cin.ignore();
+                getline(cin, estadoLib);
+                libro->set_estado(estadoLib);
+                break;
+              }
+              case 7: {
+                string direccionLib;
+                cout << "Ingrese la nueva direccion del libro: ";
+                cin.ignore();
+                getline(cin, direccionLib);
+                libro->set_direccion(direccionLib);
+                break;
+              }
+            }
+          } else {
+            cout << "No se encontro el libro buscado" << endl;
+          } break;
+        }
+        case 2: {
+            string tituloRev;
+            cout << "Ingrese el titulo del libro que desea modificar: ";
+            cin.ignore();
+            getline(cin, tituloRev);
+            Materiales* materialRev = inventario->buscarMaterialPorTitulo(tituloRev);
+            Revista* revista = dynamic_cast<Revista*>(materialRev);
+
+            if (revista != nullptr) {
+              int opcion;
+              revista->toString();
+              cout << "Que desea modificar de la revista: " << endl;
+              cout << "1. Numero de calificacion" << endl;
+              cout << "2. Numero de catalogo" << endl;
+              cout << "3. Titulo" << endl;
+              cout << "4. Autor" << endl;
+              cout << "5. Palabras clave" << endl;
+              cout << "6. Estado" << endl;
+              cout << "7. Direccion" << endl;
+              cout << "8. Numero de revista" << endl;
+              cout << "9. Volumen de la revista" << endl;
+              cin >> opcion;
+
+              switch (opcion) {
+                case 1: {
+                  int numCal;
+                  cout << "Ingrese el nuevo numero de calificacion de la revista: ";
+                  cin >> numCal;
+                  revista->set_num_calificacion(numCal);
+                  break;
+                }
+                case 2: {
+                  int numCatalog;
+                  cout << "Ingrese el nuevo numero de catalogo de la revista: ";
+                  cin >> numCatalog;
+                  revista->set_num_catalogo(numCatalog);
+                  break;
+                }
+                case 3: {
+                  string titulo;
+                  cout << "Ingrese el nuevo titulo de la revista: ";
+                  cin.ignore();
+                  getline(cin, titulo);
+                  revista->set_titulo(titulo);
+                  break;
+                }
+                case 4: {
+                  string autorRev;
+                  cout << "Ingrese el nuevo autor: ";
+                  cin.ignore();
+                  getline(cin, autorRev);
+                  revista->set_autor(autorRev);
+                  break;
+                }
+                case 5: {
+                  string palabras;
+                  cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
+                  cin.ignore();
+                  getline(cin, palabras);
+                  revista->set_palabras_claves(palabras);
+                  break;
+                }
+                case 6: {
+                  string estado;
+                  cout << "Ingrese el estado de la revista (buen estado, regular, mal estado): ";
+                  cin.ignore();
+                  getline(cin, estado);
+                  revista->set_estado(estado);
+                  break;
+                }
+                case 7: {
+                  string direccion;
+                  cout << "Ingrese la nueva direccion de la revista: ";
+                  cin.ignore();
+                  getline(cin, direccion);
+                  revista->set_direccion(direccion);
+                  break;
+                }
+                case 8: {
+                  int numRevista;
+                  cout << "Ingrese el nuevo numero de revista: ";
+                  cin >> numRevista;
+                  revista->set_num_revista(numRevista);
+                  break;
+                }
+                case 9: {
+                  int volRev;
+                  cout << "Ingrese el nuevo volumen de revista: ";
+                  cin >> volRev;
+                  revista->set_volumen_revista(volRev);
+                  break;
+                }
+              }
+            } else {
+              cout << "No se encontro la revista buscada" << endl;
+            } break;
+          }
+        case 3: {
+          string tituloArt;
+          cout << "Ingrese el titulo del articulo que desea modificar: ";
+          cin.ignore();
+          getline(cin, tituloArt);
+          Materiales* materialArt = inventario->buscarMaterialPorTitulo(tituloArt);
+          Articulo* articulo = dynamic_cast<Articulo*>(materialArt);
+
+          if (articulo != nullptr) {
+            int opcion;
+            articulo->toString();
+            cout << "Que desea modificar de la revista: " << endl;
+            cout << "1. Numero de calificacion" << endl;
+            cout << "2. Numero de catalogo" << endl;
+            cout << "3. Titulo" << endl;
+            cout << "4. Autor" << endl;
+            cout << "5. Palabras clave" << endl;
+            cout << "6. Estado" << endl;
+            cout << "7. Direccion" << endl;
+            cin >> opcion;
+
+            switch (opcion) {
+              case 1: {
+                int numCal;
+                cout << "Ingrese el nuevo numero de calificacion del articulo: ";
+                cin >> numCal;
+                articulo->set_num_calificacion(numCal);
+                break;
+              }
+              case 2: {
+                int numCatalog;
+                cout << "Ingrese el nuevo numero de catalogo del articulo: ";
+                cin >> numCatalog;
+                articulo->set_num_catalogo(numCatalog);
+                break;
+              }
+              case 3: {
+                string titulo;
+                cout << "Ingrese el nuevo titulo del articulo: ";
+                cin.ignore();
+                getline(cin, titulo);
+                articulo->set_titulo(titulo);
+                break;
+              }
+              case 4: {
+                string autor;
+                cout << "Ingrese el nuevo autor: ";
+                cin.ignore();
+                getline(cin, autor);
+                articulo->set_autor(autor);
+                break;
+              }
+              case 5: {
+                string palabras;
+                cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
+                cin.ignore();
+                getline(cin, palabras);
+                articulo->set_palabras_claves(palabras);
+                break;
+              }
+              case 6: {
+                string estado;
+                cout << "Ingrese el estado del articulo (buen estado, regular, mal estado): ";
+                cin.ignore();
+                getline(cin, estado);
+                articulo->set_estado(estado);
+                break;
+              }
+              case 7: {
+                string direccion;
+                cout << "Ingrese la nueva direccion del articulo: ";
+                cin.ignore();
+                getline(cin, direccion);
+                articulo->set_direccion(direccion);
+                break;
+              }
+            }
+          } else {
+            cout << "No se encontro el articulo buscado" << endl;
+          } break;
+        }
+      }
+    case 2:
+      string tituloVid;
+      cout << "Ingrese el titulo del video que desea modificar: ";
+      cin.ignore();
+      getline(cin, tituloVid);
+      Materiales* materialVid = inventario->buscarMaterialPorTitulo(tituloVid);
+      Video* video = dynamic_cast<Video*>(materialVid);
+
+      if (video != nullptr) {
+        int opcion;
+        video->toString();
+        cout << "Que desea modificar del video: " << endl;
+        cout << "1. Numero de calificacion" << endl;
+        cout << "2. Numero de catalogo" << endl;
+        cout << "3. Titulo" << endl;
+        cout << "4. Autor" << endl;
+        cout << "5. Palabras clave" << endl;
+        cout << "6. Estado (buen estado, regular, mal estado)" << endl;
+        cout << "7. Tipo de material" << endl;
+        cout << "8. Formato" << endl;
+        cout << "9. Estado (Activo, Inactivo)" << endl;
+        cin >> opcion;
+
+        switch (opcion) {
+          case 1: {
+            int numCal;
+            cout << "Ingrese el nuevo numero de calificacion del video: ";
+            cin >> numCal;
+            video->set_num_calificacion(numCal);
+            break;
+          }
+          case 2: {
+            int numCatalog;
+            cout << "Ingrese el nuevo numero de catalogo del video: ";
+            cin >> numCatalog;
+            video->set_num_catalogo(numCatalog);
+            break;
+          }
+          case 3: {
+            string titulo;
+            cout << "Ingrese el nuevo titulo del video: ";
+            cin.ignore();
+            getline(cin, titulo);
+            video->set_titulo(titulo);
+            break;
+          }
+          case 4: {
+            string autor;
+            cout << "Ingrese el nuevo autor: ";
+            cin.ignore();
+            getline(cin, autor);
+            video->set_autor(autor);
+            break;
+          }
+          case 5: {
+            string palabras;
+            cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
+            cin.ignore();
+            getline(cin, palabras);
+            video->set_palabras_claves(palabras);
+            break;
+          }
+          case 6: {
+            string estado;
+            cout << "Ingrese el estado del video (buen estado, regular, mal estado): ";
+            cin.ignore();
+            getline(cin, estado);
+            video->set_estado(estado);
+            break;
+          }
+          case 7: {
+            string tipoMaterial;
+            cout << "Ingrese el tipo de material del video: ";
+            cin.ignore();
+            getline(cin, tipoMaterial);
+            video->set_tipo_material(tipoMaterial);
+            break;
+          }
+          case 8: {
+            string formato;
+            cout << "Ingrese el formato del video (CD, DVD, BluRay): ";
+            cin.ignore();
+            getline(cin, formato);
+            video->set_formato_material(formato);
+            break;
+          }
+        }
+      } else {
+        cout << "No se encontro el video buscado" << endl;
+      }
+  }
+}
+
+void Coleccion::agregarUsuario() {
+  int id;
+  string nom;
+  cout << "Ingrese el id del usuario: ";
+  cin >> id;
+  cin.ignore();
+
+  cout << "Ingrese el nombre completo del usuario: ";
+  getline(cin, nom);
+  usuarios->agregarUsuario(new Usuario(id, nom, true));
+}
+void Coleccion::modificarUsuario() {
+  int id;
+  cout << "Ingrese el id del usuario que desea modificar: ";
+  cin >> id;
+  Usuario* usuario = usuarios->buscarUsuarioPorId(id);
+
+  if (usuario != nullptr) {
+    int opcion;
+    cout << "Usuario encontrado: " << endl;
+    cout << usuario->toString() << endl;
+    cout << "Que desea modificar del usuario?" << endl;
+    cout << "\t1. ID\n" << endl;
+    cout << "\t2. Nombre\n" << endl;
+    cout << "\t3. Estado\n" << endl;
+    cin >> opcion;
+    switch (opcion) {
+      case 1: {
+        int id;
+        cout << "Ingrese el nuevo ID del usuario: ";
+        cin >> id;
+        usuario->set_id(id);
+        break;
+      }
+      case 2: {
+        string nom;
+        cout << "Ingrese el nuevo nombre del usuario: ";
+        cin.ignore();
+        getline(cin, nom);
+        usuario->set_nombre_completo(nom);
+        break;
+      }
+      case 3: {
+        int eleccion;
+        bool estado;
+        cout << "Ingrese el estado del usuario (1. Activo 2. Inactivo): ";
+        cin >> eleccion;
+        if (eleccion == 1) {
+          estado = true;
+        } else if (eleccion == 2) {
+          estado = false;
+        } else {
+          cout << "Estado incorrecto" << endl;
+        }
+        usuario->set_estado(estado);
+        break;
+      }
+    }
+  } else {
+    cout << "Usuario no encontrado" << endl;
+  }
+
+}
+
+bool Coleccion::registrarPrestamo() {
+  int idUsuario;
+  cout << "Ingrese el id del usuario que solicita el prestamo: ";
+  cin >> idUsuario;
+  Usuario* usuario = usuarios->buscarUsuarioPorId(idUsuario);
+
+  cout << "Ingrese el material que desea: ";
 
 
-
-
-
-
-
-
-//void Coleccion::modificarMaterial() {
-//  // buscar logica
-//}
-//
-//void Coleccion::agregarUsuario() {
-//
-//}
-//void Coleccion::modificarUsuario(Usuario*) {
-//  // buscar por id? y preguntar que modificar o que
-//}
-//
-//bool Coleccion::registrarPrestamo() {
-//
-//}
+  time_t fecha_hoy = time(nullptr);
+  int diasPrestamos = 5 * 86400; // agregar get_prestamo_dias
+  fecha_hoy += diasPrestamos;
+  tm* fechalocal = localtime(&fecha_hoy);
+  cout << "Prestamo hecho exitosamente. Fecha de devolucion: " << put_time(fechalocal, "%d-%m-%Y") << endl;
+  return true;
+}
 //bool Coleccion::registrarDevolucion() {}
-//
-//string Coleccion::reporteInventario() {}
-//string Coleccion::reporteUsuarios() {}
-//string Coleccion::reporteMaterialesPrestados() {}
-//string Coleccion::reportePrestamoPorUsuario() {}
+
+void Coleccion::reporteInventario() { inventario->mostrarMateriales(); }
+void Coleccion::reporteUsuarios() { usuarios->mostrarUsuarios(); }
+
+void Coleccion::reporteMaterialesPrestados() {
+  cout << "Materiales prestados: " << endl;
+  gestorPrestamos->mostrarPrestamosGeneral();
+  cout << endl;
+}
+
+void Coleccion::reportePrestamoPorUsuario() {
+  int id;
+  cout << "Ingrese el ID del usuario: ";
+  cin >> id;
+  Usuario* usuario = usuarios->buscarUsuarioPorId(id);
+  cout << endl;
+  gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
+}

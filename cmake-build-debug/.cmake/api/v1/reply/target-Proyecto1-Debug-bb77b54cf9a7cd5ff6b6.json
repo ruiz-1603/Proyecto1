@@ -137,7 +137,8 @@
 				22,
 				24,
 				26,
-				28
+				28,
+				29
 			]
 		}
 	],
@@ -301,6 +302,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "GestorPrestamos.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Lista.h",
 			"sourceGroupIndex" : 1
 		}
 	],

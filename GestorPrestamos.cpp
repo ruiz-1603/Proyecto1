@@ -12,7 +12,7 @@ void GestorPrestamos::agregarPrestamo(Prestamo* prestamo) {
 }
 
 void GestorPrestamos::mostrarPrestamosGeneral() {
-  prestamos->mostrar();
+  cout << prestamos->mostrar();
 }
 
 void GestorPrestamos::mostrarPrestamosPorMaterial(string& material) {

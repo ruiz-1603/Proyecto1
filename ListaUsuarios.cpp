@@ -12,7 +12,7 @@ void ListaUsuarios::agregarUsuario(Usuario* usuario) {
 }
 
 void ListaUsuarios::mostrarUsuarios() {
-    usuarios->mostrar();
+    cout << usuarios->mostrar() << endl;
 }
 Usuario* ListaUsuarios::buscarUsuarioPorId(int id) {
     return usuarios->buscarEnListaUsua(id);

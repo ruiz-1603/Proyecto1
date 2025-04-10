@@ -16,26 +16,26 @@
 class Coleccion {
 private:
   Biblioteca* inventario;
-  Lista<ListaUsuarios>* usuarios;
-  Lista<GestorPrestamos>* gestorPrestamos;
+  ListaUsuarios* usuarios;
+  GestorPrestamos* gestorPrestamos;
 
 public:
   Coleccion();
   ~Coleccion();
 
   void agregarInventario();
-//  void modificarMaterial(); // buscar logica
-//
-//  void agregarUsuario();
-//  void modificarUsuario(); // buscar por id? y preguntar que modificar o que
-//
-//  bool registrarPrestamo();
+  void modificarMaterial();
+
+  void agregarUsuario();
+  void modificarUsuario();
+
+  bool registrarPrestamo();
 //  bool registrarDevolucion();
-//
-//  string reporteInventario();
-//  string reporteUsuarios();
-//  string reporteMaterialesPrestados();
-//  string reportePrestamoPorUsuario();
+
+  void reporteInventario();
+  void reporteUsuarios();
+  void reporteMaterialesPrestados();
+  void reportePrestamoPorUsuario();
 };
 
 #endif //COLECCION_H

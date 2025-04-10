@@ -4,6 +4,18 @@
 
 #include "Usuario.h"
 
+Usuario::Usuario() {
+    this->nombreCompleto = "Sin definir";
+    this->id = -1;
+    this->estado = false;
+}
+
+Usuario::Usuario(int id, string nom, bool est) {
+    this->nombreCompleto = nom;
+    this->id = id;
+    this->estado = est;
+}
+
 int Usuario::get_id() const {
     return id;
 }

@@ -12,7 +12,7 @@ void Biblioteca::agregarMaterial(Materiales* material) {
 }
 
 void Biblioteca::mostrarMateriales() {
-     lista->mostrar();
+     cout << lista->mostrar() << endl;
 }
 void Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
     lista->eliminarEnLista(titulo);
