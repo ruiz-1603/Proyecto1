@@ -20,6 +20,8 @@ private:
 
     string toString() override;
 
+    string toCSV() override;
+
     int get_dia_prestamo();
 
     string getTipo() override = 0;

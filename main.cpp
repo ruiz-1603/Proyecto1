@@ -2,11 +2,11 @@
 #include "Menu.h"
 
 int main() {
-    /*
+    
     Menu* menu = new Menu();
     menu->menuPrincipal();
     delete menu;
-    */
+    
    /* Lista<Materiales>* listaPrestamos = new Lista<Materiales>();
 
 
@@ -26,5 +26,7 @@ int main() {
 
     cout << "Archivo 'prestamos.csv' creado correctamente con los datos de los préstamos." << endl;
 */
+
+    
     return 0;
 }

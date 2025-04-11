@@ -1,0 +1,66 @@
+# Compilación y carpetas generadas por CLion/CMake
+cmake-build-*/
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Archivos temporales de testing de CMake
+Testing/
+CTestTestfile.cmake
+LastTest.log
+
+# Archivos de VSCode
+.vscode/
+
+# Archivos de Visual Studio
+*.sdf
+*.suo
+*.user
+*.vcxproj.*
+*.VC.db
+*.opensdf
+*.ipch
+.vs/
+
+# Archivos generados por el sistema
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archivos binarios
+*.exe
+*.dll
+*.out
+*.obj
+*.o
+*.a
+*.lib
+*.so
+
+# Archivos de depuración
+*.dSYM/
+*.stackdump
+
+# Archivos de configuración de CLion
+.idea/
+*.iml
+
+# Archivos de CTest
+CTestCostData.txt
+
+# Cache de JetBrains
+__pycache__/
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# Otros
+*.~*

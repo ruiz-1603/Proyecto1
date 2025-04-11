@@ -32,7 +32,8 @@ public:
 
     int dia_prestamo() const;
 
-    string toString();
+    string toString() override;
+    string toCSV() override;
 };
 
 

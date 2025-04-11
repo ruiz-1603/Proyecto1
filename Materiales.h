@@ -47,6 +47,8 @@ public:
 
     virtual string toString();
 
+    virtual string toCSV();
+
     virtual int diasPrestamo() = 0;
 };
 

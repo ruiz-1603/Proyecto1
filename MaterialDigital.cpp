@@ -41,10 +41,18 @@ int MaterialDigital::get_dia_prestamo() const {
 string MaterialDigital::toString() {
     stringstream ss;
     ss << Materiales::toString();
-       ss << "Tipo de Material: " << get_tipo_material() << ","
-       << "Formato: " << get_formato_material() << ","
-      // << "Dias de Prestamo: " << get_dia_prestamo() << ","
-       << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << ",";
+    ss << "Tipo de Material: " << get_tipo_material() << endl;
+    ss << "Formato: " << get_formato_material() << endl;
+    ss << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << endl;
+    return ss.str();
+}
+string MaterialDigital::toCSV() {
+    stringstream ss;
+    ss << Materiales::toString();
+    ss << "Tipo de Material: " << get_tipo_material() << ","
+    << "Formato: " << get_formato_material() << ","
+   // << "Dias de Prestamo: " << get_dia_prestamo() << ","
+    << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << ",";
     return ss.str();
 }
 

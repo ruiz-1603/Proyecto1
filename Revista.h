@@ -26,6 +26,7 @@ public:
     string getTipo() override;
 
     string toString() override;
+    string toCSV() override;
 
     int diasPrestamo() override;
 };

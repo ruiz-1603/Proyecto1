@@ -1,3 +1,0 @@
-C:/Users/RuizM/Desktop/I Semestre 2025/Progra 2/Proyectos/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir
-C:/Users/RuizM/Desktop/I Semestre 2025/Progra 2/Proyectos/Proyecto1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/RuizM/Desktop/I Semestre 2025/Progra 2/Proyectos/Proyecto1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

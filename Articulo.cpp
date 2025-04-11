@@ -15,5 +15,10 @@ string Articulo::toString() {
     ss << MaterialFisico::toString();
     return ss.str();
 }
+string Articulo::toCSV() {
+    stringstream ss;
+    ss << MaterialFisico::toCSV();
+    return ss.str();
+}
 
 int Articulo::diasPrestamo() { return 7;}

@@ -17,6 +17,11 @@ string Libro::toString() {
     ss << MaterialFisico::toString();
     return ss.str();
 }
+string Libro::toCSV() {
+    stringstream ss;
+    ss << MaterialFisico::toCSV();
+    return ss.str();
+}
 
 int Libro::diasPrestamo() { return 7;}
 

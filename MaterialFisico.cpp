@@ -22,6 +22,11 @@ string MaterialFisico::toString() {
     ss << "Ubicacion" << get_direccion() << "\n";
     return ss.str();
 }
+string MaterialFisico::toCSV() {
+    stringstream ss;
+    ss << Materiales::toCSV() << "Direccion: " << get_direccion() << ",";
+    return ss.str();
+}
 int MaterialFisico::get_dia_prestamo() {
     int dia = 0;
     if (getTipo()=="Libro") {

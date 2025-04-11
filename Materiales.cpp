@@ -60,6 +60,18 @@ void Materiales::set_estado(string estado) {
 }
 string Materiales::toString() {
     stringstream ss;
+    ss << "Tipo: " << getTipo() << endl;
+    ss << "Titulo: " << get_titulo() << endl;
+    ss << "Autor: " << get_autor() << endl;
+    ss << "Estado: " << get_estado() << endl;
+    ss << "Numero de Calificacion: " << get_num_calificacion() << endl;
+    ss << "Numero de Catalogo: " << get_num_catalogo() << endl;
+    ss << "Palabras Claves: " << get_palabras_claves() << endl;
+
+    return ss.str();
+}
+string Materiales::toCSV() {
+    stringstream ss;
     ss << "Tipo: " << getTipo() << ","
        << "Titulo: " << get_titulo() << ","
        << "Autor: " << get_autor() << ","

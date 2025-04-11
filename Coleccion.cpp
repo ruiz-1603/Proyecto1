@@ -880,7 +880,10 @@ void Coleccion::registrarDevolucion() {
   gestorPrestamos->eliminarPrestamo(id);
 }
 
-void Coleccion::reporteInventario() { inventario->mostrarMateriales(); }
+void Coleccion::reporteInventario() {
+  cout << "Inventario: " << endl << endl;
+  inventario->mostrarMateriales();
+}
 void Coleccion::reporteUsuarios() { usuarios->mostrarUsuarios(); }
 
 void Coleccion::reporteMaterialesPrestados() {
