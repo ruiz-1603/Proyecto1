@@ -4,7 +4,7 @@
 
 #include "Menu.h"
 
-Menu::Menu() {}
+Menu::Menu() { this->interfaz = new Coleccion();}
 Menu::~Menu() { delete interfaz; }
 
 void Menu::menuPrincipal() {
@@ -64,6 +64,8 @@ void Menu::subMenuInventario() {
       case 4:
         system("cls");
         interfaz->reporteInventario();
+        cin.ignore();
+        cin.get();
         break;
     }
     system("cls");
