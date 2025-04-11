@@ -211,7 +211,7 @@ void Coleccion::agregarInventario() {
 }
 void Coleccion::modificarMaterial() {
   int tipo;
-  cout << "Ingrese el tipo de material que desea modificar: ";
+  cout << "Ingrese el tipo de material que desea modificar: " << endl;
   cout << "1. Fisico" << endl;
   cout << "2. Digital" << endl;
   cin >> tipo;
@@ -226,6 +226,8 @@ void Coleccion::modificarMaterial() {
       switch (material) {
         case 1: {
           string tituloLib;
+          inventario->mostrarMaterialesPorTipo("Libro");
+          cout << endl;
           cout << "Ingrese el titulo del libro que desea modificar: ";
           cin.ignore();
           getline(cin, tituloLib);
@@ -307,6 +309,8 @@ void Coleccion::modificarMaterial() {
         }
         case 2: {
             string tituloRev;
+            inventario->mostrarMaterialesPorTipo("Revista");
+            cout << endl;
             cout << "Ingrese el titulo del libro que desea modificar: ";
             cin.ignore();
             getline(cin, tituloRev);
@@ -404,6 +408,8 @@ void Coleccion::modificarMaterial() {
           }
         case 3: {
           string tituloArt;
+          inventario->mostrarMaterialesPorTipo("Articulo");
+          cout << endl;
           cout << "Ingrese el titulo del articulo que desea modificar: ";
           cin.ignore();
           getline(cin, tituloArt);
@@ -482,10 +488,12 @@ void Coleccion::modificarMaterial() {
           } else {
             cout << "No se encontro el articulo buscado" << endl;
           } break;
-        }
+        } break;
       }
     case 2:
       string tituloVid;
+      inventario->mostrarMaterialesPorTipo("Video");
+      cout << endl;
       cout << "Ingrese el titulo del video que desea modificar: ";
       cin.ignore();
       getline(cin, tituloVid);
