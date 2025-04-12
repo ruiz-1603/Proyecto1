@@ -18,11 +18,11 @@ public:
     // Formato de cada línea:
     // idPrestamo,idUsuario,tituloMaterial,fechaPrestamo,fechaVencimiento
     static void guardarPrestamos(Lista<Prestamo>* , const string& );
-    static void cargarPrestamos(Lista<Prestamo>* , const string& );
+    static Lista<Prestamo>* cargarPrestamos( const string& );
 
     // idUsuario,nombreCompleto,estado
-    static void guardarUsuarios(Lista<Usuario>* usuarios, const string& );
-    static void cargarUsuarios(Lista<Usuario>* usuarios, const string& );
+    static void guardarUsuarios(Lista<Usuario>*, const string& );
+    static Lista<Usuario>* cargarUsuarios(const string& );
 
     // Video,numCalificacion,numCatalogo,titulo,autor,palabrasClaves,estado,tipoMaterial,formatoMaterial,estadoAcceso
     // Revista,numCalificacion,numCatalogo,titulo,autor,palabrasClaves,estado,direccion

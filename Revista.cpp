@@ -31,14 +31,14 @@ string Revista::toString() {
     stringstream ss;
     ss << MaterialFisico::toString();
     ss << "Numero de Revista: " << get_num_revista() << endl;
-    ss << "Numero de Volumen" << get_volumen_revista() << endl;
+    ss << "Numero de Volumen: " << get_volumen_revista() << endl;
     return ss.str();
 }
 string Revista::toCSV() {
     stringstream ss;
     ss << MaterialFisico::toCSV();
     ss << "Numero de Revista: " << get_num_revista() << ",";
-    ss << "Numero de Volumen" << get_volumen_revista() << ",";
+    ss << "Numero de Volumen: " << get_volumen_revista() << ",";
     return ss.str();
 }
 

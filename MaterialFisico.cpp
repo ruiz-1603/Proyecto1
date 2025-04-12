@@ -19,7 +19,7 @@ void MaterialFisico::set_direccion(const string &direccion) {
 string MaterialFisico::toString() {
     stringstream ss;
     ss << Materiales::toString();
-    ss << "Ubicacion" << get_direccion() << "\n";
+    ss << "Ubicacion: " << get_direccion() << "\n";
     return ss.str();
 }
 string MaterialFisico::toCSV() {
