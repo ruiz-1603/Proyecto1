@@ -23,16 +23,16 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
         Prestamo* p = actual->getDato();
         Materiales* material = p->getMaterial();
 
-        string tipoMaterial = material->getTipo(); // asumimos que retorna "Libro", "Revista" o "Video"
-        string autor = "", estadoMat = "", palabrasClave = "", direccion = "";
-        int numCal = 0, numCat = 0;
-        int numRevista = -1, volumenRevista = -1;
-        string tipoDigital = "", formato = "";
-        string estadoDigital = "";
+        string tipoMaterial = material->getTipo(); // retorna "Libro", "Revista" o "Video"
+        string autor, estadoMat, palabrasClave, direccion;
+        int numCal, numCat;
+        int numRevista, volumenRevista;
+        string tipoDigital, formato;
+        string estadoDigital;
 
         // Casteo según el tipo de material
         if (tipoMaterial == "Libro") {
-            Libro* libro = dynamic_cast<Libro*>(material);
+             Libro* libro = dynamic_cast<Libro*>(material);
             if (libro) {
                 autor = libro->get_autor();
                 estadoMat = libro->get_estado();
@@ -42,7 +42,7 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
                 numCat = libro->get_num_catalogo();
             }
         } else if (tipoMaterial == "Revista") {
-            Revista* revista = dynamic_cast<Revista*>(material);
+             Revista* revista = dynamic_cast<Revista*>(material);
             if (revista) {
                 autor = revista->get_autor();
                 estadoMat = revista->get_estado();
@@ -54,7 +54,7 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
                 volumenRevista = revista->get_volumen_revista();
             }
         } else if (tipoMaterial == "Video") {
-            Video* video = dynamic_cast<Video*>(material);
+             Video* video = dynamic_cast<Video*>(material);
             if (video) {
                 autor = video->get_autor();
                 estadoMat = video->get_estado();
@@ -92,7 +92,6 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
     archivo.close();
     cout << "Archivo CSV generado correctamente como " << nombreArchivo << endl;
 }
-
 
 template<class Tipo>
 Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(const string &nombreArchivo) {
@@ -172,20 +171,18 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(const string &nombreArchi
     return lista;
 }
 
-
-
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarUsuarios(Lista<Usuario> *usuarios, const string &nombreArchivo) {
-    ofstream archivo(nombreArchivo, ios::out | ios::app);
+    ofstream archivo(nombreArchivo, ios::out);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo." << endl; //meter excepcion
         return;
     }
-
+    archivo<<"ID,Nombre,Estado\n";
     Nodo<Usuario>* actual = usuarios->obtenerPrimero();
     while (actual != nullptr) {
-        archivo << actual->getDato()->getId() << ";"           // ID del usuario
-                << actual->getDato()->get_nombre_completo() << ";" // Nombre completo del usuario
+        archivo << actual->getDato()->getId() << ","           // ID del usuario
+                << actual->getDato()->get_nombre_completo() << "," // Nombre completo del usuario
                 << (actual->getDato()->is_estado() ? "Activo" : "Inactivo") << endl; // Estado del usuario
         actual = actual->getSiguiente();
     }
@@ -224,13 +221,15 @@ Lista<Usuario>*  GestorArchivos<Tipo>::cargarUsuarios(const string &nombreArchiv
 
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, const string &nombreArchivo) {
- ofstream archivo(nombreArchivo, ios::out );
+    ofstream archivo(nombreArchivo, ios::out);
 
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para guardar materiales." << endl;
+        cout << "Error al abrir el archivo para guardar materiales." << endl;
         return;
     }
-    archivo<<"Material,NumClasif,NumCatalogo,Titulo,Autores,Estado,PalabrasClave,Direccion/Estado,NumRevista/DiasPrestamo,NumVolumen,DiasPrestamo\n";
+    // Encabezado completo
+    archivo << "Material,NumClasif,NumCatalogo,Titulo,Autor,Estado,PalabrasClave,Direccion,TipoMaterial,FormatoMaterial,Acceso,NumRevista,Volumen,DiasPrestamo\n";
+
     Nodo<Materiales>* actual = materiales->obtenerPrimero();
 
     while (actual != nullptr) {
@@ -247,7 +246,9 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
                         << libro->get_estado() << ","
                         << libro->get_palabras_claves() << ","
                         << libro->get_direccion() << ","
-                        << libro->diasPrestamo() << "\n";
+                        << "-,-,-,-,-,"
+                        << libro->diasPrestamo()
+                        << "\n";
             }
         } else if (material->getTipo() == "Revista") {
             Revista* revista = dynamic_cast<Revista*>(material);
@@ -260,9 +261,11 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
                         << revista->get_estado() << ","
                         << revista->get_palabras_claves() << ","
                         << revista->get_direccion() << ","
+                        << "-,-,-,"
                         << revista->get_num_revista() << ","
                         << revista->get_volumen_revista() << ","
-                        << revista->diasPrestamo() << "\n";
+                        << revista->diasPrestamo()
+                        << "\n";
             }
         } else if (material->getTipo() == "Video") {
             Video* video = dynamic_cast<Video*>(material);
@@ -274,14 +277,111 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
                         << video->get_autor() << ","
                         << video->get_estado() << ","
                         << video->get_palabras_claves() << ","
-                        << video->diasPrestamo() << "\n";
+                        << "-,"
+                        << video->get_tipo_material() << ","
+                        << video->get_formato_material() << ","
+                        << (video->get_estado_acceso() ? "Activo" : "Inactivo") << ","
+                        << "-,-,"
+                        << video->diasPrestamo()
+                        << "\n";
             }
         }
         actual = actual->getSiguiente();
     }
     archivo.close();
+    cout<<"Datos guardados correctamente :)"<<endl;
 }
 
+
 template<class Tipo>
-void GestorArchivos<Tipo>::cargarMateriales(Lista<Materiales> *catalogo, const string &nombreArchi) {
+Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreArchivo) {
+    Lista<Materiales>* lista = new Lista<Materiales>();
+
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cerr << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        return lista;
+    }
+    string linea;
+    getline(archivo, linea); // Saltar encabezado
+
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string tipo;
+        getline(ss, tipo, ',');
+
+        if (tipo == "Libro") {
+            int numCal, numCat;
+            string titulo, autor, estado, palClave, direccion;
+            string skip;
+            int dias;
+
+            ss >> numCal; ss.ignore();
+            ss >> numCat; ss.ignore();
+            getline(ss, titulo, ',');
+            getline(ss, autor, ',');
+            getline(ss, estado, ',');
+            getline(ss, palClave, ',');
+            getline(ss, direccion, ',');
+            getline(ss, skip, ','); // TipoMaterial (NA)
+            getline(ss, skip, ','); // FormatoMaterial (NA)
+            getline(ss, skip, ','); // Acceso (NA)
+            getline(ss, skip, ','); // NumRevista (NA)
+            getline(ss, skip, ','); // Volumen (NA)
+            ss >> dias;
+
+            Libro* libro = new Libro(numCal, numCat, titulo, autor, estado, palClave, direccion);
+            lista->agregarALista(libro);
+
+        } else if (tipo == "Revista") {
+            int numCal, numCat, numRev, volumen;
+            string titulo, autor, estado, palClave, direccion;
+            string skip;
+            int dias;
+
+            ss >> numCal; ss.ignore();
+            ss >> numCat; ss.ignore();
+            getline(ss, titulo, ',');
+            getline(ss, autor, ',');
+            getline(ss, estado, ',');
+            getline(ss, palClave, ',');
+            getline(ss, direccion, ',');
+            getline(ss, skip, ','); // TipoMaterial (NA)
+            getline(ss, skip, ','); // FormatoMaterial (NA)
+            getline(ss, skip, ','); // Acceso (NA)
+            ss >> numRev; ss.ignore();
+            ss >> volumen; ss.ignore();
+            ss >> dias;
+            Revista* revista = new Revista(numCal, numCat, titulo, autor, estado, palClave, direccion, numRev, volumen);
+            lista->agregarALista(revista);
+
+        } else if (tipo == "Video") {
+            int numCal, numCat;
+            string titulo, autor, estado, palClave, tipoMaterial, formato, acceso;
+            string skip;
+            int dias;
+
+            ss >> numCal; ss.ignore();
+            ss >> numCat; ss.ignore();
+            getline(ss, titulo, ',');
+            getline(ss, autor, ',');
+            getline(ss, estado, ',');
+            getline(ss, palClave, ',');
+            getline(ss, skip, ',');
+            getline(ss, tipoMaterial, ',');
+            getline(ss, formato, ',');
+            getline(ss, acceso, ',');
+            getline(ss, skip, ',');
+            getline(ss, skip, ',');
+            ss >> dias;
+
+            bool estadoAcceso = (acceso == "Activo");
+            Video* video = new Video(numCal, numCat, titulo, autor, palClave, estado, tipoMaterial, formato, estadoAcceso);
+            lista->agregarALista(video);
+        }
+    }
+    archivo.close();
+    return lista;
 }
+
+

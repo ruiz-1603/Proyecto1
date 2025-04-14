@@ -7,7 +7,7 @@
 Video::Video() : MaterialDigital() {}
 // numCal, numCat, titulo, autor, PalabrasClave, estado, tipoMaterial, formatoMaterial, estado
 Video::Video(int numCal, int numCat, string titulo, string autor, string palClaves, string estado, string tipoMaterial, string formatoMaterial, bool _estado)
-: MaterialDigital(numCal, numCat, titulo, autor, palClaves, estado, tipoMaterial, formatoMaterial, _estado) {}
+: MaterialDigital(numCal, numCat, titulo, autor, estado, palClaves, tipoMaterial, formatoMaterial, _estado) {}
 Video::~Video() {}
 
 string Video::getTipo() {

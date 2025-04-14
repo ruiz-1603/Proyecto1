@@ -5,7 +5,7 @@
 #include "Materiales.h"
 Materiales::Materiales() : numCalificacion(0),numCatalogo(0),titulo(""),autor(""),estado(""), palabrasClaves(""){
 }
-Materiales::Materiales(int numCal, int numCa, string ti, string au, string estado,string pa): numCalificacion(numCal),numCatalogo(numCal),titulo(ti),autor(au),estado(estado),palabrasClaves(pa){
+Materiales::Materiales(int numCal, int numCa, string ti, string au, string estado,string pa): numCalificacion(numCal),numCatalogo(numCa),titulo(ti),autor(au),estado(estado),palabrasClaves(pa){
 }
 
 Materiales::~Materiales() {

@@ -17,17 +17,17 @@ class GestorArchivos {
 public:
     // Formato de cada línea:
     // idPrestamo,idUsuario,tituloMaterial,fechaPrestamo,fechaVencimiento
-    static void guardarPrestamos(Lista<Prestamo>* , const string& );
-    static Lista<Prestamo>* cargarPrestamos( const string& );
+    static void guardarPrestamos(Lista<Prestamo>*, const string&);
+    static Lista<Prestamo>* cargarPrestamos(const string& );
 
     // idUsuario,nombreCompleto,estado
-    static void guardarUsuarios(Lista<Usuario>*, const string& );
-    static Lista<Usuario>* cargarUsuarios(const string& );
+    static void guardarUsuarios(Lista<Usuario>*,const string&);
+    static Lista<Usuario>* cargarUsuarios(const string&);
 
     // Video,numCalificacion,numCatalogo,titulo,autor,palabrasClaves,estado,tipoMaterial,formatoMaterial,estadoAcceso
     // Revista,numCalificacion,numCatalogo,titulo,autor,palabrasClaves,estado,direccion
     static void guardarMateriales(Lista<Materiales>*, const string&);
-    static void cargarMateriales(Lista<Materiales>* , const string&);
+    static Lista<Materiales>* cargarMateriales(const string&);
 };
 
 
