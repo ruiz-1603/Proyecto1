@@ -24,7 +24,17 @@ public:
   ~Coleccion();
 
   void agregarInventario();
+  void agregarLibro();
+  void agregarRevista();
+  void agregarArticulo();
+  void agregarVideo();
+
   void modificarMaterial();
+  void modificarLibro();
+  void modificarRevista();
+  void modificarArticulo();
+  void modificarVideo();
+
   void eliminarMaterial();
 
   void agregarUsuario();
@@ -34,6 +44,11 @@ public:
   void mostrarDisponiblesPorTipo(string);
 
   void registrarPrestamo();
+  void registrarPrestamoLibro(Usuario*);
+  void registrarPrestamoRevista(Usuario*);
+  void registrarPrestamoArticulo(Usuario*);
+  void registrarPrestamoVideo(Usuario*);
+
   void registrarDevolucion();
 
   void reporteInventario();
