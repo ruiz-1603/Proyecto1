@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #include "GestorPrestamos.h"
 
 GestorPrestamos::GestorPrestamos() {
@@ -21,7 +17,7 @@ void GestorPrestamos::mostrarPrestamosGeneral() {
 void GestorPrestamos::mostrarPrestamosPorMaterial(string& material) {
   Nodo<Prestamo>* aux = prestamos->obtenerPrimero();
   int cont = 0;
-  cout << "Prestamos de " << material << ":" << endl; // revisar como queda en consola
+  cout << "Prestamos de " << material << ":" << endl;
 
   while (aux != nullptr) {
     Prestamo* prestamo = aux->getDato();

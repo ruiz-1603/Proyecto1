@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #include "Coleccion.h"
 
 #include "GestorArchivos.cpp"
@@ -19,7 +15,7 @@ Coleccion::~Coleccion() {
 
 void Coleccion::agregarInventario() {
   int tipo;
-  cout << "Ingrese el tipo de material a ingresar: ";
+  cout << "Ingrese el tipo de material a ingresar: " << endl;
   cout << "1. Libro" << endl;
   cout << "2. Revista" << endl;
   cout << "3. Articulo" << endl;

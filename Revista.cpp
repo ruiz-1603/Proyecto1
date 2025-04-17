@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #include "Revista.h"
 Revista::Revista(int numCal, int numCa, string ti, string au, string es, string pa,string dire,int numRevi, int numVolu): MaterialFisico(numCal,numCa,ti,au,es,pa,dire),numRevista(numRevi),volumenRevista(numVolu) {
 }

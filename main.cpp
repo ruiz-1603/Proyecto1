@@ -2,11 +2,14 @@
 #include "Menu.h"
 
 int main() {
-      Coleccion* coleccion = new Coleccion();
+      /*Coleccion* coleccion = new Coleccion();
       coleccion->cargarDatos();
-      coleccion->reporteMaterialesPrestados();
+      coleccion->reporteMaterialesPrestados();*/
 
-
-      delete coleccion;
+      //delete coleccion;
+        
+    Menu* interfaz = new Menu();
+    interfaz->menuPrincipal();
+    delete interfaz;
       return 0;
 }

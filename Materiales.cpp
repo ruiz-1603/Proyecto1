@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #include "Materiales.h"
 Materiales::Materiales() : numCalificacion(0),numCatalogo(0),titulo(""),autor(""),estado(""), palabrasClaves(""){
 }

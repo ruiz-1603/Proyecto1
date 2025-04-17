@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #include "MaterialDigital.h"
 MaterialDigital::MaterialDigital(string tipoMaterial, string formatoMaterial, bool ac)
     : Materiales(), tipoMaterial(tipoMaterial), formatoMaterial(formatoMaterial), estado(ac) {

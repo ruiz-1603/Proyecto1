@@ -1,7 +1,3 @@
-//
-// Created by bryan on 26/03/2025.
-//
-
 #ifndef MATERIALFISICO_H
 #define MATERIALFISICO_H
 

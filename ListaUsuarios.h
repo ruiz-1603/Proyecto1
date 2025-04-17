@@ -1,7 +1,3 @@
-//
-// Created by bryan on 05/04/2025.
-//
-
 #ifndef LISTAUSUARIOS_H
 #define LISTAUSUARIOS_H
 

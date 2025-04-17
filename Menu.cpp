@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #include "Menu.h"
 
 Menu::Menu() { this->interfaz = new Coleccion();}
@@ -14,6 +10,7 @@ void Menu::menuPrincipal() {
     cout << "1. Submenu Inventario" << endl;
     cout << "2. Submenu Usuarios" << endl;
     cout << "3. Submenu Prestamos" << endl;
+    cout << "4. Submenu Archivos" << endl;
     cout << "0. Salir" << endl << endl;
     cout << "Seleccione una opcion: ";
     cin >> opcion;
@@ -30,6 +27,10 @@ void Menu::menuPrincipal() {
       case 3:
         system("cls");
         subMenuPrestamos();
+        break;
+      case 4:
+        system("cls");
+        subMenuArchivos();
         break;
     }
     system("cls");
@@ -101,6 +102,8 @@ void Menu::subMenuUsuarios() {
       case 4:
         system("cls");
         interfaz->reporteUsuarios();
+        cin.ignore();
+        cin.get();
         break;
     }
     system("cls");
@@ -133,15 +136,51 @@ void Menu::subMenuPrestamos() {
       case 3:
         system("cls");
         interfaz->reporteMaterialesPrestados();
+        cin.ignore();
+        cin.get();
         break;
       case 4:
         system("cls");
         interfaz->reporteMaterialesPorTipo();
+        cin.ignore();
+        cin.get();
         break;
       case 5:
         system("cls");
         interfaz->reportePrestamosPorUsuario();
+        cin.ignore();
+        cin.get();
         break;
+    }
+    system("cls");
+  }
+  system("cls");
+}
+
+void Menu::subMenuArchivos() {
+  int opcion = -1;
+  while (opcion != 0) {
+    cout << "\tMenu Archivos" << endl;
+    cout << "1. Guardar datos" << endl;
+    cout << "2. Cargar datos" << endl;
+    cout << "0. Regresar" << endl << endl;
+    cout << "Seleccione una opcion: ";
+    cin >> opcion;
+
+    switch (opcion) {
+      case 1:
+        system("cls");
+        interfaz->guardarMateriales();
+        interfaz->guardarPrestamos();
+        interfaz->guardarUsuarios();
+        break;
+      case 2:
+        system("cls");
+        interfaz->cargarDatos();
+        break;
+      default:
+        system("cls");
+        cout << "Error en guardar o cargar archivos" << endl;
     }
     system("cls");
   }

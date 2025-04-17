@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #include "Prestamo.h"
 
 Prestamo::Prestamo(int id, Usuario* usuario, Materiales* material, string fPrestamo, string fVencimiento) {
@@ -48,7 +44,7 @@ void Prestamo::setFechaPrestamo(string fPrestamo) { this->fechaPrestamo = fPrest
 void Prestamo::setFechaVencimiento(string fVencimiento) { this->fechaVencimiento = fVencimiento; }
 
 string Prestamo::toString() {
-  stringstream ss; // revisar como se ve en consola
+  stringstream ss;
   ss << "Usuario" << endl;
   ss << getUsuario()->toString() << endl << endl;
   ss << "Material prestado" << endl;

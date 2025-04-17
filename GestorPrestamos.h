@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #ifndef GESTORPRESTAMOS_H
 #define GESTORPRESTAMOS_H
 
