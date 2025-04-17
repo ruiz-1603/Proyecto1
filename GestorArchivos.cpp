@@ -6,7 +6,7 @@
 
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const string &nombreArchivo) {
-    ofstream archivo(nombreArchivo, ios::out);
+    ofstream archivo(nombreArchivo, ios::out | ios::app);
 
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo." << endl;
@@ -227,7 +227,7 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
 
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarUsuarios(Lista<Usuario> *usuarios, const string &nombreArchivo) {
-    ofstream archivo(nombreArchivo, ios::out);
+    ofstream archivo(nombreArchivo, ios::out | ios::app);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo." << endl; //meter excepcion
         return;//poner excepcion de archivo
@@ -275,7 +275,7 @@ Lista<Usuario>*  GestorArchivos<Tipo>::cargarUsuarios(const string &nombreArchiv
 
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, const string &nombreArchivo) {
-    ofstream archivo(nombreArchivo, ios::out);
+    ofstream archivo(nombreArchivo, ios::out | ios::app);
 
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo para guardar materiales." << endl;
