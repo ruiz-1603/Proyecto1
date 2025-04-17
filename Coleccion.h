@@ -56,6 +56,13 @@ public:
   void reporteMaterialesPrestados();
   void reporteMaterialesPorTipo();
   void reportePrestamosPorUsuario();
+
+  void guardarUsuarios();
+  void guardarMateriales();
+  void guardarPrestamos();
+
+  void cargarDatos();
+
 };
 
 #endif //COLECCION_H

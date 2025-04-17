@@ -10,10 +10,10 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
 
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo." << endl;
-        return;
+        return; //poner excepcion de archivo
     }
 
-    archivo << "IdPrestamo,NombreUsuario,TipoMaterial,TituloMaterial,FechaPrestamo,FechaVencimiento,Estado,"
+    archivo << "IdPrestamo,IdUsuario,NombreUsuario,TipoMaterial,TituloMaterial,FechaPrestamo,FechaVencimiento,Estado,"
                "Autor,EstadoMaterial,PalabrasClave,Direccion,NumCalificacion,NumCatalogo,"
                "NumRevista,VolumenRevista,TipoMaterialDigital,FormatoMaterial,EstadoDigital\n";
 
@@ -25,7 +25,7 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
 
         string tipoMaterial = material->getTipo(); // retorna "Libro", "Revista" o "Video"
         string autor, estadoMat, palabrasClave, direccion;
-        int numCal, numCat;
+        int numCal, numCat, idUsuario;
         int numRevista, volumenRevista;
         string tipoDigital, formato;
         string estadoDigital;
@@ -68,6 +68,7 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
         }
 
         archivo << p->getId() << ","
+                << p->getUsuario()->getId() << ","
                 << p->getUsuario()->get_nombre_completo() << ","
                 << tipoMaterial << ","
                 << material->get_titulo() << ","
@@ -90,29 +91,37 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
     }
 
     archivo.close();
-    cout << "Archivo CSV generado correctamente como " << nombreArchivo << endl;
+    cout << "Datos de los prestamos guardados correctamente en " << nombreArchivo << endl;
 }
 
 template<class Tipo>
-Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(const string &nombreArchivo) {
-    ifstream archivo(nombreArchivo);
-    Lista<Prestamo>* lista = new Lista<Prestamo>();
+Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
+    Lista<Usuario>* usuarios,
+    Lista<Materiales>* materiales,
+    const string& nombreArchivo
+) {
+    using namespace std;
 
+    ifstream archivo(nombreArchivo);
     if (!archivo.is_open()) {
-        cout << "Error al abrir el archivo :(\n";
+        cout << "Error al abrir el archivo " << nombreArchivo << "\n";
         return nullptr;
     }
 
+    Lista<Prestamo>* lista = new Lista<Prestamo>();
     string linea;
-    getline(archivo, linea); // Saltar encabezado
+    getline(archivo, linea);  // saltar encabezado
 
     while (getline(archivo, linea)) {
         stringstream ss(linea);
-        string idPrestamo, nombreUsuario, tipoMaterial, titulo, fechaPrestamo, fechaVencimiento, estadoPrestamo;
-        string autor, estadoMaterial, palabrasClave, direccion, numCal, numCat;
-        string numRevista, volumenRevista, tipoDigital, formato, estadoDigital;
+        string idPrestamo, idUsuario, nombreUsuario, tipoMaterial;
+        string titulo, fechaPrestamo, fechaVencimiento, estadoPrestamo;
+        string autor, estadoMaterial, palabrasClave, direccion;
+        string numCal, numCat, numRevista, volumenRevista;
+        string tipoDigital, formato, estadoDigital;
 
         getline(ss, idPrestamo, ',');
+        getline(ss, idUsuario, ',');
         getline(ss, nombreUsuario, ',');
         getline(ss, tipoMaterial, ',');
         getline(ss, titulo, ',');
@@ -131,39 +140,83 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(const string &nombreArchi
         getline(ss, formato, ',');
         getline(ss, estadoDigital);
 
-        // Validación básica
-        if (idPrestamo.empty() || numCal.empty() || numCat.empty()) {
-            //línea con datos faltantes y se omite
+
+        if (idPrestamo.empty() || idUsuario.empty() || numCal.empty() || numCat.empty())
             continue;
-        }
 
-        int prestamoID = stoi(idPrestamo);
+        int prestamoID      = stoi(idPrestamo);
+        int usuarioID       = stoi(idUsuario);
         int numCalificacion = stoi(numCal);
-        int numCatalogo = stoi(numCat);
+        int numCatalogo     = stoi(numCat);
 
-        Usuario* usuario = new Usuario(prestamoID, nombreUsuario, estadoPrestamo == "En plazo");
-
-        Materiales* material = nullptr;
-
-        if (tipoMaterial == "Libro") {
-            material = new Libro(numCalificacion, numCatalogo, titulo, autor, estadoMaterial, palabrasClave, direccion);
+        // evitar usuarios duplicados
+        Usuario* usuario = usuarios->buscarEnListaUsua(usuarioID);
+        if (!usuario) {
+            usuario = new Usuario(
+                usuarioID,
+                nombreUsuario,
+                (estadoPrestamo == "En plazo")
+            );
+            usuarios->agregarALista(usuario);
         }
-        else if (tipoMaterial == "Revista") {
-            if (numRevista.empty() || volumenRevista.empty()) {
-                cout << "Revista con datos incompletos. Se omite.\n";
-                continue;
+
+        // evita duplicados por título
+        Materiales* material = materiales->buscarEnLista(titulo);
+        if (!material) {
+            if (tipoMaterial == "Libro") {
+                material = new Libro(
+                    numCalificacion,
+                    numCatalogo,
+                    titulo,
+                    autor,
+                    estadoMaterial,
+                    palabrasClave,
+                    direccion
+                );
             }
-            int nRev = stoi(numRevista);
-            int volRev = stoi(volumenRevista);
-            material = new Revista(numCalificacion, numCatalogo, titulo, autor, estadoMaterial, palabrasClave, direccion, nRev, volRev);
-        }
-        else if (tipoMaterial == "Video") {
-            bool disponible = (estadoDigital == "Disponible");
-            material = new Video(numCalificacion, numCatalogo, titulo, autor, palabrasClave, estadoMaterial, tipoDigital, formato, disponible);
+            else if (tipoMaterial == "Revista" && !numRevista.empty() && !volumenRevista.empty()) {
+                int nRev   = stoi(numRevista);
+                int volRev = stoi(volumenRevista);
+                material = new Revista(
+                    numCalificacion,
+                    numCatalogo,
+                    titulo,
+                    autor,
+                    estadoMaterial,
+                    palabrasClave,
+                    direccion,
+                    nRev,
+                    volRev
+                );
+            }
+            else if (tipoMaterial == "Video") {
+                bool disponible = (estadoDigital == "Disponible");
+                material = new Video(
+                    numCalificacion,
+                    numCatalogo,
+                    titulo,
+                    autor,
+                    palabrasClave,
+                    estadoMaterial,
+                    tipoDigital,
+                    formato,
+                    disponible
+                );
+            }
+            if (material) {
+                materiales->agregarALista(material);
+            }
         }
 
-        if (material != nullptr) {
-            Prestamo* nuevo = new Prestamo(prestamoID, usuario, material, fechaPrestamo, fechaVencimiento);
+        // crea y agregar el préstamo
+        if (usuario && material) {
+            Prestamo* nuevo = new Prestamo(
+                prestamoID,
+                usuario,
+                material,
+                fechaPrestamo,
+                fechaVencimiento
+            );
             lista->agregarALista(nuevo);
         }
     }
@@ -171,12 +224,13 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(const string &nombreArchi
     return lista;
 }
 
+
 template<class Tipo>
 void GestorArchivos<Tipo>::guardarUsuarios(Lista<Usuario> *usuarios, const string &nombreArchivo) {
     ofstream archivo(nombreArchivo, ios::out);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo." << endl; //meter excepcion
-        return;
+        return;//poner excepcion de archivo
     }
     archivo<<"ID,Nombre,Estado\n";
     Nodo<Usuario>* actual = usuarios->obtenerPrimero();
@@ -186,7 +240,7 @@ void GestorArchivos<Tipo>::guardarUsuarios(Lista<Usuario> *usuarios, const strin
                 << (actual->getDato()->is_estado() ? "Activo" : "Inactivo") << endl; // Estado del usuario
         actual = actual->getSiguiente();
     }
-
+cout<<"Datos de los usuarios guardados correctamente en "<< nombreArchivo <<endl;
     archivo.close();
 }
 
@@ -197,7 +251,7 @@ Lista<Usuario>*  GestorArchivos<Tipo>::cargarUsuarios(const string &nombreArchiv
 
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo :(\n";
-        return nullptr;
+        return nullptr; //poner excepcion de archivo
     }
     string linea;
     getline(archivo, linea); // Saltar encabezado
@@ -225,7 +279,7 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
 
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo para guardar materiales." << endl;
-        return;
+        return; //poner excepcion de archivo
     }
     // Encabezado completo
     archivo << "Material,NumClasif,NumCatalogo,Titulo,Autor,Estado,PalabrasClave,Direccion,TipoMaterial,FormatoMaterial,Acceso,NumRevista,Volumen,DiasPrestamo\n";
@@ -289,7 +343,7 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
         actual = actual->getSiguiente();
     }
     archivo.close();
-    cout<<"Datos guardados correctamente :)"<<endl;
+    cout<<"Datos guardados correctamente en "<< nombreArchivo<<endl;
 }
 
 
@@ -300,7 +354,7 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
     ifstream archivo(nombreArchivo);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo: " << nombreArchivo << endl;
-        return lista;
+        return nullptr; //poner excepcion de archivo
     }
     string linea;
     getline(archivo, linea); // Saltar encabezado
@@ -323,11 +377,11 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
             getline(ss, estado, ',');
             getline(ss, palClave, ',');
             getline(ss, direccion, ',');
-            getline(ss, skip, ','); // TipoMaterial (NA)
-            getline(ss, skip, ','); // FormatoMaterial (NA)
-            getline(ss, skip, ','); // Acceso (NA)
-            getline(ss, skip, ','); // NumRevista (NA)
-            getline(ss, skip, ','); // Volumen (NA)
+            getline(ss, skip, ','); // TipoMaterial
+            getline(ss, skip, ','); // FormatoMaterial
+            getline(ss, skip, ','); // Acceso
+            getline(ss, skip, ','); // NumRevista
+            getline(ss, skip, ','); // Volumen
             ss >> dias;
 
             Libro* libro = new Libro(numCal, numCat, titulo, autor, estado, palClave, direccion);
@@ -346,9 +400,9 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
             getline(ss, estado, ',');
             getline(ss, palClave, ',');
             getline(ss, direccion, ',');
-            getline(ss, skip, ','); // TipoMaterial (NA)
-            getline(ss, skip, ','); // FormatoMaterial (NA)
-            getline(ss, skip, ','); // Acceso (NA)
+            getline(ss, skip, ','); // TipoMaterial
+            getline(ss, skip, ','); // FormatoMaterial
+            getline(ss, skip, ','); // Acceso
             ss >> numRev; ss.ignore();
             ss >> volumen; ss.ignore();
             ss >> dias;

@@ -37,6 +37,11 @@ void Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
     lista->eliminarEnLista(titulo);
 }
 
+void Biblioteca::setMateriales(Lista<Materiales> * listaNueva) {
+    delete lista;
+    lista = listaNueva;
+}
+
 Materiales* Biblioteca::buscarMaterialPorTitulo(const std::string& titulo) {
     return lista->buscarEnLista(titulo);
 }

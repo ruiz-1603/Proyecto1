@@ -4,8 +4,11 @@
 
 #include "GestorPrestamos.h"
 
-GestorPrestamos::GestorPrestamos() {}
-GestorPrestamos::~GestorPrestamos() {}
+GestorPrestamos::GestorPrestamos() {
+  prestamos = new Lista<Prestamo>();
+}
+GestorPrestamos::~GestorPrestamos() {
+}
 
 void GestorPrestamos::agregarPrestamo(Prestamo* prestamo) {
   prestamos->agregarALista(prestamo);
@@ -67,6 +70,13 @@ void GestorPrestamos::mostrarPrestamosVencidos() {
   if (cont == 0) {
     cout << "No hay prestamos vencidos." << endl;
   }
+}
+
+void GestorPrestamos::setListaPrestamos(Lista<Prestamo> * nuevaLista) {
+  if (prestamos != nullptr) {
+    delete prestamos;
+  }
+  prestamos = nuevaLista;
 }
 
 bool GestorPrestamos::eliminarPrestamo(int idPrestamo) {

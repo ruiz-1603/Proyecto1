@@ -21,6 +21,7 @@ public:
   void mostrarPrestamosPorMaterial(string&);
   void mostrarPrestamosPorUsuario(Usuario*);
   void mostrarPrestamosVencidos();
+    void setListaPrestamos(Lista<Prestamo>*);
   bool eliminarPrestamo(int);
   Lista<Prestamo>* getPrestamos();
 };

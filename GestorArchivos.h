@@ -18,7 +18,7 @@ public:
     // Formato de cada línea:
     // idPrestamo,idUsuario,tituloMaterial,fechaPrestamo,fechaVencimiento
     static void guardarPrestamos(Lista<Prestamo>*, const string&);
-    static Lista<Prestamo>* cargarPrestamos(const string& );
+    static Lista<Prestamo>* cargarPrestamos(Lista<Usuario>*,Lista<Materiales>*,const string&);
 
     // idUsuario,nombreCompleto,estado
     static void guardarUsuarios(Lista<Usuario>*,const string&);

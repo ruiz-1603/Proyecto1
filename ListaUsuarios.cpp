@@ -20,3 +20,8 @@ Usuario* ListaUsuarios::buscarUsuarioPorId(int id) {
 void ListaUsuarios::eliminarUsuarioPorId(int id) {
     usuarios->eliminar(id);
 }
+
+void ListaUsuarios::setUsuarios(Lista<Usuario> *nuevaLista) {
+    delete usuarios;  // libera la lista anterior para evitar memory leak
+    usuarios = nuevaLista;
+}

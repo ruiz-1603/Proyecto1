@@ -4,6 +4,8 @@
 
 #include "Coleccion.h"
 
+#include "GestorArchivos.cpp"
+
 Coleccion::Coleccion() {
   this->inventario = new Biblioteca();
   this->usuarios = new ListaUsuarios();
@@ -1012,3 +1014,43 @@ void Coleccion::reportePrestamosPorUsuario() {
   cout << endl;
   gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
 }
+
+void Coleccion::guardarUsuarios() {
+  GestorArchivos<Usuario>::guardarUsuarios(usuarios->getCatalogoUsuarios(),"Usuarios.csv");
+}
+
+void Coleccion::guardarMateriales() {
+  GestorArchivos<Materiales>::guardarMateriales(inventario->getBiblioteca(),"Materiales.csv");
+}
+
+void Coleccion::guardarPrestamos() {
+  GestorArchivos<Prestamo>::guardarPrestamos(gestorPrestamos->getPrestamos(),"Prestamos.csv");
+}
+
+void Coleccion::cargarDatos() {
+
+  usuarios->setUsuarios(GestorArchivos<Usuario>::cargarUsuarios("Usuarios.csv"));
+  inventario->setMateriales(GestorArchivos<Materiales>::cargarMateriales("Materiales.csv"));
+
+  // 2) Luego carga los préstamos usando esas dos listas ya pobladas
+  gestorPrestamos->setListaPrestamos(
+      GestorArchivos<Prestamo>::cargarPrestamos(
+          usuarios->getCatalogoUsuarios(),
+          inventario->getBiblioteca(),
+          "Prestamos.csv"
+      )
+  );
+  if (gestorPrestamos == nullptr){
+    cout<<"No se pudieron cargar los prestamos\n";
+  }
+  if (usuarios == nullptr){
+    cout<<"No se pudieron cargar los usuarios\n";
+  }
+  if (inventario == nullptr){
+    cout<<"No se pudieron cargar los materiales\n";
+  }
+  else {
+    cout<<"datos cargados correctamente\n";
+  }
+}
+

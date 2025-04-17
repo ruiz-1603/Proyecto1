@@ -52,7 +52,8 @@ string Prestamo::toString() {
   ss << "Usuario" << endl;
   ss << getUsuario()->toString() << endl << endl;
   ss << "Material prestado" << endl;
-  ss << getMaterial()->toString() << endl;
+  ss << getMaterial()->toString();
   ss << "Estado del prestamo: " << (estaVencido() ? "Vencido" : "En plazo") << endl;
+  ss << "-------------------------------------------------------";
   return ss.str();
 }
