@@ -1,7 +1,3 @@
-//
-// Created by bryan on 26/03/2025.
-//
-
 #include "Usuario.h"
 
 Usuario::Usuario() {
@@ -41,9 +37,17 @@ void Usuario::set_estado(bool estado) {
 }
 string Usuario::toString() {
     stringstream ss;
+    ss << "Cedula: " << getId() << endl;
+    ss << "Nombre: " << get_nombre_completo() << endl;
+    ss << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << endl;
+
+    return ss.str();
+}
+string Usuario::toCSV() {
+    stringstream ss;
     ss << "Cedula: " << getId() << ","
-       << "Nombre: " << get_nombre_completo() << ","
-       << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << "\n";
+        << "Nombre: " << get_nombre_completo() << ","
+        << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << "\n";
 
     return ss.str();
 }

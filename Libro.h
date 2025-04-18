@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #ifndef LIBRO_H
 #define LIBRO_H
 

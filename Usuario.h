@@ -1,7 +1,3 @@
-//
-// Created by bryan on 26/03/2025.
-//
-
 #ifndef USUARIO_H
 #define USUARIO_H
 
@@ -29,8 +25,7 @@ public:
     void set_estado(bool estado);
 
     string toString();
+    string toCSV();
 };
-
-
 
 #endif //USUARIO_H

@@ -1,7 +1,3 @@
-//
-// Created by bryan on 05/04/2025.
-//
-
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
 

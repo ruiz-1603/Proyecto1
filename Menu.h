@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #ifndef MENU_H
 #define MENU_H
 
@@ -19,6 +15,7 @@ public:
     void subMenuInventario();
     void subMenuUsuarios();
     void subMenuPrestamos();
+    void subMenuArchivos();
 };
 
 

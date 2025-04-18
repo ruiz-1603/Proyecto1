@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #ifndef MATERIALDIGITAL_H
 #define MATERIALDIGITAL_H
 

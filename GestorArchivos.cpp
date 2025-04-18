@@ -1,7 +1,3 @@
-//
-// Created by RuizM on 4/7/2025.
-//
-
 #include "GestorArchivos.h"
 
 template<class Tipo>

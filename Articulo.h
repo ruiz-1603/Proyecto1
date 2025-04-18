@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #ifndef ARTICULO_H
 #define ARTICULO_H
 

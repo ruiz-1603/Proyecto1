@@ -1,7 +1,3 @@
-//
-// Created by castr on 7/4/2025.
-//
-
 #ifndef PRESTAMO_H
 #define PRESTAMO_H
 

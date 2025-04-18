@@ -1,7 +1,3 @@
-//
-// Created by bryan on 25/03/2025.
-//
-
 #ifndef MATERIALES_H
 #define MATERIALES_H
 #include "Utilities.h"

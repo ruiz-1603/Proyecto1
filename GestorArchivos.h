@@ -1,6 +1,3 @@
-//
-// Created by RuizM on 4/7/2025.
-//
 #include"Lista.h"
 #include"Articulo.h"
 #include"Libro.h"

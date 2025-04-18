@@ -1,7 +1,3 @@
-//
-// Created by bryan on 26/03/2025.
-//
-
 #include "MaterialFisico.h"
 MaterialFisico::MaterialFisico(string direccion) : Materiales(), direccion(direccion){
 }
