@@ -1024,7 +1024,6 @@ void Coleccion::guardarPrestamos() {
 }
 
 void Coleccion::cargarDatos() {
-
   usuarios->setUsuarios(GestorArchivos<Usuario>::cargarUsuarios("Usuarios.csv"));
   inventario->setMateriales(GestorArchivos<Materiales>::cargarMateriales("Materiales.csv"));
 
@@ -1036,20 +1035,11 @@ void Coleccion::cargarDatos() {
           "Prestamos.csv"
       )
   );
-  if (gestorPrestamos == nullptr){
-    cout<<"No se pudieron cargar los prestamos\n";
+
+  if (usuarios == nullptr || inventario == nullptr || gestorPrestamos == nullptr){
+    cout<<"No se pudieron cargar los archivos\n";
     return;
   }
-  if (usuarios == nullptr){
-    cout<<"No se pudieron cargar los usuarios\n";
-    return;
-  }
-  if (inventario == nullptr){
-    cout<<"No se pudieron cargar los materiales\n";
-    return;
-  }
-  else {
     cout<<"datos cargados correctamente\n";
-  }
 }
 
