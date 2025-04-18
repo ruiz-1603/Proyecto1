@@ -1032,7 +1032,7 @@ void Coleccion::cargarDatos() {
   usuarios->setUsuarios(GestorArchivos<Usuario>::cargarUsuarios("Usuarios.csv"));
   inventario->setMateriales(GestorArchivos<Materiales>::cargarMateriales("Materiales.csv"));
 
-  // 2) Luego carga los préstamos usando esas dos listas ya pobladas
+  // cargar cuando las listas estan llenas de algo
   gestorPrestamos->setListaPrestamos(
       GestorArchivos<Prestamo>::cargarPrestamos(
           usuarios->getCatalogoUsuarios(),
@@ -1042,12 +1042,15 @@ void Coleccion::cargarDatos() {
   );
   if (gestorPrestamos == nullptr){
     cout<<"No se pudieron cargar los prestamos\n";
+    return;
   }
   if (usuarios == nullptr){
     cout<<"No se pudieron cargar los usuarios\n";
+    return;
   }
   if (inventario == nullptr){
     cout<<"No se pudieron cargar los materiales\n";
+    return;
   }
   else {
     cout<<"datos cargados correctamente\n";
