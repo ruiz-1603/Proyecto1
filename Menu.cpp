@@ -1,188 +1,186 @@
 #include "Menu.h"
+#include "Limpieza.h"
 
-Menu::Menu() { this->interfaz = new Coleccion();}
+Menu::Menu() { this->interfaz = new Coleccion(); }
 Menu::~Menu() { delete interfaz; }
 
 void Menu::menuPrincipal() {
   int opcion = -1;
   while (opcion != 0) {
-    cout << "\tMenu Principal" << endl;
-    cout << "1. Submenu Inventario" << endl;
-    cout << "2. Submenu Usuarios" << endl;
-    cout << "3. Submenu Prestamos" << endl;
-    cout << "4. Submenu Archivos" << endl;
-    cout << "0. Salir" << endl << endl;
-    cout << "Seleccione una opcion: ";
-    cin >> opcion;
+    std::cout << "\tMenu Principal" << std::endl;
+    std::cout << "1. Submenu Inventario" << std::endl;
+    std::cout << "2. Submenu Usuarios" << std::endl;
+    std::cout << "3. Submenu Prestamos" << std::endl;
+    std::cout << "4. Submenu Archivos" << std::endl;
+    std::cout << "0. Salir" << std::endl << std::endl;
+    std::cout << "Seleccione una opcion: ";
+    std::cin >> opcion;
 
     switch (opcion) {
       case 1:
-        system("cls");
+        Limpieza::limpiarPantalla();
         subMenuInventario();
         break;
       case 2:
-        system("cls");
+        Limpieza::limpiarPantalla();
         subMenuUsuarios();
         break;
       case 3:
-        system("cls");
+        Limpieza::limpiarPantalla();
         subMenuPrestamos();
         break;
       case 4:
-        system("cls");
+        Limpieza::limpiarPantalla();
         subMenuArchivos();
         break;
     }
-    system("cls");
+    Limpieza::limpiarPantalla();
   }
 }
 
 void Menu::subMenuInventario() {
   int opcion = -1;
   while (opcion != 0) {
-    cout << "\tMenu Inventario" << endl;
-    cout << "1. Agregar material" << endl;
-    cout << "2. Modificar material" << endl;
-    cout << "3. Eliminar material" << endl;
-    cout << "4. Reporte de inventario" << endl;
-    cout << "0. Regresar" << endl << endl;
-    cout << "Seleccione una opcion: ";
-    cin >> opcion;
+    std::cout << "\tMenu Inventario" << std::endl;
+    std::cout << "1. Agregar material" << std::endl;
+    std::cout << "2. Modificar material" << std::endl;
+    std::cout << "3. Eliminar material" << std::endl;
+    std::cout << "4. Reporte de inventario" << std::endl;
+    std::cout << "0. Regresar" << std::endl << std::endl;
+    std::cout << "Seleccione una opcion: ";
+    std::cin >> opcion;
 
     switch (opcion) {
       case 1:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->agregarInventario();
         break;
       case 2:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->modificarMaterial();
         break;
       case 3:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->eliminarMaterial();
         break;
       case 4:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->reporteInventario();
-        cin.ignore();
-        cin.get();
+        Limpieza::pausar();
         break;
     }
-    system("cls");
+    Limpieza::limpiarPantalla();
   }
-  system("cls");
+  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuUsuarios() {
   int opcion = -1;
   while (opcion != 0) {
-    cout << "\tMenu Usuarios" << endl;
-    cout << "1. Agregar usuario" << endl;
-    cout << "2. Modificar usuario" << endl;
-    cout << "3. Eliminar usuario" << endl;
-    cout << "4. Reporte de usuarios" << endl;
-    cout << "0. Regresar" << endl << endl;
-    cout << "Seleccione una opcion: ";
-    cin >> opcion;
+    std::cout << "\tMenu Usuarios" << std::endl;
+    std::cout << "1. Agregar usuario" << std::endl;
+    std::cout << "2. Modificar usuario" << std::endl;
+    std::cout << "3. Eliminar usuario" << std::endl;
+    std::cout << "4. Reporte de usuarios" << std::endl;
+    std::cout << "0. Regresar" << std::endl << std::endl;
+    std::cout << "Seleccione una opcion: ";
+    std::cin >> opcion;
 
     switch (opcion) {
       case 1:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->agregarUsuario();
         break;
       case 2:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->modificarUsuario();
         break;
       case 3:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->eliminarUsuario();
         break;
       case 4:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->reporteUsuarios();
-        cin.ignore();
-        cin.get();
+        Limpieza::pausar();
         break;
     }
-    system("cls");
+    Limpieza::limpiarPantalla();
   }
-  system("cls");
+  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuPrestamos() {
   int opcion = -1;
   while (opcion != 0) {
-    cout << "\tMenu Prestamos" << endl;
-    cout << "1. Registrar prestamo" << endl;
-    cout << "2. Registrar devolucion" << endl;
-    cout << "3. Reporte de prestamos (general)" << endl;
-    cout << "4. Reporte de prestamos por material" << endl;
-    cout << "5. Reporte de prestamos por usuario" << endl;
-    cout << "0. Regresar" << endl << endl;
-    cout << "Seleccione una opcion: ";
-    cin >> opcion;
+    std::cout << "\tMenu Prestamos" << std::endl;
+    std::cout << "1. Registrar prestamo" << std::endl;
+    std::cout << "2. Registrar devolucion" << std::endl;
+    std::cout << "3. Reporte de prestamos (general)" << std::endl;
+    std::cout << "4. Reporte de prestamos por material" << std::endl;
+    std::cout << "5. Reporte de prestamos por usuario" << std::endl;
+    std::cout << "0. Regresar" << std::endl << std::endl;
+    std::cout << "Seleccione una opcion: ";
+    std::cin >> opcion;
 
     switch (opcion) {
       case 1:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->registrarPrestamo();
         break;
       case 2:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->registrarDevolucion();
         break;
       case 3:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->reporteMaterialesPrestados();
-        cin.ignore();
-        cin.get();
+        Limpieza::pausar();
         break;
       case 4:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->reporteMaterialesPorTipo();
-        cin.ignore();
-        cin.get();
+        Limpieza::pausar();
         break;
       case 5:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->reportePrestamosPorUsuario();
-        cin.ignore();
-        cin.get();
+        Limpieza::pausar();
         break;
     }
-    system("cls");
+    Limpieza::limpiarPantalla();
   }
-  system("cls");
+  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuArchivos() {
   int opcion = -1;
   while (opcion != 0) {
-    cout << "\tMenu Archivos" << endl;
-    cout << "1. Guardar datos" << endl;
-    cout << "2. Cargar datos" << endl;
-    cout << "0. Regresar" << endl << endl;
-    cout << "Seleccione una opcion: ";
-    cin >> opcion;
+    std::cout << "\tMenu Archivos" << std::endl;
+    std::cout << "1. Guardar datos" << std::endl;
+    std::cout << "2. Cargar datos" << std::endl;
+    std::cout << "0. Regresar" << std::endl << std::endl;
+    std::cout << "Seleccione una opcion: ";
+    std::cin >> opcion;
 
     switch (opcion) {
       case 1:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->guardarMateriales();
         interfaz->guardarPrestamos();
         interfaz->guardarUsuarios();
         break;
       case 2:
-        system("cls");
+        Limpieza::limpiarPantalla();
         interfaz->cargarDatos();
         break;
       default:
-        system("cls");
-        cout << "Error en guardar o cargar archivos" << endl;
+        Limpieza::limpiarPantalla();
+        std::cout << "Error en guardar o cargar archivos" << std::endl;
+        Limpieza::pausar();
+        break;
     }
-    system("cls");
+    Limpieza::limpiarPantalla();
   }
-  system("cls");
+  Limpieza::limpiarPantalla();
 }

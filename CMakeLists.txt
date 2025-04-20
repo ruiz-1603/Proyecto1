@@ -36,4 +36,6 @@ add_executable(Proyecto1 main.cpp
         GestorArchivos.cpp
         GestorArchivos.h
         Menu.cpp
-        Menu.h)
+        Menu.h
+        Limpieza.cpp
+        Limpieza.h)
