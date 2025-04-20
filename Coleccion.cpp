@@ -1,4 +1,5 @@
 #include "Coleccion.h"
+#include "Limpieza.h"
 
 #include "GestorArchivos.cpp"
 
@@ -241,7 +242,7 @@ void Coleccion::modificarMaterial() {
 }
 
 void Coleccion::modificarLibro() {
-  system("cls");
+  Limpieza::limpiarPantalla();
   string tituloLib;
   inventario->mostrarMaterialesPorTipo("Libro");
   cout << endl;
@@ -252,7 +253,7 @@ void Coleccion::modificarLibro() {
   Libro* libro = dynamic_cast<Libro*>(material);
 
   if (libro != nullptr) {
-    system("cls");
+    Limpieza::limpiarPantalla();
     int opcion;
     libro->toString();
     cout << "Que desea modificar del libro: " << endl;
@@ -267,7 +268,7 @@ void Coleccion::modificarLibro() {
 
     switch (opcion) {
       case 1: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int numCalLib;
         cout << "Ingrese el nuevo numero de calificacion del libro: ";
         cin >> numCalLib;
@@ -275,7 +276,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 2: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int numCatalogLib;
         cout << "Ingrese el nuevo numero de catalogo del libro: ";
         cin >> numCatalogLib;
@@ -283,7 +284,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 3: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string tituloLib;
         cout << "Ingrese el nuevo titulo del libro: ";
         cin.ignore();
@@ -292,7 +293,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 4: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string autorLib;
         cout << "Ingrese el nuevo autor: ";
         cin.ignore();
@@ -301,7 +302,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 5: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string palabrasLib;
         cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
         cin.ignore();
@@ -310,7 +311,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 6: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string estadoLib;
         cout << "Ingrese el estado del libro (buen estado, regular, mal estado): ";
         cin.ignore();
@@ -319,7 +320,7 @@ void Coleccion::modificarLibro() {
         break;
       }
       case 7: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string direccionLib;
         cout << "Ingrese la nueva direccion del libro: ";
         cin.ignore();
@@ -329,13 +330,13 @@ void Coleccion::modificarLibro() {
       }
     }
   } else {
-    system("cls");
+    Limpieza::limpiarPantalla();
     cout << "No se encontro el libro buscado" << endl;
   }
 }
 
 void Coleccion::modificarRevista() {
-    system("cls");
+    Limpieza::limpiarPantalla();
     string tituloRev;
     inventario->mostrarMaterialesPorTipo("Revista");
     cout << endl;
@@ -346,7 +347,7 @@ void Coleccion::modificarRevista() {
     Revista* revista = dynamic_cast<Revista*>(material);
 
     if (revista != nullptr) {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int opcion;
         revista->toString();
         cout << "Que desea modificar de la revista: " << endl;
@@ -363,7 +364,7 @@ void Coleccion::modificarRevista() {
 
       switch (opcion) {
         case 1: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             int numCal;
             cout << "Ingrese el nuevo numero de calificacion de la revista: ";
             cin >> numCal;
@@ -371,7 +372,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 2: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             int numCatalog;
             cout << "Ingrese el nuevo numero de catalogo de la revista: ";
             cin >> numCatalog;
@@ -379,7 +380,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 3: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             string titulo;
             cout << "Ingrese el nuevo titulo de la revista: ";
             cin.ignore();
@@ -388,7 +389,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 4: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             string autorRev;
             cout << "Ingrese el nuevo autor: ";
             cin.ignore();
@@ -397,7 +398,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 5: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             string palabras;
             cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
             cin.ignore();
@@ -406,7 +407,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 6: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             string estado;
             cout << "Ingrese el estado de la revista (buen estado, regular, mal estado): ";
             cin.ignore();
@@ -415,7 +416,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 7: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             string direccion;
             cout << "Ingrese la nueva direccion de la revista: ";
             cin.ignore();
@@ -424,7 +425,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 8: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             int numRevista;
             cout << "Ingrese el nuevo numero de revista: ";
             cin >> numRevista;
@@ -432,7 +433,7 @@ void Coleccion::modificarRevista() {
             break;
         }
         case 9: {
-            system("cls");
+            Limpieza::limpiarPantalla();
             int volRev;
             cout << "Ingrese el nuevo volumen de revista: ";
             cin >> volRev;
@@ -442,13 +443,13 @@ void Coleccion::modificarRevista() {
       }
     }
     else {
-        system("cls");
+        Limpieza::limpiarPantalla();
         cout << "No se encontro la revista buscada" << endl;
     }
 }
 
 void Coleccion::modificarArticulo() {
-  system("cls");
+  Limpieza::limpiarPantalla();
   string tituloArt;
   inventario->mostrarMaterialesPorTipo("Articulo");
   cout << endl;
@@ -459,7 +460,7 @@ void Coleccion::modificarArticulo() {
   Articulo *articulo = dynamic_cast<Articulo *>(materialArt);
 
   if (articulo != nullptr) {
-    system("cls");
+    Limpieza::limpiarPantalla();
     int opcion;
     articulo->toString();
     cout << "Que desea modificar del articulo: " << endl;
@@ -474,7 +475,7 @@ void Coleccion::modificarArticulo() {
 
     switch (opcion) {
       case 1: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int numCal;
         cout << "Ingrese el nuevo numero de calificacion del articulo: ";
         cin >> numCal;
@@ -482,7 +483,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 2: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int numCatalog;
         cout << "Ingrese el nuevo numero de catalogo del articulo: ";
         cin >> numCatalog;
@@ -490,7 +491,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 3: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string titulo;
         cout << "Ingrese el nuevo titulo del articulo: ";
         cin.ignore();
@@ -499,7 +500,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 4: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string autor;
         cout << "Ingrese el nuevo autor: ";
         cin.ignore();
@@ -508,7 +509,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 5: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string palabras;
         cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
         cin.ignore();
@@ -517,7 +518,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 6: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string estado;
         cout << "Ingrese el estado del articulo (buen estado, regular, mal estado): ";
         cin.ignore();
@@ -526,7 +527,7 @@ void Coleccion::modificarArticulo() {
         break;
       }
       case 7: {
-        system("cls");
+        Limpieza::limpiarPantalla();
         string direccion;
         cout << "Ingrese la nueva direccion del articulo: ";
         cin.ignore();
@@ -536,13 +537,13 @@ void Coleccion::modificarArticulo() {
       }
     }
   } else {
-    system("cls");
+    Limpieza::limpiarPantalla();
     cout << "No se encontro el articulo buscado" << endl;
   }
 }
 
 void Coleccion::modificarVideo() {
-    system("cls");
+    Limpieza::limpiarPantalla();
     string tituloVid;
     inventario->mostrarMaterialesPorTipo("Video");
     cout << endl;
@@ -553,7 +554,7 @@ void Coleccion::modificarVideo() {
     Video *video = dynamic_cast<Video *>(materialVid);
 
     if (video != nullptr) {
-        system("cls");
+        Limpieza::limpiarPantalla();
         int opcion;
         video->toString();
         cout << "Que desea modificar del video: " << endl;
@@ -570,7 +571,7 @@ void Coleccion::modificarVideo() {
 
         switch (opcion) {
             case 1: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 int numCal;
                 cout << "Ingrese el nuevo numero de calificacion del video: ";
                 cin >> numCal;
@@ -578,7 +579,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 2: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 int numCatalog;
                 cout << "Ingrese el nuevo numero de catalogo del video: ";
                 cin >> numCatalog;
@@ -586,7 +587,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 3: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string titulo;
                 cout << "Ingrese el nuevo titulo del video: ";
                 cin.ignore();
@@ -595,7 +596,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 4: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string autor;
                 cout << "Ingrese el nuevo autor: ";
                 cin.ignore();
@@ -604,7 +605,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 5: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string palabras;
                 cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
                 cin.ignore();
@@ -613,7 +614,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 6: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string estado;
                 cout << "Ingrese el estado del video (buen estado, regular, mal estado): ";
                 cin.ignore();
@@ -622,7 +623,7 @@ void Coleccion::modificarVideo() {
             break;
             }
             case 7: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string tipoMaterial;
                 cout << "Ingrese el tipo de material del video: ";
                 cin.ignore();
@@ -631,7 +632,7 @@ void Coleccion::modificarVideo() {
                 break;
             }
             case 8: {
-                system("cls");
+                Limpieza::limpiarPantalla();
                 string formato;
                 cout << "Ingrese el formato del video (CD, DVD, BluRay): ";
                 cin.ignore();
@@ -641,7 +642,7 @@ void Coleccion::modificarVideo() {
             }
         }
     } else {
-        system("cls");
+        Limpieza::limpiarPantalla();
         cout << "No se encontro el video buscado" << endl;
     }
 }
@@ -984,19 +985,19 @@ void Coleccion::reporteMaterialesPorTipo() {
 
   switch (tipo) {
     case 1:
-      system("cls");
+      Limpieza::limpiarPantalla();
       inventario->mostrarMaterialesPorTipo("Libro");
       break;
     case 2:
-      system("cls");
+      Limpieza::limpiarPantalla();
       inventario->mostrarMaterialesPorTipo("Revista");
       break;
     case 3:
-      system("cls");
+      Limpieza::limpiarPantalla();
       inventario->mostrarMaterialesPorTipo("Articulo");
       break;
     case 4:
-      system("cls");
+      Limpieza::limpiarPantalla();
       inventario->mostrarMaterialesPorTipo("Video");
       break;
   }

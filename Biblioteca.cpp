@@ -14,7 +14,7 @@ void Biblioteca::mostrarMateriales() {
 void Biblioteca::mostrarMaterialesPorTipo(string material) {
     Nodo<Materiales>* aux = lista->obtenerPrimero();
     int cont = 0;
-    cout << "Inventario de " << material << "s:" << endl; // revisar como queda en consola
+    cout << "Inventario de " << material << "s:" << endl;
 
     while (aux != nullptr) {
         Materiales* bib = aux->getDato();
