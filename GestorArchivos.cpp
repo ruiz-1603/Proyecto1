@@ -7,11 +7,6 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
         if (!archivo.is_open()) {
             throw Exception("No se pudo abrir el archivo para escritura: " + nombreArchivo);
         }
-
-        archivo << "IdPrestamo,IdUsuario,NombreUsuario,TipoMaterial,TituloMaterial,FechaPrestamo,FechaVencimiento,Estado,"
-                   "Autor,EstadoMaterial,PalabrasClave,Direccion,NumCalificacion,NumCatalogo,"
-                   "NumRevista,VolumenRevista,TipoMaterialDigital,FormatoMaterial,EstadoDigital\n";
-
         Nodo<Prestamo>* actual = prestamos->obtenerPrimero();
 
         while (actual != nullptr) {
@@ -98,7 +93,6 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
     Lista<Materiales>* materiales,
     const string& nombreArchivo
 ) {
-    using namespace std;
     Lista<Prestamo>* lista = new Lista<Prestamo>();
     ifstream archivo(nombreArchivo);
     try{
@@ -135,7 +129,6 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
             getline(ss, tipoDigital, ',');
             getline(ss, formato, ',');
             getline(ss, estadoDigital);
-
 
             if (idPrestamo.empty() || idUsuario.empty() || numCal.empty() || numCat.empty())
                 continue;
@@ -239,7 +232,6 @@ void GestorArchivos<Tipo>::guardarUsuarios(Lista<Usuario> *usuarios, const strin
         if (!archivo.is_open()) {
             throw Exception("No se pudo abrir el archivo para escritura: " + nombreArchivo);
         }
-        archivo<<"ID,Nombre,Estado\n";
         Nodo<Usuario>* actual = usuarios->obtenerPrimero();
         while (actual != nullptr) {
             archivo << actual->getDato()->getId() << ","           // ID del usuario
@@ -293,9 +285,6 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
         if (!archivo.is_open()) {
             throw Exception("No se pudo abrir el archivo para escritura: " + nombreArchivo);
         }
-        // Encabezado completo
-        archivo << "Material,NumClasif,NumCatalogo,Titulo,Autor,Estado,PalabrasClave,Direccion,TipoMaterial,FormatoMaterial,Acceso,NumRevista,Volumen,DiasPrestamo\n";
-
         Nodo<Materiales>* actual = materiales->obtenerPrimero();
 
         while (actual != nullptr) {
