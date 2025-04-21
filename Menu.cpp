@@ -18,7 +18,7 @@ void Menu::menuPrincipal() {
 
     switch (opcion) {
       case 1:
-        Limpieza::limpiarPantalla();
+
         subMenuInventario();
         break;
       case 2:
@@ -30,7 +30,7 @@ void Menu::menuPrincipal() {
         subMenuPrestamos();
         break;
       case 4:
-        Limpieza::limpiarPantalla();
+
         subMenuArchivos();
         break;
     }
@@ -52,7 +52,7 @@ void Menu::subMenuInventario() {
 
     switch (opcion) {
       case 1:
-        Limpieza::limpiarPantalla();
+
         interfaz->agregarInventario();
         break;
       case 2:
@@ -165,13 +165,13 @@ void Menu::subMenuArchivos() {
 
     switch (opcion) {
       case 1:
-        Limpieza::limpiarPantalla();
+
         interfaz->guardarMateriales();
         interfaz->guardarPrestamos();
         interfaz->guardarUsuarios();
         break;
       case 2:
-        Limpieza::limpiarPantalla();
+
         interfaz->cargarDatos();
         break;
       default:

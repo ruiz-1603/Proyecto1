@@ -38,4 +38,6 @@ add_executable(Proyecto1 main.cpp
         Menu.cpp
         Menu.h
         Limpieza.cpp
-        Limpieza.h)
+        Limpieza.h
+        Exception.cpp
+        Exception.h)
