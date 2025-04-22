@@ -8,6 +8,7 @@
 #include "Articulo.h"
 #include "Revista.h"
 #include "Video.h"
+#include "Limpieza.h"
 
 class Coleccion {
 private:

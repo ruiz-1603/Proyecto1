@@ -22,11 +22,11 @@ void Menu::menuPrincipal() {
         subMenuInventario();
         break;
       case 2:
-        Limpieza::limpiarPantalla();
+
         subMenuUsuarios();
         break;
       case 3:
-        Limpieza::limpiarPantalla();
+
         subMenuPrestamos();
         break;
       case 4:
@@ -56,20 +56,20 @@ void Menu::subMenuInventario() {
         interfaz->agregarInventario();
         break;
       case 2:
-        Limpieza::limpiarPantalla();
+
         interfaz->modificarMaterial();
         break;
       case 3:
-        Limpieza::limpiarPantalla();
+
         interfaz->eliminarMaterial();
         break;
       case 4:
-        Limpieza::limpiarPantalla();
+
         interfaz->reporteInventario();
         Limpieza::pausar();
         break;
     }
-    Limpieza::limpiarPantalla();
+
   }
   Limpieza::limpiarPantalla();
 }
@@ -88,24 +88,23 @@ void Menu::subMenuUsuarios() {
 
     switch (opcion) {
       case 1:
-        Limpieza::limpiarPantalla();
+
         interfaz->agregarUsuario();
         break;
       case 2:
-        Limpieza::limpiarPantalla();
+
         interfaz->modificarUsuario();
         break;
       case 3:
-        Limpieza::limpiarPantalla();
+
         interfaz->eliminarUsuario();
         break;
       case 4:
-        Limpieza::limpiarPantalla();
+
         interfaz->reporteUsuarios();
         Limpieza::pausar();
         break;
     }
-    Limpieza::limpiarPantalla();
   }
   Limpieza::limpiarPantalla();
 }
@@ -125,30 +124,27 @@ void Menu::subMenuPrestamos() {
 
     switch (opcion) {
       case 1:
-        Limpieza::limpiarPantalla();
+
         interfaz->registrarPrestamo();
         break;
       case 2:
-        Limpieza::limpiarPantalla();
+
         interfaz->registrarDevolucion();
         break;
       case 3:
-        Limpieza::limpiarPantalla();
+
         interfaz->reporteMaterialesPrestados();
         Limpieza::pausar();
         break;
       case 4:
-        Limpieza::limpiarPantalla();
         interfaz->reporteMaterialesPorTipo();
         Limpieza::pausar();
         break;
       case 5:
-        Limpieza::limpiarPantalla();
         interfaz->reportePrestamosPorUsuario();
         Limpieza::pausar();
         break;
     }
-    Limpieza::limpiarPantalla();
   }
   Limpieza::limpiarPantalla();
 }
@@ -165,22 +161,17 @@ void Menu::subMenuArchivos() {
 
     switch (opcion) {
       case 1:
-
         interfaz->guardarMateriales();
         interfaz->guardarPrestamos();
         interfaz->guardarUsuarios();
         break;
       case 2:
-
         interfaz->cargarDatos();
         break;
       default:
-        Limpieza::limpiarPantalla();
         std::cout << "Error en guardar o cargar archivos" << std::endl;
         Limpieza::pausar();
         break;
     }
-    Limpieza::limpiarPantalla();
   }
-  Limpieza::limpiarPantalla();
 }

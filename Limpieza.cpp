@@ -17,7 +17,12 @@ void Limpieza::limpiarPantalla() {
 }
 
 void Limpieza::pausar() {
-    std::cout << "\nPresione ENTER para continuar...";
-    std::cin.ignore();
-    std::cin.get();
-} 
+    cout << "Presiona ENTER para continuar...";
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.get();
+}
+
+void Limpieza::limpiarBuffer() {
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}

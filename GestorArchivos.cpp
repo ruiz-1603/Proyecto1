@@ -289,7 +289,6 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
 
         while (actual != nullptr) {
             Materiales* material = actual->getDato();
-
             if (material->getTipo() == "Libro") {
                 Libro* libro = dynamic_cast<Libro*>(material);
                 if (libro) {
@@ -373,19 +372,17 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 string skip;
                 int dias;
 
-                ss >> numCal; ss.ignore();
-                ss >> numCat; ss.ignore();
+                if (!(ss >> numCal)) throw Exception("Error al leer numCal de Libro.");
+                ss.ignore();
+                if (!(ss >> numCat)) throw Exception("Error al leer numCat de Libro.");
+                ss.ignore();
                 getline(ss, titulo, ',');
                 getline(ss, autor, ',');
                 getline(ss, estado, ',');
                 getline(ss, palClave, ',');
                 getline(ss, direccion, ',');
-                getline(ss, skip, ','); // TipoMaterial
-                getline(ss, skip, ','); // FormatoMaterial
-                getline(ss, skip, ','); // Acceso
-                getline(ss, skip, ','); // NumRevista
-                getline(ss, skip, ','); // Volumen
-                ss >> dias;
+                for (int i = 0; i < 5; i++) getline(ss, skip, ','); // Saltar campos no usados
+                if (!(ss >> dias)) throw Exception("Error al leer dias de Libro.");
 
                 Libro* libro = new Libro(numCal, numCat, titulo, autor, estado, palClave, direccion);
                 lista->agregarALista(libro);
@@ -396,19 +393,21 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 string skip;
                 int dias;
 
-                ss >> numCal; ss.ignore();
-                ss >> numCat; ss.ignore();
+                if (!(ss >> numCal)) throw Exception("Error al leer numCal de Revista.");
+                ss.ignore();
+                if (!(ss >> numCat)) throw Exception("Error al leer numCat de Revista.");
+                ss.ignore();
                 getline(ss, titulo, ',');
                 getline(ss, autor, ',');
                 getline(ss, estado, ',');
                 getline(ss, palClave, ',');
                 getline(ss, direccion, ',');
-                getline(ss, skip, ','); // TipoMaterial
-                getline(ss, skip, ','); // FormatoMaterial
-                getline(ss, skip, ','); // Acceso
-                ss >> numRev; ss.ignore();
-                ss >> volumen; ss.ignore();
-                ss >> dias;
+                for (int i = 0; i < 3; i++) getline(ss, skip, ','); // Saltar campos no usados
+                if (!(ss >> numRev)) throw Exception("Error al leer numRev de Revista.");
+                ss.ignore();
+                if (!(ss >> volumen)) throw Exception("Error al leer volumen de Revista.");
+                ss.ignore();
+                if (!(ss >> dias)) throw Exception("Error al leer dias de Revista.");
                 Revista* revista = new Revista(numCal, numCat, titulo, autor, estado, palClave, direccion, numRev, volumen);
                 lista->agregarALista(revista);
 
@@ -418,8 +417,10 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 string skip;
                 int dias;
 
-                ss >> numCal; ss.ignore();
-                ss >> numCat; ss.ignore();
+                if (!(ss >> numCal)) throw Exception("Error al leer numCal de Video.");
+                ss.ignore();
+                if (!(ss >> numCat)) throw Exception("Error al leer numCat de Video.");
+                ss.ignore();
                 getline(ss, titulo, ',');
                 getline(ss, autor, ',');
                 getline(ss, estado, ',');
@@ -430,11 +431,13 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 getline(ss, acceso, ',');
                 getline(ss, skip, ',');
                 getline(ss, skip, ',');
-                ss >> dias;
+                if (!(ss >> dias)) throw Exception("Error al leer dias de Video.");
 
                 bool estadoAcceso = (acceso == "Activo");
                 Video* video = new Video(numCal, numCat, titulo, autor, palClave, estado, tipoMaterial, formato, estadoAcceso);
                 lista->agregarALista(video);
+            }else {
+                throw Exception("Tipo de material no reconocido: " + tipo);
             }
         }
     }catch (const Exception &e) {
