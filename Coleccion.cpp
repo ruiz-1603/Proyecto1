@@ -1062,7 +1062,9 @@ void Coleccion::cargarDatos() {
           "Prestamos.csv"
       )
   );
-
+  usuarios->mostrarUsuarios();
+  inventario->mostrarMateriales();
+  gestorPrestamos->mostrarPrestamosGeneral();
   if (usuarios == nullptr || inventario == nullptr || gestorPrestamos == nullptr){
     cout<<"No se pudieron cargar los archivos\n";
     return;
