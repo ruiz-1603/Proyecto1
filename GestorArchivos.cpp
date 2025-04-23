@@ -139,7 +139,7 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
                 numCalificacion = stoi(numCal);
                 numCatalogo     = stoi(numCat);
             } catch (const Exception &e) {
-                cerr << "Error: dato inválido en el archivo de préstamos (stoi): " << e.what() << endl;
+                cerr << "Error: dato invalido en el archivo de prestamos (stoi): " << e.what() << endl;
                 continue;  // salta esta línea y sigue con la siguiente
             }
             // evitar usuarios duplicados
@@ -372,9 +372,9 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 string skip;
                 int dias;
 
-                if (!(ss >> numCal)) throw Exception("Error al leer numCal de Libro.");
+                if (!(ss >> numCal)) throw Exception("Error al leer numero calificacion de Libro.");
                 ss.ignore();
-                if (!(ss >> numCat)) throw Exception("Error al leer numCat de Libro.");
+                if (!(ss >> numCat)) throw Exception("Error al leer numero catalogo de Libro.");
                 ss.ignore();
                 getline(ss, titulo, ',');
                 getline(ss, autor, ',');
@@ -403,7 +403,7 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 getline(ss, palClave, ',');
                 getline(ss, direccion, ',');
                 for (int i = 0; i < 3; i++) getline(ss, skip, ','); // Saltar campos no usados
-                if (!(ss >> numRev)) throw Exception("Error al leer numRev de Revista.");
+                if (!(ss >> numRev)) throw Exception("Error al leer numero revista de Revista.");
                 ss.ignore();
                 if (!(ss >> volumen)) throw Exception("Error al leer volumen de Revista.");
                 ss.ignore();
