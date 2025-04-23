@@ -56,6 +56,17 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
                     numCat = video->get_num_catalogo();
                 }
             }
+            else if (tipoMaterial == "Articulo") {
+                Articulo* articulo = dynamic_cast<Articulo*>(material);
+                if (articulo) {
+                    numCal = articulo->get_num_calificacion();
+                    numCat = articulo->get_num_catalogo();
+                    autor = articulo->get_autor();
+                    estadoMat = articulo->get_estado();
+                    palabrasClave = articulo->get_palabras_claves();
+                    direccion = articulo->get_direccion();
+                }
+            }
 
             archivo << p->getId() << ","
                     << p->getUsuario()->getId() << ","
@@ -201,6 +212,17 @@ Lista<Prestamo>* GestorArchivos<Tipo>::cargarPrestamos(
                         disponible
                     );
                 }
+                else if (tipoMaterial == "Articulo") {
+                    material = new Articulo(
+                        numCalificacion,
+                        numCatalogo,
+                        titulo,
+                        autor,
+                        estadoMaterial,
+                        palabrasClave,
+                        direccion
+                    );
+                }
                 if (material) {
                     materiales->agregarALista(material);
                 }
@@ -340,6 +362,22 @@ void GestorArchivos<Tipo>::guardarMateriales(Lista<Materiales> *materiales, cons
                             << "\n";
                 }
             }
+            else if (material->getTipo() == "Articulo") {
+                Articulo* articulo = dynamic_cast<Articulo*>(material);
+                if (articulo) {
+                    archivo << "Articulo,"
+                            << articulo->get_num_calificacion() << ","
+                            << articulo->get_num_catalogo() << ","
+                            << articulo->get_titulo() << ","
+                            << articulo->get_autor() << ","
+                            << articulo->get_estado() << ","
+                            << articulo->get_palabras_claves() << ","
+                            <<articulo->get_direccion() << ","
+                            <<"-,-,-,-,-,"
+                            <<articulo->get_dia_prestamo()
+                            << "\n";
+                }
+            }
             actual = actual->getSiguiente();
         }
         cout<<"Datos guardados correctamente en "<< nombreArchivo<<endl;
@@ -436,6 +474,27 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 bool estadoAcceso = (acceso == "Activo");
                 Video* video = new Video(numCal, numCat, titulo, autor, palClave, estado, tipoMaterial, formato, estadoAcceso);
                 lista->agregarALista(video);
+
+            }else if (tipo == "Articulo") {
+                int numCal, numCat;
+                string titulo, autor, estado, palClave, direccion;
+                string skip;
+                int dias;
+
+                if (!(ss >> numCal)) throw Exception("Error al leer numero calificacion de Articulo.");
+                ss.ignore();
+                if (!(ss >> numCat)) throw Exception("Error al leer numero catalogo de Articulo.");
+                ss.ignore();
+                getline(ss, titulo, ',');
+                getline(ss, autor, ',');
+                getline(ss, estado, ',');
+                getline(ss, palClave, ',');
+                getline(ss, direccion, ',');
+                for (int i = 0; i < 3; i++) getline(ss, skip, ','); // Saltar campos no usados
+
+                Articulo* articulo = new Articulo(numCal, numCat, titulo, autor, estado, palClave, direccion);
+                lista->agregarALista(articulo);
+
             }else {
                 throw Exception("Tipo de material no reconocido: " + tipo);
             }
