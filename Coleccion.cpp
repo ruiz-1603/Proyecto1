@@ -1096,14 +1096,18 @@ void Coleccion::reporteMaterialesPorTipo() {
   }
 }
 void Coleccion::reportePrestamosPorUsuario() {
-  int id;
-  cout << "Ingrese el ID del usuario: ";
-  cin >> id;
-  Usuario* usuario = usuarios->buscarUsuarioPorId(id);
-  cout << endl;
-  gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
+  try{
+    int id;
+    cout << "Ingrese el ID del usuario: ";
+    if (!(cin >> id)) throw Exception("Entrada invalida del id de usuario.");
+    Limpieza::limpiarBuffer();
+    Usuario* usuario = usuarios->buscarUsuarioPorId(id);
+    cout << endl;
+    gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
+  }catch (Exception& e) {
+    cerr << "Error: " << e.what() << endl;
+  }
 }
-
 void Coleccion::guardarUsuarios() {
   GestorArchivos<Usuario>::guardarUsuarios(usuarios->getCatalogoUsuarios(),"Usuarios.csv");
 }
