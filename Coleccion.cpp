@@ -1088,7 +1088,11 @@ void Coleccion::reporteMaterialesPorTipo() {
       case 4:
         inventario->mostrarMaterialesPorTipo("Video");
       break;
+      default:
+        throw Exception("Tipo de material incorrecto");
     }
+  }catch (Exception& e) {
+    cerr << "Error: " << e.what() << endl;
   }
 }
 void Coleccion::reportePrestamosPorUsuario() {
@@ -1113,34 +1117,27 @@ void Coleccion::guardarPrestamos() {
 }
 
 void Coleccion::cargarDatos() {
-  usuarios->setUsuarios(GestorArchivos<Usuario>::cargarUsuarios("Usuarios.csv"));
-  inventario->setMateriales(GestorArchivos<Materiales>::cargarMateriales("Materiales.csv"));
+  try{
+    usuarios->setUsuarios(GestorArchivos<Usuario>::cargarUsuarios("Usuarios.csv"));
+    inventario->setMateriales(GestorArchivos<Materiales>::cargarMateriales("Materiales.csv"));
+    // cargar cuando las listas estan llenas de algo
+    gestorPrestamos->setListaPrestamos(GestorArchivos<Prestamo>::cargarPrestamos(usuarios->getCatalogoUsuarios(),inventario->getBiblioteca(),"Prestamos.csv"));
+    if (usuarios->getCatalogoUsuarios()->estaVacia() ||inventario->getBiblioteca()->estaVacia() ||gestorPrestamos->getPrestamos()->estaVacia()) {
+      throw Exception("No se pudieron cargar correctamente todos los datos.");}
 
-  // cargar cuando las listas estan llenas de algo
-  gestorPrestamos->setListaPrestamos(
-      GestorArchivos<Prestamo>::cargarPrestamos(
-          usuarios->getCatalogoUsuarios(),
-          inventario->getBiblioteca(),
-          "Prestamos.csv"
-      )
-  );
-  if (usuarios->getCatalogoUsuarios()->estaVacia() ||
-        inventario->getBiblioteca()->estaVacia() ||
-        gestorPrestamos->getPrestamos()->estaVacia()) {
-    cout << "No se pudieron cargar correctamente los datos\n";
-    return;
-        }
+    // mostrar contenido
+    cout << "Usuarios cargados:\n";
+    cout << usuarios->getCatalogoUsuarios()->mostrar();
 
-  // Mostrar contenido cargado
-  cout << "Usuarios cargados:\n";
-  cout << usuarios->getCatalogoUsuarios()->mostrar();
+    cout << "\nMateriales cargados:\n";
+    cout << inventario->getBiblioteca()->mostrar();
 
-  cout << "\nMateriales cargados:\n";
-  cout << inventario->getBiblioteca()->mostrar();
+    cout << "\nPréstamos cargados:\n";
+    cout << gestorPrestamos->getPrestamos()->mostrar();
 
-  cout << "\nPréstamos cargados:\n";
-  cout << gestorPrestamos->getPrestamos()->mostrar();
-
-  cout << "\nDatos cargados correctamente\n";
+    cout << "\nDatos cargados correctamente\n";
+  }catch (Exception& e) {
+    cerr << "Error al cargar datos: " << e.what() << endl;
+  }
 }
 
