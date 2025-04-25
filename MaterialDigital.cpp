@@ -42,13 +42,5 @@ string MaterialDigital::toString() {
     ss << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << endl;
     return ss.str();
 }
-string MaterialDigital::toCSV() {
-    stringstream ss;
-    ss << Materiales::toString();
-    ss << "Tipo de Material: " << get_tipo_material() << ","
-    << "Formato: " << get_formato_material() << ","
-   // << "Dias de Prestamo: " << get_dia_prestamo() << ","
-    << "Estado: " << (get_estado_acceso() ? "Activo" : "Inactivo")  << ",";
-    return ss.str();
-}
+
 

@@ -15,10 +15,5 @@ string Video::toString() {
     ss << MaterialDigital::toString();
     return ss.str();
 }
-string Video::toCSV() {
-    stringstream ss;
-    ss << MaterialDigital::toCSV();
-    return ss.str();
-}
 
 int Video::diasPrestamo() { return 5; }

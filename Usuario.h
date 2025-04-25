@@ -25,7 +25,6 @@ public:
     void set_estado(bool estado);
 
     string toString();
-    string toCSV();
 };
 
 #endif //USUARIO_H

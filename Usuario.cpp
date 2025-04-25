@@ -43,11 +43,3 @@ string Usuario::toString() {
 
     return ss.str();
 }
-string Usuario::toCSV() {
-    stringstream ss;
-    ss << "Cedula: " << getId() << ","
-        << "Nombre: " << get_nombre_completo() << ","
-        << "Estado: " << (is_estado() ? "Activo" : "Inactivo") << "\n";
-
-    return ss.str();
-}
