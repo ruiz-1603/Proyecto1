@@ -13,7 +13,7 @@
 #endif
 
 void Limpieza::limpiarPantalla() {
-    system(CLEAR_COMMAND);
+    for (int i = 0; i < 100; ++i) std::cout << '\n';
 }
 
 void Limpieza::pausar() {

@@ -8,8 +8,10 @@ int main() {
 
       //delete coleccion;
         
-    Menu* interfaz = new Menu();
-    interfaz->menuPrincipal();
-    delete interfaz;
-      return 0;
+     Menu* interfaz = new Menu();
+     interfaz->menuPrincipal();
+     delete interfaz;
+
+
+    return 0;
 }
