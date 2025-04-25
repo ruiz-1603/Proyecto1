@@ -5,12 +5,14 @@
 #ifndef LIMPIEZA_H
 #define LIMPIEZA_H
 
+#include "Utilities.h"
 
 
 class Limpieza {
 public:
     static void limpiarPantalla();
     static void pausar();
+    static void limpiarBuffer();
 };
 
 

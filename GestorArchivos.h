@@ -7,6 +7,8 @@
 #include"MaterialDigital.h"
 #include"MaterialFisico.h"
 #include"Prestamo.h"
+#include "Exception.h"
+
 #ifndef GESTORARCHIVOS_H
 #define GESTORARCHIVOS_H
 template <class Tipo>

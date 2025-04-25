@@ -4,10 +4,12 @@
 #include "Biblioteca.h"
 #include "ListaUsuarios.h"
 #include "GestorPrestamos.h"
+#include"GestorArchivos.h"
 #include "Libro.h"
 #include "Articulo.h"
 #include "Revista.h"
 #include "Video.h"
+#include "Limpieza.h"
 
 class Coleccion {
 private:

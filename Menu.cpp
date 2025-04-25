@@ -7,180 +7,218 @@ Menu::~Menu() { delete interfaz; }
 void Menu::menuPrincipal() {
   int opcion = -1;
   while (opcion != 0) {
-    std::cout << "\tMenu Principal" << std::endl;
-    std::cout << "1. Submenu Inventario" << std::endl;
-    std::cout << "2. Submenu Usuarios" << std::endl;
-    std::cout << "3. Submenu Prestamos" << std::endl;
-    std::cout << "4. Submenu Archivos" << std::endl;
-    std::cout << "0. Salir" << std::endl << std::endl;
-    std::cout << "Seleccione una opcion: ";
-    std::cin >> opcion;
+    try{
+      cout << "\tMenu Principal" << endl;
+      cout << "1. Submenu Inventario" << endl;
+      cout << "2. Submenu Usuarios" << endl;
+      cout << "3. Submenu Prestamos" << endl;
+      cout << "4. Submenu Archivos" << endl;
+      cout << "0. Salir" << endl << endl;
+      cout << "Seleccione una opcion: ";
+      if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
+        throw Exception("Entrada invalida. Por favor ingrese un numero.");
+      }
 
-    switch (opcion) {
-      case 1:
-        Limpieza::limpiarPantalla();
-        subMenuInventario();
+      switch (opcion) {
+        case 1:
+
+          subMenuInventario();
         break;
-      case 2:
-        Limpieza::limpiarPantalla();
-        subMenuUsuarios();
+        case 2:
+
+          subMenuUsuarios();
         break;
-      case 3:
-        Limpieza::limpiarPantalla();
-        subMenuPrestamos();
+        case 3:
+
+          subMenuPrestamos();
         break;
-      case 4:
-        Limpieza::limpiarPantalla();
-        subMenuArchivos();
+        case 4:
+
+          subMenuArchivos();
         break;
+        case 0: break;
+        default: throw Exception("Opcion no valida. Intente de nuevo.");
+      }
+    }catch (Exception &e) {
+      cerr << "Error: " << e.what() << std::endl;
+      Limpieza::pausar();
     }
-    Limpieza::limpiarPantalla();
   }
 }
 
 void Menu::subMenuInventario() {
   int opcion = -1;
   while (opcion != 0) {
-    std::cout << "\tMenu Inventario" << std::endl;
-    std::cout << "1. Agregar material" << std::endl;
-    std::cout << "2. Modificar material" << std::endl;
-    std::cout << "3. Eliminar material" << std::endl;
-    std::cout << "4. Reporte de inventario" << std::endl;
-    std::cout << "0. Regresar" << std::endl << std::endl;
-    std::cout << "Seleccione una opcion: ";
-    std::cin >> opcion;
+    try{
+      cout << "\tMenu Inventario" << endl;
+      cout << "1. Agregar material" << endl;
+      cout << "2. Modificar material" << endl;
+      cout << "3. Eliminar material" << endl;
+      cout << "4. Reporte de inventario" << endl;
+      cout << "0. Regresar" << endl << endl;
+      cout << "Seleccione una opcion: ";
+      if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
+        throw Exception("Entrada invalida. Por favor ingrese un numero.");
+      }
 
-    switch (opcion) {
-      case 1:
-        Limpieza::limpiarPantalla();
-        interfaz->agregarInventario();
+      switch (opcion) {
+        case 1:
+
+          interfaz->agregarInventario();
         break;
-      case 2:
-        Limpieza::limpiarPantalla();
-        interfaz->modificarMaterial();
+        case 2:
+
+          interfaz->modificarMaterial();
         break;
-      case 3:
-        Limpieza::limpiarPantalla();
-        interfaz->eliminarMaterial();
+        case 3:
+
+          interfaz->eliminarMaterial();
         break;
-      case 4:
-        Limpieza::limpiarPantalla();
-        interfaz->reporteInventario();
+        case 4:
+
+          interfaz->reporteInventario();
         Limpieza::pausar();
         break;
+
+        case 0: break;
+
+        default: throw Exception("Opcion no valida. Intente de nuevo.");
+      }
+    }catch (Exception &e) {
+      cerr << "Error: " << e.what() << std::endl;
+      Limpieza::pausar();
     }
-    Limpieza::limpiarPantalla();
   }
-  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuUsuarios() {
-  int opcion = -1;
-  while (opcion != 0) {
-    std::cout << "\tMenu Usuarios" << std::endl;
-    std::cout << "1. Agregar usuario" << std::endl;
-    std::cout << "2. Modificar usuario" << std::endl;
-    std::cout << "3. Eliminar usuario" << std::endl;
-    std::cout << "4. Reporte de usuarios" << std::endl;
-    std::cout << "0. Regresar" << std::endl << std::endl;
-    std::cout << "Seleccione una opcion: ";
-    std::cin >> opcion;
+  try {
+    int opcion = -1;
+    while (opcion != 0) {
+      cout << "\tMenu Usuarios" << endl;
+      cout << "1. Agregar usuario" << endl;
+      cout << "2. Modificar usuario" << endl;
+      cout << "3. Eliminar usuario" << endl;
+      cout << "4. Reporte de usuarios" << endl;
+      cout << "0. Regresar" << endl << endl;
+      cout << "Seleccione una opcion: ";
+      if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
+        throw Exception("Entrada invalida. Por favor ingrese un numero.");
+      }
 
-    switch (opcion) {
-      case 1:
-        Limpieza::limpiarPantalla();
-        interfaz->agregarUsuario();
+      switch (opcion) {
+        case 1:
+
+          interfaz->agregarUsuario();
         break;
-      case 2:
-        Limpieza::limpiarPantalla();
-        interfaz->modificarUsuario();
+        case 2:
+
+          interfaz->modificarUsuario();
         break;
-      case 3:
-        Limpieza::limpiarPantalla();
-        interfaz->eliminarUsuario();
+        case 3:
+
+          interfaz->eliminarUsuario();
         break;
-      case 4:
-        Limpieza::limpiarPantalla();
-        interfaz->reporteUsuarios();
+        case 4:
+
+          interfaz->reporteUsuarios();
         Limpieza::pausar();
         break;
+
+        case 0: break;
+
+        default: throw Exception("Opcion no valida. Intente de nuevo.");
+      }
     }
-    Limpieza::limpiarPantalla();
+  }catch (Exception &e) {
+    cerr << "Error: " << e.what() << std::endl;
+    Limpieza::pausar();
   }
-  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuPrestamos() {
-  int opcion = -1;
-  while (opcion != 0) {
-    std::cout << "\tMenu Prestamos" << std::endl;
-    std::cout << "1. Registrar prestamo" << std::endl;
-    std::cout << "2. Registrar devolucion" << std::endl;
-    std::cout << "3. Reporte de prestamos (general)" << std::endl;
-    std::cout << "4. Reporte de prestamos por material" << std::endl;
-    std::cout << "5. Reporte de prestamos por usuario" << std::endl;
-    std::cout << "0. Regresar" << std::endl << std::endl;
-    std::cout << "Seleccione una opcion: ";
-    std::cin >> opcion;
+  try{
+    int opcion = -1;
+    while (opcion != 0) {
+      cout << "\tMenu Prestamos" << endl;
+      cout << "1. Registrar prestamo" << endl;
+      cout << "2. Registrar devolucion" << endl;
+      cout << "3. Reporte de prestamos (general)" << endl;
+      cout << "4. Reporte de prestamos por material" << endl;
+      cout << "5. Reporte de prestamos por usuario" << endl;
+      cout << "0. Regresar" << endl << endl;
+      cout << "Seleccione una opcion: ";
+      if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
+        throw Exception("Entrada invalida. Por favor ingrese un numero.");
+      }
 
-    switch (opcion) {
-      case 1:
-        Limpieza::limpiarPantalla();
-        interfaz->registrarPrestamo();
+      switch (opcion) {
+        case 1:
+
+          interfaz->registrarPrestamo();
         break;
-      case 2:
-        Limpieza::limpiarPantalla();
-        interfaz->registrarDevolucion();
+        case 2:
+
+          interfaz->registrarDevolucion();
         break;
-      case 3:
-        Limpieza::limpiarPantalla();
-        interfaz->reporteMaterialesPrestados();
+        case 3:
+
+          interfaz->reporteMaterialesPrestados();
         Limpieza::pausar();
         break;
-      case 4:
-        Limpieza::limpiarPantalla();
-        interfaz->reporteMaterialesPorTipo();
+        case 4:
+          interfaz->reporteMaterialesPorTipo();
         Limpieza::pausar();
         break;
-      case 5:
-        Limpieza::limpiarPantalla();
-        interfaz->reportePrestamosPorUsuario();
+        case 5:
+          interfaz->reportePrestamosPorUsuario();
         Limpieza::pausar();
         break;
+        case 0: break;
+        default: throw Exception("Opcion no valida. Intente de nuevo.");
+      }
     }
-    Limpieza::limpiarPantalla();
+  }catch (Exception &e) {
+    cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
-  Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuArchivos() {
-  int opcion = -1;
-  while (opcion != 0) {
-    std::cout << "\tMenu Archivos" << std::endl;
-    std::cout << "1. Guardar datos" << std::endl;
-    std::cout << "2. Cargar datos" << std::endl;
-    std::cout << "0. Regresar" << std::endl << std::endl;
-    std::cout << "Seleccione una opcion: ";
-    std::cin >> opcion;
+  try{
+    int opcion = -1;
+    while (opcion != 0) {
+     cout << "\tMenu Archivos" << endl;
+      cout << "1. Guardar datos" << endl;
+      cout << "2. Cargar datos" << endl;
+      cout << "0. Regresar" << endl << endl;
+      cout << "Seleccione una opcion: ";
+      if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
+        throw Exception("Entrada invalida. Por favor ingrese un numero.");
+      }
 
-    switch (opcion) {
-      case 1:
-        Limpieza::limpiarPantalla();
-        interfaz->guardarMateriales();
+      switch (opcion) {
+        case 1:
+          interfaz->guardarMateriales();
         interfaz->guardarPrestamos();
         interfaz->guardarUsuarios();
         break;
-      case 2:
-        Limpieza::limpiarPantalla();
-        interfaz->cargarDatos();
+        case 2:
+          interfaz->cargarDatos();
         break;
-      default:
-        Limpieza::limpiarPantalla();
-        std::cout << "Error en guardar o cargar archivos" << std::endl;
-        Limpieza::pausar();
-        break;
+        case 0:
+          break;
+        default:
+          throw Exception("Opcion no valida.");
+      }
     }
-    Limpieza::limpiarPantalla();
+  }catch (Exception &e) {
+    cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
-  Limpieza::limpiarPantalla();
 }

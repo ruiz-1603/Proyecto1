@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include "Coleccion.h"
-
+#include "Exception.h"
 class Menu {
 private:
   Coleccion* interfaz;

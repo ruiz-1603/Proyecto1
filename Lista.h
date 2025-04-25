@@ -28,6 +28,7 @@ public:
     Nodo<tipo>* obtenerPrimero();
     tipo* buscarPorNumero(int num);
     string mostrarMenu();
+    bool estaVacia() const;
 };
 
 template<class tipo>
@@ -197,6 +198,10 @@ string Lista<tipo>::mostrarMenu() {
         conta++;
     }
     return ss.str();
+}
+template<class tipo>
+bool Lista<tipo>::estaVacia() const {
+    return primero == nullptr;
 }
 
 #endif // LISTA_H
