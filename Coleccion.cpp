@@ -22,6 +22,7 @@ void Coleccion::agregarInventario() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> tipo;
+  Limpieza::limpiarPantalla();
 
   switch (tipo) {
     case 1:
@@ -279,6 +280,7 @@ void Coleccion::modificarMaterial() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> material;
+  Limpieza::limpiarPantalla();
   switch (material) {
     case 1:
       modificarLibro();

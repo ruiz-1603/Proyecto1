@@ -22,29 +22,30 @@ void Menu::menuPrincipal() {
 
       switch (opcion) {
         case 1:
-
+          Limpieza::limpiarPantalla();
           subMenuInventario();
         break;
         case 2:
-
+          Limpieza::limpiarPantalla();
           subMenuUsuarios();
         break;
         case 3:
-
+          Limpieza::limpiarPantalla();
           subMenuPrestamos();
         break;
         case 4:
-
+          Limpieza::limpiarPantalla();
           subMenuArchivos();
         break;
         case 0: break;
         default: throw Exception("Opcion no valida. Intente de nuevo.");
       }
-    }catch (Exception &e) {
+      Limpieza::limpiarPantalla();
+    } catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;
       Limpieza::pausar();
     }
-  }
+  } Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuInventario() {
@@ -65,19 +66,19 @@ void Menu::subMenuInventario() {
 
       switch (opcion) {
         case 1:
-
+          Limpieza::limpiarPantalla();
           interfaz->agregarInventario();
         break;
         case 2:
-
+          Limpieza::limpiarPantalla();
           interfaz->modificarMaterial();
         break;
         case 3:
-
+          Limpieza::limpiarPantalla();
           interfaz->eliminarMaterial();
         break;
         case 4:
-
+          Limpieza::limpiarPantalla();
           interfaz->reporteInventario();
         Limpieza::pausar();
         break;
@@ -85,12 +86,12 @@ void Menu::subMenuInventario() {
         case 0: break;
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
-      }
+      } Limpieza::limpiarPantalla();
     }catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;
       Limpieza::pausar();
     }
-  }
+  } Limpieza::limpiarPantalla();
 }
 
 void Menu::subMenuUsuarios() {
@@ -111,19 +112,19 @@ void Menu::subMenuUsuarios() {
 
       switch (opcion) {
         case 1:
-
+          Limpieza::limpiarPantalla();
           interfaz->agregarUsuario();
         break;
         case 2:
-
+          Limpieza::limpiarPantalla();
           interfaz->modificarUsuario();
         break;
         case 3:
-
+          Limpieza::limpiarPantalla();
           interfaz->eliminarUsuario();
         break;
         case 4:
-
+          Limpieza::limpiarPantalla();
           interfaz->reporteUsuarios();
         Limpieza::pausar();
         break;
@@ -131,8 +132,8 @@ void Menu::subMenuUsuarios() {
         case 0: break;
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
-      }
-    }
+      } Limpieza::limpiarPantalla();
+    } Limpieza::limpiarPantalla();
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << std::endl;
     Limpieza::pausar();
@@ -158,30 +159,32 @@ void Menu::subMenuPrestamos() {
 
       switch (opcion) {
         case 1:
-
+          Limpieza::limpiarPantalla();
           interfaz->registrarPrestamo();
         break;
         case 2:
-
+          Limpieza::limpiarPantalla();
           interfaz->registrarDevolucion();
         break;
         case 3:
-
+          Limpieza::limpiarPantalla();
           interfaz->reporteMaterialesPrestados();
         Limpieza::pausar();
         break;
         case 4:
+          Limpieza::limpiarPantalla();
           interfaz->reporteMaterialesPorTipo();
         Limpieza::pausar();
         break;
         case 5:
+          Limpieza::limpiarPantalla();
           interfaz->reportePrestamosPorUsuario();
         Limpieza::pausar();
         break;
         case 0: break;
         default: throw Exception("Opcion no valida. Intente de nuevo.");
-      }
-    }
+      } Limpieza::limpiarPantalla();
+    } Limpieza::limpiarPantalla();
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -215,8 +218,8 @@ void Menu::subMenuArchivos() {
           break;
         default:
           throw Exception("Opcion no valida.");
-      }
-    }
+      } Limpieza::limpiarPantalla();
+    } Limpieza::limpiarPantalla();
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
