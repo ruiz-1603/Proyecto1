@@ -18,6 +18,7 @@ void Menu::menuPrincipal() {
       if (!(cin >> opcion)) {
         Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida. Por favor ingrese un numero.");
+        Limpieza::pausar();
       }
 
       switch (opcion) {
@@ -86,6 +87,8 @@ void Menu::subMenuInventario() {
         case 0: break;
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
+            Limpieza::pausar();
+            Limpieza::limpiarPantalla();
       } Limpieza::limpiarPantalla();
     }catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;

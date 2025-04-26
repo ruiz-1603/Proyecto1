@@ -52,6 +52,7 @@ void Coleccion::agregarLibro() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para calificacion.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el numero del catalogo del libro: ";
@@ -59,6 +60,7 @@ void Coleccion::agregarLibro() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invualida para nmero de catalogo.");
+      Limpieza::pausar();
     }
 
     Limpieza::limpiarBuffer(); // Limpiar antes de getline
@@ -82,6 +84,7 @@ void Coleccion::agregarLibro() {
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
       throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese la direccion del libro: ";
@@ -91,9 +94,11 @@ void Coleccion::agregarLibro() {
     inventario->agregarMaterial(new Libro(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion));
 
     cout << "Libro agregado exitosamente.\n";
+    Limpieza::pausar();
 
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 
 }
@@ -107,6 +112,7 @@ void Coleccion::agregarRevista() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para calificacion.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el numero del catalogo de la revista: ";
@@ -114,6 +120,7 @@ void Coleccion::agregarRevista() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para numero de catalogo.");
+      Limpieza::pausar();
     }
 
     Limpieza::limpiarBuffer();
@@ -133,6 +140,7 @@ void Coleccion::agregarRevista() {
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
       throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese la direccion de la revista: ";
@@ -143,6 +151,7 @@ void Coleccion::agregarRevista() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Numero de revista invalido.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el volumen de la revista: ";
@@ -150,13 +159,16 @@ void Coleccion::agregarRevista() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Volumen de revista invalido.");
+      Limpieza::pausar();
     }
 
     inventario->agregarMaterial(new Revista(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion, numRev, volRev));
     cout << "Revista agregada exitosamente.\n";
+    Limpieza::pausar();
 
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::agregarArticulo() {
@@ -169,6 +181,7 @@ void Coleccion::agregarArticulo() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para calificacion.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el numero del catalogo del articulo: ";
@@ -176,6 +189,7 @@ void Coleccion::agregarArticulo() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para número de catalogo.");
+      Limpieza::pausar();
     }
 
     Limpieza::limpiarBuffer();
@@ -195,6 +209,7 @@ void Coleccion::agregarArticulo() {
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
       throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese la direccion del articulo: ";
@@ -202,9 +217,11 @@ void Coleccion::agregarArticulo() {
 
     inventario->agregarMaterial(new Articulo(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion));
     cout << "Articulo agregado exitosamente.\n";
+    Limpieza::pausar();
 
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::agregarVideo() {
@@ -218,6 +235,7 @@ void Coleccion::agregarVideo() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para calificacion.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el numero del catalogo del video: ";
@@ -225,6 +243,7 @@ void Coleccion::agregarVideo() {
     if (cin.fail()) {
       Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para numero de catalogo.");
+      Limpieza::pausar();
     }
 
     Limpieza::limpiarBuffer();
@@ -244,6 +263,7 @@ void Coleccion::agregarVideo() {
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
       throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      Limpieza::pausar();
     }
 
     cout << "Ingrese el formato del video (CD, DVD, BluRay, en linea): ";
@@ -261,14 +281,17 @@ void Coleccion::agregarVideo() {
       } else {
         Limpieza::limpiarBuffer();
         throw Exception("Estado de acceso invalido.");
+        Limpieza::pausar();
       }
     }
 
     inventario->agregarMaterial(new Video(numCal, numCatalog, titulo, autor, palabrCl, estado, "Video", formatoMaterial, estadoActIn));
     cout << "Video agregado exitosamente.\n";
+    Limpieza::pausar();
 
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -308,7 +331,10 @@ void Coleccion::modificarLibro() {
   Materiales* material = inventario->buscarMaterialPorTitulo(tituloLib);
   Libro* libro = dynamic_cast<Libro*>(material);
 
-    if (!libro) throw Exception("No se encontro el libro buscado.");
+  if (!libro) {
+      throw Exception("No se encontro el libro buscado.");
+      Limpieza::pausar();
+  }
     int opcion;
     cout << libro->toString();
     cout << "Que desea modificar del libro: " << endl;
@@ -320,21 +346,33 @@ void Coleccion::modificarLibro() {
     cout << "6. Estado" << endl;
     cout << "7. Direccion" << endl;
     cout << "Ingrese una opción: ";
-    if (!(cin >> opcion)) throw Exception("Entrada invalida, se esperaba un numero.");
+    if (!(cin >> opcion)) {
+        throw Exception("Entrada invalida, se esperaba un numero.");
+        Limpieza::pausar();
+    }
+  
     Limpieza::limpiarBuffer();
+
 
     switch (opcion) {
       case 1: {
         int numCalLib;
         cout << "Ingrese el nuevo numero de calificacion del libro: ";
-        if (!(cin >> numCalLib)) throw Exception("Entrada invalida.");
+        if (!(cin >> numCalLib)) {
+            throw Exception("Entrada invalida.");
+            Limpieza::pausar();
+        }
+        
         libro->set_num_calificacion(numCalLib);
         break;
       }
       case 2: {
         int numCatalogLib;
         cout << "Ingrese el nuevo numero de catalogo del libro: ";
-        if (!(cin >> numCatalogLib)) throw Exception("Entrada invalida.");
+        if (!(cin >> numCatalogLib)) {
+            throw Exception("Entrada invalida.");
+            Limpieza::pausar();
+        }
         libro->set_num_catalogo(numCatalogLib);
         break;
       }
@@ -380,9 +418,11 @@ void Coleccion::modificarLibro() {
       }
       default:
         throw Exception("Opcion no válida.");
+        Limpieza::pausar();
     }
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -397,7 +437,10 @@ void Coleccion::modificarRevista() {
     Materiales* material = inventario->buscarMaterialPorTitulo(tituloRev);
     Revista* revista = dynamic_cast<Revista*>(material);
 
-  if (!revista) throw Exception("No se encontro la revista buscada.");
+    if (!revista) {
+        throw Exception("No se encontro la revista buscada.");
+        Limpieza::pausar();
+    }
         int opcion;
         cout << revista->toString();
         cout << "Que desea modificar de la revista: " << endl;
@@ -411,20 +454,29 @@ void Coleccion::modificarRevista() {
         cout << "8. Numero de revista" << endl;
         cout << "9. Volumen de la revista" << endl;
         cout << "Ingrese una opción: ";
-  if (!(cin >> opcion)) throw Exception("Entrada invalida, se esperaba un numero.");
+        if (!(cin >> opcion)) {
+            throw Exception("Entrada invalida, se esperaba un numero.");
+            Limpieza::pausar();
+        }
       Limpieza::limpiarBuffer();
       switch (opcion) {
         case 1: {
             int numCal;
             cout << "Ingrese el nuevo numero de calificacion de la revista: ";
-          if (!(cin >> numCal)) throw Exception("Entrada invalida para numero de calificacion.");
+            if (!(cin >> numCal)) {
+                throw Exception("Entrada invalida para numero de calificacion."); 
+                Limpieza::pausar();
+            }
             revista->set_num_calificacion(numCal);
             break;
         }
         case 2: {
             int numCatalog;
             cout << "Ingrese el nuevo numero de catalogo de la revista: ";
-          if (!(cin >> numCatalog)) throw Exception("Entrada invalida para numero de catalogo.");
+            if (!(cin >> numCatalog)) {
+                throw Exception("Entrada invalida para numero de catalogo."); 
+                Limpieza::pausar();
+            }
             revista->set_num_catalogo(numCatalog);
             break;
         }
@@ -460,6 +512,7 @@ void Coleccion::modificarRevista() {
 
           if (estado != "buen estado" && estado != "regular" && estado != "mal estado") {
             throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+            Limpieza::pausar();
           }
           revista->set_estado(estado);
           break;
@@ -475,22 +528,30 @@ void Coleccion::modificarRevista() {
         case 8: {
             int numRevista;
             cout << "Ingrese el nuevo numero de revista: ";
-          if (!(cin >> numRevista)) throw Exception("Entrada inválida para número de revista.");
+            if (!(cin >> numRevista)) {
+                throw Exception("Entrada inválida para número de revista.");
+                Limpieza::pausar();
+            }
             revista->set_num_revista(numRevista);
             break;
         }
         case 9: {
             int volRev;
             cout << "Ingrese el nuevo volumen de revista: ";
-            if (!(cin >> volRev)) throw Exception("Entrada invalida para numero de revista.");
+            if (!(cin >> volRev)) {
+                throw Exception("Entrada invalida para numero de revista.");
+                Limpieza::pausar();
+            }
             revista->set_volumen_revista(volRev);
             break;
         }
         default:
           throw Exception("Opcion no valida.");
+          Limpieza::pausar();
       }
 } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
+  Limpieza::pausar();
   }
 }
 
@@ -505,7 +566,10 @@ void Coleccion::modificarArticulo() {
   Materiales *materialArt = inventario->buscarMaterialPorTitulo(tituloArt);
   Articulo *articulo = dynamic_cast<Articulo *>(materialArt);
 
-    if (!articulo) throw Exception("No se encontro el artículo buscado.");
+  if (!articulo) {
+      throw Exception("No se encontro el artículo buscado.");
+      Limpieza::pausar();
+  }
     int opcion;
     cout << articulo->toString();
     cout << "Que desea modificar del articulo: " << endl;
@@ -524,14 +588,20 @@ void Coleccion::modificarArticulo() {
       case 1: {
         int numCal;
         cout << "Ingrese el nuevo numero de calificacion del articulo: ";
-        if (!(cin >> numCal)) throw Exception("Entrada invalida.");
+        if (!(cin >> numCal)) {
+            throw Exception("Entrada invalida.");
+            Limpieza::pausar();
+        }
         articulo->set_num_calificacion(numCal);
         break;
       }
       case 2: {
         int numCatalog;
         cout << "Ingrese el nuevo numero de catalogo del articulo: ";
-        if (!(cin >> numCatalog)) throw Exception("Entrada invalida.");
+        if (!(cin >> numCatalog)) {
+            throw Exception("Entrada invalida.");
+            Limpieza::pausar();
+        }
         articulo->set_num_catalogo(numCatalog);
         break;
       }
@@ -566,6 +636,7 @@ void Coleccion::modificarArticulo() {
         getline(cin, estado);
         if (estado != "buen estado" && estado != "regular" && estado != "mal estado") {
           throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+          Limpieza::pausar();
         }
         articulo->set_estado(estado);
         break;
@@ -580,9 +651,11 @@ void Coleccion::modificarArticulo() {
       }
       default:
         throw Exception("Opcion no valida.");
+        Limpieza::pausar();
     }
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -597,7 +670,10 @@ void Coleccion::modificarVideo() {
     Materiales *materialVid = inventario->buscarMaterialPorTitulo(tituloVid);
     Video *video = dynamic_cast<Video *>(materialVid);
 
-  if (!video) throw Exception("No se encontró el video buscado.");
+    if (!video) {
+        throw Exception("No se encontró el video buscado.");
+        Limpieza::pausar();
+    }
 
         int opcion;
         cout << video->toString();
@@ -612,21 +688,30 @@ void Coleccion::modificarVideo() {
         cout << "8. Formato" << endl;
         cout << "9. Estado (Activo, Inactivo)" << endl;
         cout << "Ingrese una opción: ";
-        if (!(cin >> opcion)) throw Exception("Entrada inválida.");
+        if (!(cin >> opcion)) {
+            throw Exception("Entrada inválida.");
+            Limpieza::pausar();
+        }
         Limpieza::limpiarBuffer();
 
         switch (opcion) {
             case 1: {
                 int numCal;
                 cout << "Ingrese el nuevo numero de calificacion del video: ";
-              if (!(cin >> numCal)) throw Exception("Entrada inválida.");
+                if (!(cin >> numCal)) {
+                    throw Exception("Entrada inválida.");
+                    Limpieza::pausar();
+                }
                 video->set_num_calificacion(numCal);
                 break;
             }
             case 2: {
                 int numCatalog;
                 cout << "Ingrese el nuevo numero de catalogo del video: ";
-              if (!(cin >> numCatalog)) throw Exception("Entrada inválida.");
+                if (!(cin >> numCatalog)) {
+                    throw Exception("Entrada inválida.");
+                    Limpieza::pausar();
+                }
                 video->set_num_catalogo(numCatalog);
                 break;
             }
@@ -680,9 +765,11 @@ void Coleccion::modificarVideo() {
             }
           default:
             throw Exception("Opción no válida.");
+            Limpieza::pausar();
         }
   } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
+  Limpieza::pausar();
   }
 }
 
@@ -692,7 +779,10 @@ void Coleccion::eliminarMaterial() {
   cout << "Ingrese el tipo de material que desea eliminar: " << endl;
   cout << "1. Fisico" << endl;
   cout << "2. Digital" << endl;
-  if (!(cin >> tipo)) throw Exception("entrada invalida. se esperaba un numero.");
+  if (!(cin >> tipo)) {
+      throw Exception("entrada invalida. se esperaba un numero.");
+      Limpieza::pausar();
+  }
 
   switch (tipo) {
     case 1: {
@@ -719,9 +809,11 @@ void Coleccion::eliminarMaterial() {
     }
     default:
       throw Exception("tipo de material no valido.");
+      Limpieza::pausar();
   }
 } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
+  Limpieza::pausar();
   }
 }
 
@@ -730,14 +822,20 @@ void Coleccion::agregarUsuario() {
   int id;
   string nom;
   cout << "Ingrese el id del usuario: ";
-  if (!(cin >> id)) throw Exception("Entrada invalida para id.");
+  if (!(cin >> id)) {
+      throw Exception("Entrada invalida para id.");
+      Limpieza::pausar();
+  }
   Limpieza::limpiarBuffer();
 
   cout << "Ingrese el nombre completo del usuario: ";
   getline(cin, nom);
   usuarios->agregarUsuario(new Usuario(id, nom, true));
+  cout << "Usuario agregado correctamente!\n";
+  Limpieza::pausar();
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -745,9 +843,15 @@ void Coleccion::modificarUsuario() {
   try{
   int id;
   cout << "Ingrese el id del usuario que desea modificar: ";
-  if (!(cin >> id)) throw Exception("Entrada invalida para id.");
+  if (!(cin >> id)) {
+      throw Exception("Entrada invalida para id.");
+      Limpieza::pausar();
+  }
   Usuario* usuario = usuarios->buscarUsuarioPorId(id);
-  if (!usuario) throw Exception("Usuario no encontrado.");
+  if (!usuario) {
+      throw Exception("Usuario no encontrado.");
+      Limpieza::pausar();
+  }
 
     int opcion;
     cout << "Usuario encontrado: " << endl;
@@ -756,15 +860,24 @@ void Coleccion::modificarUsuario() {
     cout << "\t1. ID\n" << endl;
     cout << "\t2. Nombre\n" << endl;
     cout << "\t3. Estado\n" << endl;
-  if (!(cin >> opcion)) throw Exception("Entrada invalida. se esperaba un numero.");
+    if (!(cin >> opcion)) {
+        throw Exception("Entrada invalida. se esperaba un numero.");
+        Limpieza::pausar();
+    }
 
     switch (opcion) {
       case 1: {
         int id;
         cout << "Ingrese el nuevo ID del usuario: ";
-        if (!(cin >> id)) throw Exception("Entrada invalida para id.");
+        if (!(cin >> id)) {
+            throw Exception("Entrada invalida para id.");
+            Limpieza::pausar();
+        }
         usuario->set_id(id);
+        cout << "Id cambiado correctamente!\n";
         break;
+        Limpieza::pausar();
+        
       }
       case 2: {
         string nom;
@@ -772,28 +885,38 @@ void Coleccion::modificarUsuario() {
         Limpieza::limpiarBuffer();
         getline(cin, nom);
         usuario->set_nombre_completo(nom);
+        cout << "Nombre cambiado correctamente!\n";
+        Limpieza::pausar();
         break;
       }
       case 3: {
         int eleccion;
         bool estado;
         cout << "Ingrese el estado del usuario (1. Activo 2. Inactivo): ";
-        if (!(cin >> eleccion)) throw Exception("Entrada invalida para estado.");
+        if (!(cin >> eleccion)) {
+            throw Exception("Entrada invalida para estado.");
+            Limpieza::pausar();
+        }
         if (eleccion == 1) {
           estado = true;
         } else if (eleccion == 2) {
           estado = false;
         } else {
           throw Exception("Estado no valido. use 1 para activo o 2 para inactivo.");
+          Limpieza::pausar();
         }
         usuario->set_estado(estado);
+        cout << "Estado del usuario cambiado correctamente!\n";
         break;
+        Limpieza::pausar();
       }
       default:
         throw Exception("opcion no valida.");
+        Limpieza::pausar();
     }
 } catch (const Exception& e) {
   cout << "Error: " << e.what() << endl;
+  Limpieza::pausar();
   }
 }
 
@@ -803,11 +926,17 @@ void Coleccion::eliminarUsuario() {
     cout << "Usuarios: " << endl;
     usuarios->mostrarUsuarios();
     cout << "Ingrese el id del usuario que desea eliminar: ";
-    if (!(cin >> id)) throw Exception("Entrada invalida para id.");
+    if (!(cin >> id)) {
+        throw Exception("Entrada invalida para id.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
     usuarios->eliminarUsuarioPorId(id);
+    cout << "Usuario eliminado correctamente!\n";
+    Limpieza::pausar();
   } catch (Exception& e) {
     cerr << "Error al eliminar usuario: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::mostrarDisponiblesPorTipo(string tipoBuscado) {
@@ -837,6 +966,7 @@ void Coleccion::mostrarDisponiblesPorTipo(string tipoBuscado) {
     }
   }catch (exception& e) {
     cerr << "Error al mostrar materiales disponibles: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -844,11 +974,17 @@ void Coleccion::registrarPrestamo() {
   try{
   int idUsuario;
   cout << "Ingrese el id del usuario que solicita el prestamo: ";
-  if (!(cin >> idUsuario)) throw Exception("Entrada invalida para id.");
+  if (!(cin >> idUsuario)) {
+      throw Exception("Entrada invalida para id.");
+      Limpieza::pausar();
+  }
   Limpieza::limpiarBuffer();
 
   Usuario* usuario = usuarios->buscarUsuarioPorId(idUsuario);
-  if (!usuario) throw Exception("Usuario no encontrado");
+  if (!usuario) {
+      throw Exception("Usuario no encontrado");
+      Limpieza::pausar();
+  }
 
   int tipo;
   cout << "Ingrese el tipo de material que desea: " << endl;
@@ -856,7 +992,11 @@ void Coleccion::registrarPrestamo() {
   cout << "2. Revista" << endl;
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
-  if (!(cin >> tipo)) throw Exception("Entrada invalida para tipo de material.");
+  if (!(cin >> tipo)) {
+      throw Exception("Entrada invalida para tipo de material.");
+      Limpieza::pausar();
+  }
+
   Limpieza::limpiarBuffer();
 
   switch (tipo) {
@@ -874,9 +1014,11 @@ void Coleccion::registrarPrestamo() {
       break;
     default:
       throw Exception("tipo de material incorrecto");
+      Limpieza::pausar();
     }
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -891,9 +1033,15 @@ void Coleccion::registrarPrestamoLibro(Usuario* usuario) {
     cout << "Ingrese el titulo del libro que desea solicitar: ";
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
-    if (!matSolicitado) throw Exception("Material no encontrado");
+    if (!matSolicitado) {
+        throw Exception("Material no encontrado");
+        Limpieza::pausar();
+    }
     cout << "Ingrese un id para el prestamo: ";
-    if (!(cin >> idPrestamo)) throw Exception("Entrada invalida para id Prestamo.");
+    if (!(cin >> idPrestamo)) {
+        throw Exception("Entrada invalida para id Prestamo.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
@@ -914,8 +1062,10 @@ void Coleccion::registrarPrestamoLibro(Usuario* usuario) {
 
     gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
     cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+    Limpieza::pausar();
   }catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -931,10 +1081,16 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
     Limpieza::limpiarBuffer();
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
-    if (!matSolicitado) throw Exception("Revista no encontrada.");
+    if (!matSolicitado) {
+        throw Exception("Revista no encontrada.");
+        Limpieza::pausar();
+    }
 
     cout << "Ingrese un id para el prestamo: ";
-    if (!(cin >> idPrestamo)) throw Exception("Entrada invalida para id Prestamo.");
+    if (!(cin >> idPrestamo)) {
+        throw Exception("Entrada invalida para id Prestamo.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
@@ -955,8 +1111,10 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
 
     gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
     cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
@@ -971,10 +1129,16 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
     Limpieza::limpiarBuffer();
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
-    if (!matSolicitado) throw Exception("Articulo no encontrado.");
+    if (!matSolicitado) {
+        throw Exception("Articulo no encontrado.");
+        Limpieza::pausar();
+    }
 
     cout << "Ingrese un id para el prestamo: ";
-    if (!(cin >> idPrestamo)) throw Exception("Entrada invalida para id Prestamo.");
+    if (!(cin >> idPrestamo)) {
+        throw Exception("Entrada invalida para id Prestamo.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
@@ -995,8 +1159,10 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
 
     gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
     cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
@@ -1011,10 +1177,16 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
     Limpieza::limpiarBuffer();
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
-    if (!matSolicitado) throw Exception("Video no encontrado.");
+    if (!matSolicitado) {
+        throw Exception("Video no encontrado.");
+        Limpieza::pausar();
+    }
 
     cout << "Ingrese un id para el prestamo: ";
-    if (!(cin >> idPrestamo)) throw Exception("Entrada invalida para id Prestamo.");
+    if (!(cin >> idPrestamo)) {
+        throw Exception("Entrada invalida para id Prestamo.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
@@ -1035,8 +1207,10 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
 
     gestorPrestamos->agregarPrestamo(new Prestamo(idPrestamo, usuario, matSolicitado, fPrestamo, fVencimiento));
     cout << "Su prestamo ha sido registrado!\nSu prestamo vence el " << fVencimiento << endl;
+    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::registrarDevolucion() {
@@ -1045,12 +1219,17 @@ void Coleccion::registrarDevolucion() {
     gestorPrestamos->mostrarPrestamosGeneral();
     cout << endl;
     cout << "Ingrese el ID del prestamo que desea regresar: ";
-    if (!(cin >> id)) throw Exception("Entrada invalida para id Prestamo.");
+    if (!(cin >> id)) {
+        throw Exception("Entrada invalida para id Prestamo.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
     gestorPrestamos->eliminarPrestamo(id);
     cout << "Prestamo devuelto exitosamente." << endl;
+    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 
@@ -1075,7 +1254,10 @@ void Coleccion::reporteMaterialesPorTipo() {
     cout << "2. Revistas" << endl;
     cout << "3. Articulos" << endl;
     cout << "4. Videos" << endl;
-    if (!(cin >> tipo)) throw Exception("Entrada invalida para elegir tipo.");
+    if (!(cin >> tipo)) {
+        throw Exception("Entrada invalida para elegir tipo.");
+        Limpieza::pausar();
+    }
 
     switch (tipo) {
       case 1:
@@ -1092,22 +1274,28 @@ void Coleccion::reporteMaterialesPorTipo() {
       break;
       default:
         throw Exception("Tipo de material incorrecto");
+        Limpieza::pausar();
     }
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::reportePrestamosPorUsuario() {
   try{
     int id;
     cout << "Ingrese el ID del usuario: ";
-    if (!(cin >> id)) throw Exception("Entrada invalida del id de usuario.");
+    if (!(cin >> id)) {
+        throw Exception("Entrada invalida del id de usuario.");
+        Limpieza::pausar();
+    }
     Limpieza::limpiarBuffer();
     Usuario* usuario = usuarios->buscarUsuarioPorId(id);
     cout << endl;
     gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
   }
 }
 void Coleccion::guardarUsuarios() {
@@ -1129,21 +1317,28 @@ void Coleccion::cargarDatos() {
     // cargar cuando las listas estan llenas de algo
     gestorPrestamos->setListaPrestamos(GestorArchivos<Prestamo>::cargarPrestamos(usuarios->getCatalogoUsuarios(),inventario->getBiblioteca(),"Prestamos.csv"));
     if (usuarios->getCatalogoUsuarios()->estaVacia() ||inventario->getBiblioteca()->estaVacia() ||gestorPrestamos->getPrestamos()->estaVacia()) {
-      throw Exception("No se pudieron cargar correctamente todos los datos.");}
+      throw Exception("No se pudieron cargar correctamente todos los datos."); Limpieza::pausar();
+    }
 
     // mostrar contenido
     cout << "Usuarios cargados:\n";
+    cout << "-----------------------------------------------------\n";
     cout << usuarios->getCatalogoUsuarios()->mostrar();
 
     cout << "\nMateriales cargados:\n";
+    cout << "-----------------------------------------------------\n";
     cout << inventario->getBiblioteca()->mostrar();
 
-    cout << "\nPréstamos cargados:\n";
+    cout << "\nPrestamos cargados:\n";
+    cout << "------------------------------------------------------\n";
     cout << gestorPrestamos->getPrestamos()->mostrar();
 
     cout << "\nDatos cargados correctamente\n";
+    
   }catch (Exception& e) {
     cerr << "Error al cargar datos: " << e.what() << endl;
+    Limpieza::pausar();
   }
+  Limpieza::pausar();
 }
 
