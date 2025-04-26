@@ -84,3 +84,20 @@ int main() {
 */
     return 0;
 }
+/* -------------------------------------------------------------+
+*                                                               |
+* (c) 2025                                                      |
+* EIF204 - Programación 2                                       |
+* 1er ciclo 2025                                                |
+* NRC 41372 – Grupo 07                                          |
+* Proyecto 1                                                    |
+*                                                               |
+* 118620905; Castro Oviedo, Jose                                |
+* 119600374; Lopez Juarez, Bryan Josue                          |
+* (cédula y nombre de la persona)                               |
+*                                                               |
+*                                                               |
+* versión 1.0.0 2025-04-27                                      |
+*                                                               |
+* --------------------------------------------------------------+
+*/
