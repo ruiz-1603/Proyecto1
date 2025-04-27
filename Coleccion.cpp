@@ -787,7 +787,7 @@ void Coleccion::eliminarMaterial() {
       Limpieza::limpiarBuffer();
       getline(cin, titulo);
       inventario->eliminarMaterialPorTitulo(titulo);
-      cout<<"Material borrado exitosamente!\n";1
+      cout<<"Material borrado exitosamente!\n";
       break;
     }
     default:
