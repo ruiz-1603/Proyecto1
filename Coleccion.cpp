@@ -815,6 +815,7 @@ void Coleccion::agregarUsuario() {
   getline(cin, nom);
   usuarios->agregarUsuario(new Usuario(id, nom, true));
   cout << "Usuario agregado correctamente!\n";
+
   Limpieza::pausar();
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
@@ -1201,8 +1202,10 @@ void Coleccion::registrarDevolucion() {
         Limpieza::pausar();
     }
     Limpieza::limpiarBuffer();
-    gestorPrestamos->eliminarPrestamo(id);
-    cout << "Prestamo devuelto exitosamente." << endl;
+    if (gestorPrestamos->eliminarPrestamo(id)) {
+      cout << "Prestamo devuelto exitosamente." << endl;
+    }
+    throw Exception("No se encontro un prestamo con este ID");
     Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
