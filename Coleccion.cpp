@@ -256,21 +256,21 @@ void Coleccion::agregarVideo() {
     cout << "Ingrese las palabras clave (separadas por espacios): ";
     getline(cin, palabrCl);
 
-    cout << "Ingrese el estado del video (buen estado, regular, mal estado): ";
+    cout << "Ingrese el estado del video (Buen estado, regular, mal estado): ";
     getline(cin, estado);
     for (char& c : estado) c = tolower(c);
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
-      throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      throw Exception("Estado invalido. Debe ser: Buen estado, regular o mal estado.");
       Limpieza::pausar();
     }
 
-    cout << "Ingrese el formato del video (CD, DVD, BluRay, en linea): ";
+    cout << "Ingrese el formato del video (CD, DVD, BluRay, En linea): ";
     getline(cin, formatoMaterial);
     for (char& c : formatoMaterial) c = tolower(c);
 
     if (formatoMaterial == "en linea") {
-      cout << "Ingrese el estado del acceso al video (activo, inactivo): ";
+      cout << "Ingrese el estado del acceso al video (ctivo, inactivo): ";
       cin >> estadoStr;
       for (char& c : estadoStr) c = tolower(c);
       if (estadoStr == "activo") {
