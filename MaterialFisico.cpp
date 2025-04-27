@@ -30,3 +30,7 @@ int MaterialFisico::get_dia_prestamo() {
     }
     return dia;
 }
+
+string MaterialFisico::getFisicoDigital() {
+    return "Fisico";
+}

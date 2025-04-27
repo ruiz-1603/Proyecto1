@@ -20,6 +20,10 @@ string MaterialDigital::get_formato_material() const {
     return formatoMaterial;
 }
 
+string MaterialDigital::getFisicoDigital() {
+    return "Digital";
+}
+
 void MaterialDigital::set_formato_material(const string &formato_material) {
     formatoMaterial = formato_material;
 }

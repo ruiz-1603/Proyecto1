@@ -41,6 +41,8 @@ public:
 
     virtual string getTipo() = 0;
 
+    virtual string getFisicoDigital() = 0;
+
     virtual string toString();
 
     virtual string toCSV();

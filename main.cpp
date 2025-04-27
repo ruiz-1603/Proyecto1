@@ -8,7 +8,7 @@ int main() {
 
       //delete coleccion;
 
-
+/*
     Usuario* u1 = new Usuario(1,"Juan",1);
     Usuario* u2 = new Usuario(2,"Carlos",0);
     Usuario* u3 = new Usuario(3,"Marcela",1);
@@ -73,7 +73,7 @@ int main() {
     GestorArchivos<Usuario>::guardarUsuarios(listaUsuarios,"Usuarios.csv");
     GestorArchivos<Materiales>::guardarMateriales(listaMateriales,"Materiales.csv");
     GestorArchivos<Prestamo>::guardarPrestamos(listaPrestamos,"Prestamos.csv");
-
+*/
 
     Menu* interfaz = new Menu();
     interfaz->menuPrincipal();

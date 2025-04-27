@@ -18,7 +18,7 @@ void Biblioteca::mostrarMaterialesPorTipo(string material) {
 
     while (aux != nullptr) {
         Materiales* bib = aux->getDato();
-        if (bib->getTipo() == material) {
+        if (bib->getFisicoDigital() == material) {
             cout << ++cont << ". " << bib->toString() << endl;
         }
         aux = aux->getSiguiente();

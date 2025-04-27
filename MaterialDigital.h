@@ -18,6 +18,8 @@ public:
 
     string get_formato_material() const;
 
+    string getFisicoDigital() override;
+
     void set_formato_material(const string &formato_material);
 
     bool get_estado_acceso() const;

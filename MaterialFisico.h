@@ -18,6 +18,8 @@ private:
 
     int get_dia_prestamo();
 
+    string getFisicoDigital() override;
+
     string getTipo() override = 0;
 };
 
