@@ -680,12 +680,13 @@ void Coleccion::modificarVideo() {
     inventario->mostrarMaterialesPorTipo("Video");
     cout << endl;
     cout << "Ingrese el titulo del video que desea modificar: ";
+    Limpieza::limpiarBuffer();
     getline(cin, tituloVid);
     Materiales *materialVid = inventario->buscarMaterialPorTitulo(tituloVid);
     Video *video = dynamic_cast<Video *>(materialVid);
 
     if (!video) {
-        throw Exception("No se encontró el video buscado.");
+        throw Exception("No se encontro el video buscado.\n");
         Limpieza::pausar();
     }
 
@@ -843,6 +844,9 @@ void Coleccion::agregarUsuario() {
       Limpieza::pausar();
   }
   Limpieza::limpiarBuffer();
+    if (usuarios->buscarUsuarioPorId(id) != nullptr) {
+      throw Exception("Ya existe un usuario con este ID");
+    }
 
   cout << "Ingrese el nombre completo del usuario: ";
   getline(cin, nom);
