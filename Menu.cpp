@@ -18,20 +18,19 @@ void Menu::menuPrincipal() {
       if (!(cin >> opcion)) {
         Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida. Por favor ingrese un numero.");
-        Limpieza::pausar();
       }
 
       switch (opcion) {
         case 1:
-          Limpieza::limpiarPantalla();
+
           subMenuInventario();
         break;
         case 2:
-          Limpieza::limpiarPantalla();
+
           subMenuUsuarios();
         break;
         case 3:
-          Limpieza::limpiarPantalla();
+
           subMenuPrestamos();
         break;
         case 4:
@@ -41,12 +40,12 @@ void Menu::menuPrincipal() {
         case 0: break;
         default: throw Exception("Opcion no valida. Intente de nuevo.");
       }
-      Limpieza::limpiarPantalla();
+
     } catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;
       Limpieza::pausar();
     }
-  } Limpieza::limpiarPantalla();
+  }
 }
 
 void Menu::subMenuInventario() {
@@ -67,7 +66,7 @@ void Menu::subMenuInventario() {
 
       switch (opcion) {
         case 1:
-          Limpieza::limpiarPantalla();
+
           interfaz->agregarInventario();
         break;
         case 2:
@@ -89,12 +88,12 @@ void Menu::subMenuInventario() {
         default: throw Exception("Opcion no valida. Intente de nuevo.");
             Limpieza::pausar();
             Limpieza::limpiarPantalla();
-      } Limpieza::limpiarPantalla();
+      }
     }catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;
       Limpieza::pausar();
     }
-  } Limpieza::limpiarPantalla();
+  }
 }
 
 void Menu::subMenuUsuarios() {
@@ -115,7 +114,7 @@ void Menu::subMenuUsuarios() {
 
       switch (opcion) {
         case 1:
-          Limpieza::limpiarPantalla();
+
           interfaz->agregarUsuario();
         break;
         case 2:
@@ -135,8 +134,8 @@ void Menu::subMenuUsuarios() {
         case 0: break;
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
-      } Limpieza::limpiarPantalla();
-    } Limpieza::limpiarPantalla();
+      }
+    }
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << std::endl;
     Limpieza::pausar();
@@ -162,7 +161,7 @@ void Menu::subMenuPrestamos() {
 
       switch (opcion) {
         case 1:
-          Limpieza::limpiarPantalla();
+
           interfaz->registrarPrestamo();
         break;
         case 2:
@@ -186,8 +185,8 @@ void Menu::subMenuPrestamos() {
         break;
         case 0: break;
         default: throw Exception("Opcion no valida. Intente de nuevo.");
-      } Limpieza::limpiarPantalla();
-    } Limpieza::limpiarPantalla();
+      }
+    }
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -221,8 +220,8 @@ void Menu::subMenuArchivos() {
           break;
         default:
           throw Exception("Opcion no valida.");
-      } Limpieza::limpiarPantalla();
-    } Limpieza::limpiarPantalla();
+      }
+    }
   }catch (Exception &e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();

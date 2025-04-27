@@ -1084,6 +1084,7 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
         throw Exception("Revista no encontrada.");
     }
 
+    Limpieza::limpiarBuffer();
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
         throw Exception("Entrada invalida para id Prestamo.");
@@ -1121,12 +1122,10 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
     mostrarDisponiblesPorTipo("Articulo");
     cout << endl;
     cout << "Ingrese el titulo del articulo que desea solicitar: ";
-    Limpieza::limpiarBuffer();
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
     if (!matSolicitado) {
         throw Exception("Articulo no encontrado.");
-        Limpieza::pausar();
     }
 
     cout << "Ingrese un id para el prestamo: ";
@@ -1134,7 +1133,7 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
-    Limpieza::limpiarBuffer();
+
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
@@ -1169,12 +1168,12 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
     mostrarDisponiblesPorTipo("Video");
     cout << endl;
     cout << "Ingrese el titulo del video que desea solicitar: ";
-    Limpieza::limpiarBuffer();
+
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
     if (!matSolicitado) {
         throw Exception("Video no encontrado.");
-        Limpieza::pausar();
+
     }
 
     cout << "Ingrese un id para el prestamo: ";
@@ -1182,7 +1181,7 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
-    Limpieza::limpiarBuffer();
+
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
