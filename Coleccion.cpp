@@ -433,7 +433,7 @@ void Coleccion::modificarLibro() {
         Limpieza::pausar();
     }
     cout << "Libro modificado correctamente." << endl;
-
+    Limpieza::pausar();
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -564,6 +564,7 @@ void Coleccion::modificarRevista() {
           Limpieza::pausar();
       }
     cout << "Revista modificada correctamente." << endl;
+    Limpieza::pausar();
 } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
   Limpieza::pausar();
@@ -668,6 +669,7 @@ void Coleccion::modificarArticulo() {
         Limpieza::pausar();
     }
     cout << "Articulo modificado correctamente." << endl;
+    Limpieza::pausar();
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -780,6 +782,7 @@ void Coleccion::modificarVideo() {
             Limpieza::pausar();
         }
     cout << "Video modificado correctamente." << endl;
+    Limpieza::pausar();
   } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
   Limpieza::pausar();
@@ -809,6 +812,7 @@ void Coleccion::eliminarMaterial() {
       getline(cin, titulo);
       inventario->eliminarMaterialPorTitulo(titulo);
       cout<<"Material borrado exitosamente!\n";
+      Limpieza::pausar();
       break;
     }
     case 2: {
@@ -821,6 +825,7 @@ void Coleccion::eliminarMaterial() {
       getline(cin, titulo);
       inventario->eliminarMaterialPorTitulo(titulo);
       cout<<"Material borrado exitosamente!\n";
+      Limpieza::pausar();
       break;
     }
     default:
@@ -900,9 +905,8 @@ void Coleccion::modificarUsuario() {
         }
         usuario->set_id(id);
         cout << "Id cambiado correctamente!\n";
-        break;
         Limpieza::pausar();
-        
+        break;
       }
       case 2: {
         string nom;
@@ -933,11 +937,11 @@ void Coleccion::modificarUsuario() {
         }
         usuario->set_estado(estado);
         cout << "Estado del usuario cambiado correctamente!\n";
-        break;
         Limpieza::pausar();
+        break;
       }
       default:
-        throw Exception("opcion no valida.");
+        throw Exception("Opcion no valida.");
         Limpieza::pausar();
     }
 } catch (const Exception& e) {
@@ -1269,9 +1273,8 @@ void Coleccion::registrarDevolucion() {
     Limpieza::limpiarBuffer();
     if (gestorPrestamos->eliminarPrestamo(id)) {
       cout << "Prestamo devuelto exitosamente." << endl;
+      Limpieza::pausar();
     }
-    throw Exception("No se encontro un prestamo con este ID");
-    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -1380,7 +1383,7 @@ void Coleccion::cargarDatos() {
     cout << gestorPrestamos->getPrestamos()->mostrar();
 
     cout << "\nDatos cargados correctamente\n";
-    
+    Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error al cargar datos: " << e.what() << endl;
     Limpieza::pausar();
