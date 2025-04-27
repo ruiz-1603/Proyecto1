@@ -949,6 +949,7 @@ void Coleccion::eliminarUsuario() {
     usuarios->mostrarUsuarios();
     cout << "Ingrese el id del usuario que desea eliminar: ";
     if (!(cin >> id)) {
+        Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id.");
         Limpieza::pausar();
     }
@@ -1017,6 +1018,7 @@ void Coleccion::registrarPrestamo() {
   cout << "4. Video" << endl;
     cout << "Ingrese una opcion: ";
   if (!(cin >> tipo)) {
+    Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para tipo de material.");
       Limpieza::pausar();
   }
@@ -1063,6 +1065,7 @@ void Coleccion::registrarPrestamoLibro(Usuario* usuario) {
     }
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
@@ -1109,6 +1112,7 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
 
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
     }
 
@@ -1152,6 +1156,7 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
 
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
@@ -1200,6 +1205,7 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
 
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }

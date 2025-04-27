@@ -79,7 +79,6 @@ void Menu::subMenuInventario() {
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
             Limpieza::pausar();
-            Limpieza::limpiarPantalla();
       }
     }catch (Exception &e) {
       cerr << "Error: " << e.what() << std::endl;
@@ -116,7 +115,6 @@ void Menu::subMenuUsuarios() {
         break;
         case 4:
           interfaz->reporteUsuarios();
-        Limpieza::pausar();
         break;
 
         case 0: break;
