@@ -844,6 +844,9 @@ void Coleccion::agregarUsuario() {
       Limpieza::pausar();
   }
   Limpieza::limpiarBuffer();
+    if (usuarios->buscarUsuarioPorId(id) != nullptr) {
+      throw Exception("Ya existe un usuario con este ID");
+    }
 
   cout << "Ingrese el nombre completo del usuario: ";
   getline(cin, nom);
