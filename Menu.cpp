@@ -89,9 +89,9 @@ void Menu::subMenuInventario() {
 }
 
 void Menu::subMenuUsuarios() {
-  try {
     int opcion = -1;
     while (opcion != 0) {
+      try {
       cout << "\tMenu Usuarios" << endl;
       cout << "1. Agregar usuario" << endl;
       cout << "2. Modificar usuario" << endl;
@@ -123,10 +123,10 @@ void Menu::subMenuUsuarios() {
 
         default: throw Exception("Opcion no valida. Intente de nuevo.");
       }
-    }
-  }catch (Exception &e) {
-    cerr << "Error: " << e.what() << std::endl;
-    Limpieza::pausar();
+      }catch (Exception &e) {
+        cerr << "Error: " << e.what() << std::endl;
+        Limpieza::pausar();
+  }
   }
 }
 

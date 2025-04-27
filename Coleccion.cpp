@@ -256,21 +256,21 @@ void Coleccion::agregarVideo() {
     cout << "Ingrese las palabras clave (separadas por espacios): ";
     getline(cin, palabrCl);
 
-    cout << "Ingrese el estado del video (buen estado, regular, mal estado): ";
+    cout << "Ingrese el estado del video (Buen estado, regular, mal estado): ";
     getline(cin, estado);
     for (char& c : estado) c = tolower(c);
 
     if (estado != "buen estado" && estado != "mal estado" && estado != "regular") {
-      throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+      throw Exception("Estado invalido. Debe ser: Buen estado, regular o mal estado.");
       Limpieza::pausar();
     }
 
-    cout << "Ingrese el formato del video (CD, DVD, BluRay, en linea): ";
+    cout << "Ingrese el formato del video (CD, DVD, BluRay, En linea): ";
     getline(cin, formatoMaterial);
     for (char& c : formatoMaterial) c = tolower(c);
 
     if (formatoMaterial == "en linea") {
-      cout << "Ingrese el estado del acceso al video (activo, inactivo): ";
+      cout << "Ingrese el estado del acceso al video (ctivo, inactivo): ";
       cin >> estadoStr;
       for (char& c : estadoStr) c = tolower(c);
       if (estadoStr == "activo") {
@@ -806,6 +806,7 @@ void Coleccion::agregarUsuario() {
   string nom;
   cout << "Ingrese el id del usuario: ";
   if (!(cin >> id)) {
+    Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para id.");
       Limpieza::pausar();
   }
@@ -828,6 +829,7 @@ void Coleccion::modificarUsuario() {
   int id;
   cout << "Ingrese el id del usuario que desea modificar: ";
   if (!(cin >> id)) {
+      Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para id.");
       Limpieza::pausar();
   }
@@ -841,11 +843,12 @@ void Coleccion::modificarUsuario() {
     cout << "Usuario encontrado: " << endl;
     cout << usuario->toString() << endl;
     cout << "Que desea modificar del usuario?" << endl;
-    cout << "\t1. ID\n" << endl;
-    cout << "\t2. Nombre\n" << endl;
-    cout << "\t3. Estado\n" << endl;
+    cout << "1. ID\n" << endl;
+    cout << "2. Nombre\n" << endl;
+    cout << "3. Estado\n" << endl;
     cout << "Ingrese una opcion: ";
     if (!(cin >> opcion)) {
+        Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida. se esperaba un numero.");
         Limpieza::pausar();
     }
@@ -855,6 +858,7 @@ void Coleccion::modificarUsuario() {
         int id;
         cout << "Ingrese el nuevo ID del usuario: ";
         if (!(cin >> id)) {
+            Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida para id.");
             Limpieza::pausar();
         }
@@ -879,6 +883,7 @@ void Coleccion::modificarUsuario() {
         bool estado;
         cout << "Ingrese el estado del usuario (1. Activo 2. Inactivo): ";
         if (!(cin >> eleccion)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida para estado.");
             Limpieza::pausar();
         }
@@ -900,7 +905,7 @@ void Coleccion::modificarUsuario() {
         Limpieza::pausar();
     }
 } catch (const Exception& e) {
-  cout << "Error: " << e.what() << endl;
+  cerr << "Error: " << e.what() << endl;
   Limpieza::pausar();
   }
 }
