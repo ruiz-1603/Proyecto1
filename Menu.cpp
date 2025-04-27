@@ -22,19 +22,15 @@ void Menu::menuPrincipal() {
 
       switch (opcion) {
         case 1:
-
           subMenuInventario();
         break;
         case 2:
-
           subMenuUsuarios();
         break;
         case 3:
-
           subMenuPrestamos();
         break;
         case 4:
-          Limpieza::limpiarPantalla();
           subMenuArchivos();
         break;
         case 0: break;
@@ -66,19 +62,15 @@ void Menu::subMenuInventario() {
 
       switch (opcion) {
         case 1:
-
           interfaz->agregarInventario();
         break;
         case 2:
-          Limpieza::limpiarPantalla();
           interfaz->modificarMaterial();
         break;
         case 3:
-          Limpieza::limpiarPantalla();
           interfaz->eliminarMaterial();
         break;
         case 4:
-          Limpieza::limpiarPantalla();
           interfaz->reporteInventario();
         Limpieza::pausar();
         break;
@@ -114,19 +106,15 @@ void Menu::subMenuUsuarios() {
 
       switch (opcion) {
         case 1:
-
           interfaz->agregarUsuario();
         break;
         case 2:
-          Limpieza::limpiarPantalla();
           interfaz->modificarUsuario();
         break;
         case 3:
-          Limpieza::limpiarPantalla();
           interfaz->eliminarUsuario();
         break;
         case 4:
-          Limpieza::limpiarPantalla();
           interfaz->reporteUsuarios();
         Limpieza::pausar();
         break;
@@ -165,21 +153,17 @@ void Menu::subMenuPrestamos() {
           interfaz->registrarPrestamo();
         break;
         case 2:
-          Limpieza::limpiarPantalla();
           interfaz->registrarDevolucion();
         break;
         case 3:
-          Limpieza::limpiarPantalla();
           interfaz->reporteMaterialesPrestados();
         Limpieza::pausar();
         break;
         case 4:
-          Limpieza::limpiarPantalla();
           interfaz->reporteMaterialesPorTipo();
         Limpieza::pausar();
         break;
         case 5:
-          Limpieza::limpiarPantalla();
           interfaz->reportePrestamosPorUsuario();
         Limpieza::pausar();
         break;

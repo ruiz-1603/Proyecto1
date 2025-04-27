@@ -9,11 +9,6 @@ int main() {
       //delete coleccion;
 
 
-
-    Menu* interfaz = new Menu();
-    interfaz->menuPrincipal();
-    delete interfaz;
-/*
     Usuario* u1 = new Usuario(1,"Juan",1);
     Usuario* u2 = new Usuario(2,"Carlos",0);
     Usuario* u3 = new Usuario(3,"Marcela",1);
@@ -34,17 +29,17 @@ int main() {
     listaUsuarios->agregarALista(u7);
     listaUsuarios->agregarALista(u8);
 
-    Materiales* libro1 = new Libro(101, 5, "Cien Años de Soledad", "Gabriel Garcia Marquez", "Disponible", "Realismo Magico", "Estanteria A");
-    Materiales* libro2 = new Libro(102, 6, "El Principito", "Antoine de Saint-Exupery", "Prestado", "Fabula", "Estanteria B");
+    Materiales* libro1 = new Libro(101, 5, "Cien Anos de Soledad", "Gabriel Garcia Marquez", "Buen estado", "Realismo Magico", "Estanteria A");
+    Materiales* libro2 = new Libro(102, 6, "El Principito", "Antoine de Saint-Exupery", "Regular", "Fabula", "Estanteria B");
 
     Materiales* revista1 = new Revista(201, 7, "National Geographic", "Varios Autores", "Disponible", "Ciencia", "Estanteria C", 145, 12);
-    Materiales* revista2 = new Revista(202, 8, "Time", "Equipo Editorial", "Disponible", "Actualidad", "Estanteria D", 567, 48);
+    Materiales* revista2 = new Revista(202, 8, "Time", "Equipo Editorial", "Buen estado", "Actualidad", "Estanteria D", 567, 48);
 
-    Materiales* video1 = new Video(301, 9, "Planeta Tierra", "BBC", "Naturaleza", "Disponible", "Documental", "MP4", true);
-    Materiales* video2 = new Video(302, 10, "Aprendiendo C++", "CodeAcademy", "Programación", "Disponible", "Tutorial", "AVI", true);
+    Materiales* video1 = new Video(301, 9, "Planeta Tierra", "BBC", "Naturaleza", "Regular", "Documental", "MP4", true);
+    Materiales* video2 = new Video(302, 10, "Aprendiendo C++", "CodeAcademy", "Programacion", "Mal estado", "Tutorial", "AVI", true);
 
-    Materiales* articulo1 = new Articulo(85, 1001, "Inteligencia Artificial en la Educación", "María Rodríguez", "Disponible", "IA educación tecnología", "Aula 203 Edificio B");
-    Materiales* articulo2 = new Articulo(92, 1002, "Impacto del Cambio Climático en la Biodiversidad", "Carlos Méndez", "Prestado", "ecología sostenibilidad medio ambiente", "Sección C Biblioteca Central");
+    Materiales* articulo1 = new Articulo(85, 1001, "Inteligencia Artificial en la Educacion", "Maria Rodriguez", "Regular", "IA educacion tecnologia", "Aula 203 Edificio B");
+    Materiales* articulo2 = new Articulo(92, 1002, "Impacto del Cambio Climatico en la Biodiversidad", "Carlos Mendez", "Buen estado", "Ecologia sostenibilidad medio ambiente", "Sección C Biblioteca Central");
 
     Lista<Materiales>* listaMateriales = new Lista<Materiales>();
     listaMateriales->agregarALista(libro1);
@@ -78,10 +73,12 @@ int main() {
     GestorArchivos<Usuario>::guardarUsuarios(listaUsuarios,"Usuarios.csv");
     GestorArchivos<Materiales>::guardarMateriales(listaMateriales,"Materiales.csv");
     GestorArchivos<Prestamo>::guardarPrestamos(listaPrestamos,"Prestamos.csv");
-    delete listaUsuarios;
-    delete listaMateriales;
-    delete listaPrestamos;
-*/
+
+
+    Menu* interfaz = new Menu();
+    interfaz->menuPrincipal();
+    delete interfaz;
+
     return 0;
 }
 /* -------------------------------------------------------------+

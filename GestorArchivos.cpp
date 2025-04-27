@@ -416,8 +416,8 @@ Lista<Materiales>* GestorArchivos<Tipo>::cargarMateriales(const string &nombreAr
                 ss.ignore();
                 getline(ss, titulo, ',');
                 getline(ss, autor, ',');
+                getline(ss, palClave, ',');////////
                 getline(ss, estado, ',');
-                getline(ss, palClave, ',');
                 getline(ss, direccion, ',');
                 for (int i = 0; i < 5; i++) getline(ss, skip, ','); // Saltar campos no usados
                 if (!(ss >> dias)) throw Exception("Error al leer dias de Libro.");

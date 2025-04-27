@@ -22,7 +22,6 @@ void Coleccion::agregarInventario() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> tipo;
-  Limpieza::limpiarPantalla();
 
   switch (tipo) {
     case 1:
@@ -91,7 +90,7 @@ void Coleccion::agregarLibro() {
     getline(cin, direccion);
 
     // agregar libro al inventario
-    inventario->agregarMaterial(new Libro(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion));
+    inventario->agregarMaterial(new Libro(numCal, numCatalog, titulo, autor, estado, palabrCl, direccion));
 
     cout << "Libro agregado exitosamente.\n";
     Limpieza::pausar();
@@ -162,7 +161,7 @@ void Coleccion::agregarRevista() {
       Limpieza::pausar();
     }
 
-    inventario->agregarMaterial(new Revista(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion, numRev, volRev));
+    inventario->agregarMaterial(new Revista(numCal, numCatalog, titulo, autor, estado,palabrCl, direccion, numRev, volRev));
     cout << "Revista agregada exitosamente.\n";
     Limpieza::pausar();
 
@@ -215,7 +214,7 @@ void Coleccion::agregarArticulo() {
     cout << "Ingrese la direccion del articulo: ";
     getline(cin, direccion);
 
-    inventario->agregarMaterial(new Articulo(numCal, numCatalog, titulo, autor, palabrCl, estado, direccion));
+    inventario->agregarMaterial(new Articulo(numCal, numCatalog, titulo, autor, estado,palabrCl, direccion));
     cout << "Articulo agregado exitosamente.\n";
     Limpieza::pausar();
 
@@ -285,7 +284,7 @@ void Coleccion::agregarVideo() {
       }
     }
 
-    inventario->agregarMaterial(new Video(numCal, numCatalog, titulo, autor, palabrCl, estado, "Video", formatoMaterial, estadoActIn));
+    inventario->agregarMaterial(new Video(numCal, numCatalog, titulo, autor,palabrCl,estado, "Video", formatoMaterial, estadoActIn));
     cout << "Video agregado exitosamente.\n";
     Limpieza::pausar();
 
@@ -303,7 +302,6 @@ void Coleccion::modificarMaterial() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> material;
-  Limpieza::limpiarPantalla();
   switch (material) {
     case 1:
       modificarLibro();
@@ -345,7 +343,7 @@ void Coleccion::modificarLibro() {
     cout << "5. Palabras clave" << endl;
     cout << "6. Estado" << endl;
     cout << "7. Direccion" << endl;
-    cout << "Ingrese una opción: ";
+    cout << "Ingrese una opcion: ";
     if (!(cin >> opcion)) {
         throw Exception("Entrada invalida, se esperaba un numero.");
         Limpieza::pausar();
@@ -379,7 +377,6 @@ void Coleccion::modificarLibro() {
       case 3: {
         string tituloLib;
         cout << "Ingrese el nuevo titulo del libro: ";
-        Limpieza::limpiarBuffer();
         getline(cin, tituloLib);
         libro->set_titulo(tituloLib);
         break;
@@ -387,7 +384,6 @@ void Coleccion::modificarLibro() {
       case 4: {
         string autorLib;
         cout << "Ingrese el nuevo autor: ";
-        Limpieza::limpiarBuffer();
         getline(cin, autorLib);
         libro->set_autor(autorLib);
         break;
@@ -395,15 +391,13 @@ void Coleccion::modificarLibro() {
       case 5: {
         string palabrasLib;
         cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
-        Limpieza::limpiarBuffer();
         getline(cin, palabrasLib);
         libro->set_palabras_claves(palabrasLib);
         break;
       }
       case 6: {
         string estadoLib;
-        cout << "Ingrese el estado del libro (buen estado, regular, mal estado): ";
-        Limpieza::limpiarBuffer();
+        cout << "Ingrese el estado del libro (Buen estado, regular, mal estado): ";
         getline(cin, estadoLib);
         libro->set_estado(estadoLib);
         break;
@@ -411,15 +405,16 @@ void Coleccion::modificarLibro() {
       case 7: {
         string direccionLib;
         cout << "Ingrese la nueva direccion del libro: ";
-        Limpieza::limpiarBuffer();
         getline(cin, direccionLib);
         libro->set_direccion(direccionLib);
         break;
       }
       default:
-        throw Exception("Opcion no válida.");
+        throw Exception("Opcion no valida.");
         Limpieza::pausar();
     }
+    cout << "Libro modificado correctamente." << endl;
+
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -453,7 +448,7 @@ void Coleccion::modificarRevista() {
         cout << "7. Direccion" << endl;
         cout << "8. Numero de revista" << endl;
         cout << "9. Volumen de la revista" << endl;
-        cout << "Ingrese una opción: ";
+        cout << "Ingrese una opcion: ";
         if (!(cin >> opcion)) {
             throw Exception("Entrada invalida, se esperaba un numero.");
             Limpieza::pausar();
@@ -483,7 +478,6 @@ void Coleccion::modificarRevista() {
         case 3: {
             string titulo;
             cout << "Ingrese el nuevo titulo de la revista: ";
-          Limpieza::limpiarBuffer();
             getline(cin, titulo);
             revista->set_titulo(titulo);
             break;
@@ -491,7 +485,6 @@ void Coleccion::modificarRevista() {
         case 4: {
             string autorRev;
             cout << "Ingrese el nuevo autor: ";
-          Limpieza::limpiarBuffer();
             getline(cin, autorRev);
             revista->set_autor(autorRev);
             break;
@@ -499,19 +492,17 @@ void Coleccion::modificarRevista() {
         case 5: {
             string palabras;
             cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
-          Limpieza::limpiarBuffer();
             getline(cin, palabras);
             revista->set_palabras_claves(palabras);
             break;
         }
         case 6: {
             string estado;
-            cout << "Ingrese el estado de la revista (buen estado, regular, mal estado): ";
-            Limpieza::limpiarBuffer();
+            cout << "Ingrese el estado de la revista (Buen estado, regular, mal estado): ";
             getline(cin, estado);
 
           if (estado != "buen estado" && estado != "regular" && estado != "mal estado") {
-            throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
+            throw Exception("Estado invalido. Debe ser: Buen estado, regular o mal estado.");
             Limpieza::pausar();
           }
           revista->set_estado(estado);
@@ -520,7 +511,6 @@ void Coleccion::modificarRevista() {
         case 7: {
             string direccion;
             cout << "Ingrese la nueva direccion de la revista: ";
-          Limpieza::limpiarBuffer();
             getline(cin, direccion);
             revista->set_direccion(direccion);
             break;
@@ -529,7 +519,7 @@ void Coleccion::modificarRevista() {
             int numRevista;
             cout << "Ingrese el nuevo numero de revista: ";
             if (!(cin >> numRevista)) {
-                throw Exception("Entrada inválida para número de revista.");
+                throw Exception("Entrada invalida para numero de revista.");
                 Limpieza::pausar();
             }
             revista->set_num_revista(numRevista);
@@ -549,6 +539,7 @@ void Coleccion::modificarRevista() {
           throw Exception("Opcion no valida.");
           Limpieza::pausar();
       }
+    cout << "Revista modificada correctamente." << endl;
 } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
   Limpieza::pausar();
@@ -580,7 +571,7 @@ void Coleccion::modificarArticulo() {
     cout << "5. Palabras clave" << endl;
     cout << "6. Estado" << endl;
     cout << "7. Direccion" << endl;
-    cout << "Ingrese una opción: ";
+    cout << "Ingrese una opcion: ";
     if (!(cin >> opcion)) throw Exception("Entrada invalida, se esperaba un numero.");
     Limpieza::limpiarBuffer();
 
@@ -608,7 +599,6 @@ void Coleccion::modificarArticulo() {
       case 3: {
         string titulo;
         cout << "Ingrese el nuevo titulo del articulo: ";
-        Limpieza::limpiarBuffer();
         getline(cin, titulo);
         articulo->set_titulo(titulo);
         break;
@@ -616,7 +606,6 @@ void Coleccion::modificarArticulo() {
       case 4: {
         string autor;
         cout << "Ingrese el nuevo autor: ";
-        Limpieza::limpiarBuffer();
         getline(cin, autor);
         articulo->set_autor(autor);
         break;
@@ -624,7 +613,6 @@ void Coleccion::modificarArticulo() {
       case 5: {
         string palabras;
         cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
-        Limpieza::limpiarBuffer();
         getline(cin, palabras);
         articulo->set_palabras_claves(palabras);
         break;
@@ -632,7 +620,6 @@ void Coleccion::modificarArticulo() {
       case 6: {
         string estado;
         cout << "Ingrese el estado del articulo (buen estado, regular, mal estado): ";
-        Limpieza::limpiarBuffer();
         getline(cin, estado);
         if (estado != "buen estado" && estado != "regular" && estado != "mal estado") {
           throw Exception("Estado invalido. Debe ser: buen estado, regular o mal estado.");
@@ -644,7 +631,6 @@ void Coleccion::modificarArticulo() {
       case 7: {
         string direccion;
         cout << "Ingrese la nueva direccion del articulo: ";
-        Limpieza::limpiarBuffer();
         getline(cin, direccion);
         articulo->set_direccion(direccion);
         break;
@@ -653,6 +639,7 @@ void Coleccion::modificarArticulo() {
         throw Exception("Opcion no valida.");
         Limpieza::pausar();
     }
+    cout << "Articulo modificado correctamente." << endl;
   } catch (const Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
@@ -665,7 +652,6 @@ void Coleccion::modificarVideo() {
     inventario->mostrarMaterialesPorTipo("Video");
     cout << endl;
     cout << "Ingrese el titulo del video que desea modificar: ";
-    Limpieza::limpiarBuffer();
     getline(cin, tituloVid);
     Materiales *materialVid = inventario->buscarMaterialPorTitulo(tituloVid);
     Video *video = dynamic_cast<Video *>(materialVid);
@@ -687,9 +673,9 @@ void Coleccion::modificarVideo() {
         cout << "7. Tipo de material" << endl;
         cout << "8. Formato" << endl;
         cout << "9. Estado (Activo, Inactivo)" << endl;
-        cout << "Ingrese una opción: ";
+        cout << "Ingrese una opcion: ";
         if (!(cin >> opcion)) {
-            throw Exception("Entrada inválida.");
+            throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
         Limpieza::limpiarBuffer();
@@ -699,7 +685,7 @@ void Coleccion::modificarVideo() {
                 int numCal;
                 cout << "Ingrese el nuevo numero de calificacion del video: ";
                 if (!(cin >> numCal)) {
-                    throw Exception("Entrada inválida.");
+                    throw Exception("Entrada invalida.");
                     Limpieza::pausar();
                 }
                 video->set_num_calificacion(numCal);
@@ -709,7 +695,7 @@ void Coleccion::modificarVideo() {
                 int numCatalog;
                 cout << "Ingrese el nuevo numero de catalogo del video: ";
                 if (!(cin >> numCatalog)) {
-                    throw Exception("Entrada inválida.");
+                    throw Exception("Entrada invalida.");
                     Limpieza::pausar();
                 }
                 video->set_num_catalogo(numCatalog);
@@ -718,7 +704,6 @@ void Coleccion::modificarVideo() {
             case 3: {
                 string titulo;
                 cout << "Ingrese el nuevo titulo del video: ";
-              Limpieza::limpiarBuffer();
                 getline(cin, titulo);
                 video->set_titulo(titulo);
                 break;
@@ -726,7 +711,6 @@ void Coleccion::modificarVideo() {
             case 4: {
                 string autor;
                 cout << "Ingrese el nuevo autor: ";
-              Limpieza::limpiarBuffer();
                 getline(cin, autor);
                 video->set_autor(autor);
                 break;
@@ -734,15 +718,13 @@ void Coleccion::modificarVideo() {
             case 5: {
                 string palabras;
                 cout << "Ingrese las nuevas palabras clave separadas por un espacio: ";
-              Limpieza::limpiarBuffer();
                 getline(cin, palabras);
                 video->set_palabras_claves(palabras);
                 break;
             }
             case 6: {
                 string estado;
-                cout << "Ingrese el estado del video (buen estado, regular, mal estado): ";
-              Limpieza::limpiarBuffer();
+                cout << "Ingrese el estado del video (Buen estado, regular, mal estado): ";
                 getline(cin, estado);
                 video->set_estado(estado);
             break;
@@ -750,7 +732,6 @@ void Coleccion::modificarVideo() {
             case 7: {
                 string tipoMaterial;
                 cout << "Ingrese el tipo de material del video: ";
-              Limpieza::limpiarBuffer();
                 getline(cin, tipoMaterial);
                 video->set_tipo_material(tipoMaterial);
                 break;
@@ -758,15 +739,15 @@ void Coleccion::modificarVideo() {
             case 8: {
                 string formato;
                 cout << "Ingrese el formato del video (CD, DVD, BluRay): ";
-              Limpieza::limpiarBuffer();
                 getline(cin, formato);
                 video->set_formato_material(formato);
                 break;
             }
           default:
-            throw Exception("Opción no válida.");
+            throw Exception("Opcion no valida.");
             Limpieza::pausar();
         }
+    cout << "Video modificado correctamente." << endl;
   } catch (const Exception& e) {
   cerr << "Error: " << e.what() << endl;
   Limpieza::pausar();
@@ -780,7 +761,7 @@ void Coleccion::eliminarMaterial() {
   cout << "1. Fisico" << endl;
   cout << "2. Digital" << endl;
   if (!(cin >> tipo)) {
-      throw Exception("entrada invalida. se esperaba un numero.");
+      throw Exception("Entrada invalida. se esperaba un numero.");
       Limpieza::pausar();
   }
 
@@ -808,7 +789,7 @@ void Coleccion::eliminarMaterial() {
       break;
     }
     default:
-      throw Exception("tipo de material no valido.");
+      throw Exception("Tipo de material no valido.");
       Limpieza::pausar();
   }
 } catch (const Exception& e) {
@@ -860,6 +841,7 @@ void Coleccion::modificarUsuario() {
     cout << "\t1. ID\n" << endl;
     cout << "\t2. Nombre\n" << endl;
     cout << "\t3. Estado\n" << endl;
+    cout << "Ingrese una opcion: ";
     if (!(cin >> opcion)) {
         throw Exception("Entrada invalida. se esperaba un numero.");
         Limpieza::pausar();
@@ -992,6 +974,7 @@ void Coleccion::registrarPrestamo() {
   cout << "2. Revista" << endl;
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
+    cout << "Ingrese una opcion: ";
   if (!(cin >> tipo)) {
       throw Exception("Entrada invalida para tipo de material.");
       Limpieza::pausar();
@@ -1042,7 +1025,6 @@ void Coleccion::registrarPrestamoLibro(Usuario* usuario) {
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
-    Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
@@ -1084,7 +1066,6 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
         throw Exception("Revista no encontrada.");
     }
 
-    Limpieza::limpiarBuffer();
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
         throw Exception("Entrada invalida para id Prestamo.");
@@ -1248,6 +1229,7 @@ void Coleccion::reporteMaterialesPorTipo() {
     cout << "2. Revistas" << endl;
     cout << "3. Articulos" << endl;
     cout << "4. Videos" << endl;
+    cout << "Ingrese una opcion: ";
     if (!(cin >> tipo)) {
         throw Exception("Entrada invalida para elegir tipo.");
         Limpieza::pausar();
