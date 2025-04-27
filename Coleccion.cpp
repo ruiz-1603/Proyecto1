@@ -15,6 +15,7 @@ Coleccion::~Coleccion() {
 }
 
 void Coleccion::agregarInventario() {
+try{
   int tipo;
   cout << "Ingrese el tipo de material a ingresar: " << endl;
   cout << "1. Libro" << endl;
@@ -22,6 +23,10 @@ void Coleccion::agregarInventario() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> tipo;
+  if (cin.fail()) {
+    Limpieza::limpiarBuffer();
+    throw Exception("Entrada invalida de tipo de material.");
+  }
 
   switch (tipo) {
     case 1:
@@ -39,8 +44,11 @@ void Coleccion::agregarInventario() {
     default:
       cout << "Tipo de material desconocido" << endl;
   }
+}catch (const Exception& e) {
+    cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
+  }
 }
-
 void Coleccion::agregarLibro() {
   int numCal, numCatalog;
   string titulo, autor, palabrCl, estado,direccion;
@@ -295,6 +303,7 @@ void Coleccion::agregarVideo() {
 }
 
 void Coleccion::modificarMaterial() {
+try{
   int material;
   cout << "Ingrese el tipo de material que desea modificar: " << endl;
   cout << "1. Libro" << endl;
@@ -302,6 +311,10 @@ void Coleccion::modificarMaterial() {
   cout << "3. Articulo" << endl;
   cout << "4. Video" << endl;
   cin >> material;
+  if (cin.fail()) {
+    Limpieza::limpiarBuffer();
+    throw Exception("Entrada invalida para el tipo material.");
+  }
   switch (material) {
     case 1:
       modificarLibro();
@@ -316,8 +329,11 @@ void Coleccion::modificarMaterial() {
       modificarVideo();
       break;
   }
+}catch (const Exception& e) {
+    cerr << "Error: " << e.what() << endl;
+    Limpieza::pausar();
+  }
 }
-
 void Coleccion::modificarLibro() {
   try{
   string tituloLib;
@@ -345,6 +361,7 @@ void Coleccion::modificarLibro() {
     cout << "7. Direccion" << endl;
     cout << "Ingrese una opcion: ";
     if (!(cin >> opcion)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida, se esperaba un numero.");
         Limpieza::pausar();
     }
@@ -357,6 +374,7 @@ void Coleccion::modificarLibro() {
         int numCalLib;
         cout << "Ingrese el nuevo numero de calificacion del libro: ";
         if (!(cin >> numCalLib)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
@@ -368,6 +386,7 @@ void Coleccion::modificarLibro() {
         int numCatalogLib;
         cout << "Ingrese el nuevo numero de catalogo del libro: ";
         if (!(cin >> numCatalogLib)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
@@ -450,6 +469,7 @@ void Coleccion::modificarRevista() {
         cout << "9. Volumen de la revista" << endl;
         cout << "Ingrese una opcion: ";
         if (!(cin >> opcion)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida, se esperaba un numero.");
             Limpieza::pausar();
         }
@@ -459,6 +479,7 @@ void Coleccion::modificarRevista() {
             int numCal;
             cout << "Ingrese el nuevo numero de calificacion de la revista: ";
             if (!(cin >> numCal)) {
+              Limpieza::limpiarBuffer();
                 throw Exception("Entrada invalida para numero de calificacion."); 
                 Limpieza::pausar();
             }
@@ -469,6 +490,7 @@ void Coleccion::modificarRevista() {
             int numCatalog;
             cout << "Ingrese el nuevo numero de catalogo de la revista: ";
             if (!(cin >> numCatalog)) {
+              Limpieza::limpiarBuffer();
                 throw Exception("Entrada invalida para numero de catalogo."); 
                 Limpieza::pausar();
             }
@@ -519,6 +541,7 @@ void Coleccion::modificarRevista() {
             int numRevista;
             cout << "Ingrese el nuevo numero de revista: ";
             if (!(cin >> numRevista)) {
+              Limpieza::limpiarBuffer();
                 throw Exception("Entrada invalida para numero de revista.");
                 Limpieza::pausar();
             }
@@ -529,6 +552,7 @@ void Coleccion::modificarRevista() {
             int volRev;
             cout << "Ingrese el nuevo volumen de revista: ";
             if (!(cin >> volRev)) {
+              Limpieza::limpiarBuffer();
                 throw Exception("Entrada invalida para numero de revista.");
                 Limpieza::pausar();
             }
@@ -572,14 +596,17 @@ void Coleccion::modificarArticulo() {
     cout << "6. Estado" << endl;
     cout << "7. Direccion" << endl;
     cout << "Ingrese una opcion: ";
-    if (!(cin >> opcion)) throw Exception("Entrada invalida, se esperaba un numero.");
-    Limpieza::limpiarBuffer();
+    if (!(cin >> opcion)) {
+      Limpieza::limpiarBuffer();
+      throw Exception("Entrada invalida, se esperaba un numero.");
+    }
 
     switch (opcion) {
       case 1: {
         int numCal;
         cout << "Ingrese el nuevo numero de calificacion del articulo: ";
         if (!(cin >> numCal)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
@@ -590,6 +617,7 @@ void Coleccion::modificarArticulo() {
         int numCatalog;
         cout << "Ingrese el nuevo numero de catalogo del articulo: ";
         if (!(cin >> numCatalog)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
@@ -675,6 +703,7 @@ void Coleccion::modificarVideo() {
         cout << "9. Estado (Activo, Inactivo)" << endl;
         cout << "Ingrese una opcion: ";
         if (!(cin >> opcion)) {
+          Limpieza::limpiarBuffer();
             throw Exception("Entrada invalida.");
             Limpieza::pausar();
         }
@@ -685,6 +714,7 @@ void Coleccion::modificarVideo() {
                 int numCal;
                 cout << "Ingrese el nuevo numero de calificacion del video: ";
                 if (!(cin >> numCal)) {
+                  Limpieza::limpiarBuffer();
                     throw Exception("Entrada invalida.");
                     Limpieza::pausar();
                 }
@@ -695,6 +725,7 @@ void Coleccion::modificarVideo() {
                 int numCatalog;
                 cout << "Ingrese el nuevo numero de catalogo del video: ";
                 if (!(cin >> numCatalog)) {
+                  Limpieza::limpiarBuffer();
                     throw Exception("Entrada invalida.");
                     Limpieza::pausar();
                 }
@@ -761,6 +792,7 @@ void Coleccion::eliminarMaterial() {
   cout << "1. Fisico" << endl;
   cout << "2. Digital" << endl;
   if (!(cin >> tipo)) {
+    Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida. se esperaba un numero.");
       Limpieza::pausar();
   }
@@ -965,6 +997,7 @@ void Coleccion::registrarPrestamo() {
   int idUsuario;
   cout << "Ingrese el id del usuario que solicita el prestamo: ";
   if (!(cin >> idUsuario)) {
+    Limpieza::limpiarBuffer();
       throw Exception("Entrada invalida para id.");
       Limpieza::pausar();
   }
@@ -1203,6 +1236,7 @@ void Coleccion::registrarDevolucion() {
     cout << endl;
     cout << "Ingrese el ID del prestamo que desea regresar: ";
     if (!(cin >> id)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
@@ -1241,8 +1275,8 @@ void Coleccion::reporteMaterialesPorTipo() {
     cout << "4. Videos" << endl;
     cout << "Ingrese una opcion: ";
     if (!(cin >> tipo)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para elegir tipo.");
-        Limpieza::pausar();
     }
 
     switch (tipo) {
@@ -1260,7 +1294,6 @@ void Coleccion::reporteMaterialesPorTipo() {
       break;
       default:
         throw Exception("Tipo de material incorrecto");
-        Limpieza::pausar();
     }
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
@@ -1272,6 +1305,7 @@ void Coleccion::reportePrestamosPorUsuario() {
     int id;
     cout << "Ingrese el ID del usuario: ";
     if (!(cin >> id)) {
+      Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida del id de usuario.");
         Limpieza::pausar();
     }

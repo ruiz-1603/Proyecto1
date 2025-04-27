@@ -157,15 +157,12 @@ void Menu::subMenuPrestamos() {
         break;
         case 3:
           interfaz->reporteMaterialesPrestados();
-        Limpieza::pausar();
         break;
         case 4:
           interfaz->reporteMaterialesPorTipo();
-        Limpieza::pausar();
         break;
         case 5:
           interfaz->reportePrestamosPorUsuario();
-        Limpieza::pausar();
         break;
         case 0: break;
         default: throw Exception("Opcion no valida. Intente de nuevo.");
