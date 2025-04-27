@@ -1024,22 +1024,38 @@ void Coleccion::registrarPrestamo() {
   }
 
   Limpieza::limpiarBuffer();
-
+    bool materialDisponible;
   switch (tipo) {
     case 1:
-      registrarPrestamoLibro(usuario);
+      if (inventario->existenMaterialesPorTipo("Libro")) {
+        materialDisponible = true;
+        registrarPrestamoLibro(usuario);
+      }
       break;
     case 2:
-      registrarPrestamoRevista(usuario);
+      if (inventario->existenMaterialesPorTipo("Revista")) {
+        materialDisponible = true;
+        registrarPrestamoRevista(usuario);
+      }
       break;
     case 3:
-      registrarPrestamoArticulo(usuario);
+      if (inventario->existenMaterialesPorTipo("Articulo")) {
+        materialDisponible = true;
+        registrarPrestamoArticulo(usuario);
+      }
       break;
     case 4:
-      registrarPrestamoVideo(usuario);
+      if (inventario->existenMaterialesPorTipo("Articulo")) {
+        materialDisponible = true;
+        registrarPrestamoVideo(usuario);
+      }
       break;
     default:
       throw Exception("tipo de material incorrecto");
+      Limpieza::pausar();
+    }
+    if (!materialDisponible) {
+      cout << "No hay materiales disponibles de ese tipo para el prestamo." << endl;
       Limpieza::pausar();
     }
   } catch (const Exception& e) {

@@ -72,7 +72,7 @@ void Menu::subMenuInventario() {
         break;
         case 4:
           interfaz->reporteInventario();
-        Limpieza::pausar();
+          Limpieza::pausar();
         break;
 
         case 0: break;

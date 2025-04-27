@@ -38,6 +38,36 @@ void Biblioteca::mostrarMaterialesPorTipo(string material) {
     }
 }
 
+bool Biblioteca::existenMaterialesPorTipo(const string& material) {
+    Nodo<Materiales>* aux = lista->obtenerPrimero();
+    bool encontrado = false;
+
+    if (material == "Articulo" || material == "Libro" || material == "Revista" || material == "Video") {
+        while (aux != nullptr) {
+            Materiales* bib = aux->getDato();
+            if (bib->getTipo() == material) {
+                encontrado = true;
+                break;
+            }
+            aux = aux->getSiguiente();
+        }
+    }
+
+    if (!encontrado) {
+        aux = lista->obtenerPrimero();
+        while (aux != nullptr) {
+            Materiales* bib = aux->getDato();
+            if (bib->getFisicoDigital() == material) {
+                encontrado = true;
+                break;
+            }
+            aux = aux->getSiguiente();
+        }
+    }
+
+    return encontrado;
+}
+
 void Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
     lista->eliminarEnLista(titulo);
 }

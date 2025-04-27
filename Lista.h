@@ -62,8 +62,17 @@ template<class tipo>
 tipo* Lista<tipo>::buscarEnLista(const string& nombre) {
     actual = primero;
     Materiales* aux = nullptr;
+    string nom = nombre;
+
+    for (char& c : nom) {
+        c = tolower(c);
+    }
     while (actual != nullptr) {
-        if (actual->getDato()->get_titulo() == nombre) {
+        string tituloLower = actual->getDato()->get_titulo();
+        for (char& c : tituloLower) {
+            c = tolower(c);
+        }
+        if (tituloLower == nom) {
             aux = actual->getDato();
         }
         actual = actual->getSiguiente();
@@ -86,9 +95,18 @@ template<class tipo>
 void Lista<tipo>::eliminarEnLista(const string& nombre) {
     Nodo<Materiales>* temp = primero;
     Nodo<Materiales>* anterior = nullptr;
+    string nom = nombre;
+
+    for (char& c : nom) {
+        c = tolower(c);
+    }
 
     while (temp) {
-        if (temp->getDato()->get_titulo() == nombre) {
+        string tituloLower = temp->getDato()->get_titulo();
+        for (char& c : tituloLower) {
+            c = tolower(c);
+        }
+        if (tituloLower == nom) {
             if (anterior) {
                 anterior->setSiguiente(temp->getSiguiente());
             } else {

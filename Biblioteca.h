@@ -6,11 +6,12 @@
 class Biblioteca {
 private:
     Lista<Materiales>* lista;
-public: // agregar destructor?
+public:
     Biblioteca();
     void agregarMaterial(Materiales* material);
     void mostrarMateriales();
     void mostrarMaterialesPorTipo(string);
+    bool existenMaterialesPorTipo(const string&);
     void eliminarMaterialPorTitulo(const std::string& titulo);
     void setMateriales(Lista<Materiales>*);
     Materiales* buscarMaterialPorTitulo(const std::string& titulo);

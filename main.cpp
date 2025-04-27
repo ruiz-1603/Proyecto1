@@ -91,7 +91,7 @@ int main() {
 *                                                               |
 * 118620905; Castro Oviedo, Jose                                |
 * 119600374; Lopez Juarez, Bryan Josue                          |
-* 118060056; Ruiz Medina, Aaron                     |
+* 118060056; Ruiz Medina, Aaron                                 |
 *                                                               |
 *                                                               |
 * versión 1.0.0 2025-04-27                                      |
