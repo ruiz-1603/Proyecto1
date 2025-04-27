@@ -16,6 +16,15 @@ void Biblioteca::mostrarMaterialesPorTipo(string material) {
     int cont = 0;
     cout << "Inventario de " << material << "s:" << endl;
 
+    if (material == "Articulo" || material == "Libro" || material == "Revista" ||material == "Video" ) {
+        while (aux != nullptr) {
+            Materiales* bib = aux->getDato();
+            if (bib->getTipo() == material) {
+                cout << ++cont << ". " << bib->toString() << endl;
+            }
+            aux = aux->getSiguiente();
+        }
+    }
     while (aux != nullptr) {
         Materiales* bib = aux->getDato();
         if (bib->getFisicoDigital() == material) {
