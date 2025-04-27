@@ -1082,15 +1082,12 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
     if (!matSolicitado) {
         throw Exception("Revista no encontrada.");
-        Limpieza::pausar();
     }
 
     cout << "Ingrese un id para el prestamo: ";
     if (!(cin >> idPrestamo)) {
         throw Exception("Entrada invalida para id Prestamo.");
-        Limpieza::pausar();
     }
-    Limpieza::limpiarBuffer();
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
@@ -1113,7 +1110,6 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
     Limpieza::pausar();
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
-    Limpieza::pausar();
   }
 }
 void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
