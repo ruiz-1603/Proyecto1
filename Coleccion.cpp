@@ -686,7 +686,7 @@ void Coleccion::modificarVideo() {
     Video *video = dynamic_cast<Video *>(materialVid);
 
     if (!video) {
-        throw Exception("No se encontró el video buscado.\n");
+        throw Exception("No se encontro el video buscado.\n");
         Limpieza::pausar();
     }
 
