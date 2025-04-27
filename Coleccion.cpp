@@ -1078,7 +1078,6 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
     mostrarDisponiblesPorTipo("Revista");
     cout << endl;
     cout << "Ingrese el titulo de la revista que desea solicitar: ";
-    Limpieza::limpiarBuffer();
     getline(cin, nom);
     Materiales* matSolicitado = inventario->buscarMaterialPorTitulo(nom);
     if (!matSolicitado) {
