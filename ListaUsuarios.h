@@ -13,7 +13,7 @@ public:
     void mostrarUsuarios();
     Usuario* buscarUsuarioPorId(int);
    // Usuario* buscarUsuarioPorNumero(int); No creo utilizarla, quiza en el Menu
-    void eliminarUsuarioPorId(int);
+    bool eliminarUsuarioPorId(int);
     void setUsuarios(Lista<Usuario>* nuevaLista);
     Lista<Usuario>* getCatalogoUsuarios() {return usuarios;}
 

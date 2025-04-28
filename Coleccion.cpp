@@ -962,8 +962,11 @@ void Coleccion::eliminarUsuario() {
         Limpieza::pausar();
     }
     Limpieza::limpiarBuffer();
-    usuarios->eliminarUsuarioPorId(id);
-    cout << "Usuario eliminado correctamente!\n";
+    if (usuarios->eliminarUsuarioPorId(id)) {
+      cout << "Usuario eliminado correctamente!\n";
+    } else {
+      cout << "Usuario no encontrado!\n";
+    }
     Limpieza::pausar();
   } catch (Exception& e) {
     cerr << "Error al eliminar usuario: " << e.what() << endl;

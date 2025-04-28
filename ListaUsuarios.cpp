@@ -13,8 +13,8 @@ void ListaUsuarios::mostrarUsuarios() {
 Usuario* ListaUsuarios::buscarUsuarioPorId(int id) {
     return usuarios->buscarEnListaUsua(id);
 }
-void ListaUsuarios::eliminarUsuarioPorId(int id) {
-    usuarios->eliminar(id);
+bool ListaUsuarios::eliminarUsuarioPorId(int id) {
+    return usuarios->eliminar(id);
 }
 
 void ListaUsuarios::setUsuarios(Lista<Usuario> *nuevaLista) {
