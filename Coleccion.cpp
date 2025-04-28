@@ -1290,12 +1290,13 @@ void Coleccion::reporteInventario() {
   inventario->mostrarMateriales();
 }
 
-void Coleccion::reporteUsuarios() { usuarios->mostrarUsuarios(); }
+void Coleccion::reporteUsuarios() { usuarios->mostrarUsuarios();Limpieza::pausar(); }
 
 void Coleccion::reporteMaterialesPrestados() {
   cout << "Materiales prestados: " << endl;
   gestorPrestamos->mostrarPrestamosGeneral();
   cout << endl;
+  Limpieza::pausar();
 }
 
 void Coleccion::reporteMaterialesPorTipo() {
@@ -1315,15 +1316,19 @@ void Coleccion::reporteMaterialesPorTipo() {
     switch (tipo) {
       case 1:
         inventario->mostrarMaterialesPorTipo("Libro");
+      Limpieza::pausar();
       break;
       case 2:
         inventario->mostrarMaterialesPorTipo("Revista");
+      Limpieza::pausar();
       break;
       case 3:
         inventario->mostrarMaterialesPorTipo("Articulo");
+      Limpieza::pausar();
       break;
       case 4:
         inventario->mostrarMaterialesPorTipo("Video");
+      Limpieza::pausar();
       break;
       default:
         throw Exception("Tipo de material incorrecto");
@@ -1347,8 +1352,9 @@ void Coleccion::reportePrestamosPorUsuario() {
     if (!usuario) {
       throw Exception("Usuario inexistente.");
     }
-    cout << endl;
     gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
+    Limpieza::pausar();//
+
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
     Limpieza::pausar();
