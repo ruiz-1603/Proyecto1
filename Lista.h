@@ -22,7 +22,7 @@ public:
     tipo* buscarEnListaUsua(int);
     bool eliminar(int);
     bool eliminarEnListaPrestamo(int);
-    void eliminarEnLista(const string& nombre);
+    bool eliminarEnLista(const string& nombre);
     void eliminarEnListaUsua(int);
     void eliminarPrimero();
     Nodo<tipo>* obtenerPrimero();
@@ -92,7 +92,7 @@ tipo* Lista<tipo>::buscarEnListaUsua(int id) {
     return aux;
 }
 template<class tipo>
-void Lista<tipo>::eliminarEnLista(const string& nombre) {
+bool Lista<tipo>::eliminarEnLista(const string& nombre) {
     Nodo<Materiales>* temp = primero;
     Nodo<Materiales>* anterior = nullptr;
     string nom = nombre;
@@ -113,11 +113,11 @@ void Lista<tipo>::eliminarEnLista(const string& nombre) {
                 primero = temp->getSiguiente();
             }
             delete temp;
-            return;
+            return true;
         }
         anterior = temp;
         temp = temp->getSiguiente();
-    }
+    } return false;
 }
 template<class tipo>
 void Lista<tipo>::eliminarEnListaUsua(int id) {

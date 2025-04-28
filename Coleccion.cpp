@@ -810,8 +810,11 @@ void Coleccion::eliminarMaterial() {
       cout << "Ingrese el titulo del material fisico que desea eliminar: ";
       Limpieza::limpiarBuffer();
       getline(cin, titulo);
-      inventario->eliminarMaterialPorTitulo(titulo);
-      cout<<"Material borrado exitosamente!\n";
+      if (inventario->eliminarMaterialPorTitulo(titulo)) {
+        cout << "Material borrado exitosamente!\n";
+      } else {
+        cout << "Material no encontrado!\n";
+      }
       Limpieza::pausar();
       break;
     }
@@ -823,8 +826,11 @@ void Coleccion::eliminarMaterial() {
       cout << "Ingrese el titulo del material digital que desea eliminar: ";
       Limpieza::limpiarBuffer();
       getline(cin, titulo);
-      inventario->eliminarMaterialPorTitulo(titulo);
-      cout<<"Material borrado exitosamente!\n";
+      if (inventario->eliminarMaterialPorTitulo(titulo)) {
+        cout << "Material borrado exitosamente!\n";
+      } else {
+        cout << "Material no encontrado!\n";
+      }
       Limpieza::pausar();
       break;
     }

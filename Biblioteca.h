@@ -12,7 +12,7 @@ public:
     void mostrarMateriales();
     void mostrarMaterialesPorTipo(string);
     bool existenMaterialesPorTipo(const string&);
-    void eliminarMaterialPorTitulo(const std::string& titulo);
+    bool eliminarMaterialPorTitulo(const std::string& titulo);
     void setMateriales(Lista<Materiales>*);
     Materiales* buscarMaterialPorTitulo(const std::string& titulo);
     Materiales* buscarMaterialPorNumero(int num);

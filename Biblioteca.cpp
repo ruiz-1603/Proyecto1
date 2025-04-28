@@ -71,8 +71,8 @@ bool Biblioteca::existenMaterialesPorTipo(const string& material) {
     return encontrado;
 }
 
-void Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
-    lista->eliminarEnLista(titulo);
+bool Biblioteca::eliminarMaterialPorTitulo(const std::string& titulo) {
+    return lista->eliminarEnLista(titulo);
 }
 
 void Biblioteca::setMateriales(Lista<Materiales> * listaNueva) {
