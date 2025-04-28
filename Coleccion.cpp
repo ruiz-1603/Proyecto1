@@ -1340,6 +1340,9 @@ void Coleccion::reportePrestamosPorUsuario() {
     }
     Limpieza::limpiarBuffer();
     Usuario* usuario = usuarios->buscarUsuarioPorId(id);
+    if (!usuario) {
+      throw Exception("Usuario inexistente.");
+    }
     cout << endl;
     gestorPrestamos->mostrarPrestamosPorUsuario(usuario);
   }catch (Exception& e) {

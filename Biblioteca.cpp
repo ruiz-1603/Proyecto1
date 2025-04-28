@@ -1,5 +1,7 @@
 #include "Biblioteca.h"
 
+#include "Exception.h"
+
 Biblioteca::Biblioteca() {
     lista = new Lista<Materiales>();
 }
@@ -35,6 +37,7 @@ void Biblioteca::mostrarMaterialesPorTipo(string material) {
 
     if (cont == 0) {
         cout << "\tNo hay materiales de tipo " << material << "." << endl;
+       throw Exception("No hay elementos");
     }
 }
 

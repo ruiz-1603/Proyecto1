@@ -73,6 +73,7 @@ int main() {
     GestorArchivos<Usuario>::guardarUsuarios(listaUsuarios,"Usuarios.csv");
     GestorArchivos<Materiales>::guardarMateriales(listaMateriales,"Materiales.csv");
     GestorArchivos<Prestamo>::guardarPrestamos(listaPrestamos,"Prestamos.csv");
+    
 */
 
     Menu* interfaz = new Menu();
