@@ -1270,10 +1270,14 @@ void Coleccion::registrarDevolucion() {
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
+
     Limpieza::limpiarBuffer();
     if (gestorPrestamos->eliminarPrestamo(id)) {
       cout << "Prestamo devuelto exitosamente." << endl;
       Limpieza::pausar();
+    }
+    else if (!gestorPrestamos->eliminarPrestamo(id)) {
+      throw Exception("Prestamo no encontrado.");
     }
   }catch (Exception& e) {
     cerr << "Error: " << e.what() << endl;
