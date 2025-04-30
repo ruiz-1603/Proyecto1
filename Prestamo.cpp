@@ -45,8 +45,9 @@ void Prestamo::setFechaVencimiento(string fVencimiento) { this->fechaVencimiento
 
 string Prestamo::toString() {
   stringstream ss;
+  ss << "-------------------------------------------------------" << endl;
   ss << "Usuario" << endl;
-  ss << getUsuario()->toString() << endl << endl;
+  ss << getUsuario()->toString() << endl;
   ss << "Material prestado" << endl;
   ss << getMaterial()->toString();
   ss << "Estado del prestamo: ";
@@ -55,6 +56,5 @@ string Prestamo::toString() {
   } else {
     ss << "En plazo hasta " << getFechaVencimiento() << endl;
   }
-  ss << "-------------------------------------------------------";
   return ss.str();
 }
