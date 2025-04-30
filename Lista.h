@@ -4,6 +4,7 @@
 #include "Nodo.h"
 #include "Materiales.h"
 #include "Usuario.h"
+#include"Prestamo.h"
 
 template<class tipo>
 class Lista {
@@ -20,6 +21,9 @@ public:
     void limpiarLista();
     tipo* buscarEnLista(const string& nombre);
     tipo* buscarEnListaUsua(int);
+
+    tipo *buscarEnListaPrestamo(int id);
+
     bool eliminar(int);
     bool eliminarEnListaPrestamo(int);
     bool eliminarEnLista(const string& nombre);
@@ -83,6 +87,18 @@ template<class tipo>
 tipo* Lista<tipo>::buscarEnListaUsua(int id) {
     actual = primero;
     Usuario* aux = nullptr;
+    while (actual != nullptr) {
+        if (actual->getDato()->getId() == id) {
+            aux = actual->getDato();
+        }
+        actual = actual->getSiguiente();
+    }
+    return aux;
+}
+template<class tipo>
+tipo* Lista<tipo>::buscarEnListaPrestamo(int id) {
+    actual = primero;
+    Prestamo* aux = nullptr;
     while (actual != nullptr) {
         if (actual->getDato()->getId() == id) {
             aux = actual->getDato();

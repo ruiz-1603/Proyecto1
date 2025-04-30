@@ -47,6 +47,7 @@ string Prestamo::toString() {
   stringstream ss;
   ss << "-------------------------------------------------------" << endl;
   ss << "ID Prestamo: " << getId() << endl;
+  ss << "-------------------------------------------------------" << endl;
   ss << "Usuario" << endl;
   ss << getUsuario()->toString() << endl;
   ss << "Material prestado" << endl;

@@ -1102,6 +1102,10 @@ void Coleccion::registrarPrestamoLibro(Usuario* usuario) {
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
     }
+    Limpieza::limpiarBuffer();
+    if (gestorPrestamos->getPrestamos()->buscarEnListaPrestamo(idPrestamo) != nullptr) {
+      throw Exception("Ya existe un prestamo con este ID");
+    }
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
@@ -1149,6 +1153,11 @@ void Coleccion::registrarPrestamoRevista(Usuario* usuario) {
         throw Exception("Entrada invalida para id Prestamo.");
     }
 
+    Limpieza::limpiarBuffer();
+    if (gestorPrestamos->getPrestamos()->buscarEnListaPrestamo(idPrestamo) != nullptr) {
+      throw Exception("Ya existe un prestamo con este ID");
+    }
+
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
     tm* fechaFormato = localtime(&fecha_hoy);
@@ -1192,6 +1201,11 @@ void Coleccion::registrarPrestamoArticulo(Usuario* usuario) {
       Limpieza::limpiarBuffer();
         throw Exception("Entrada invalida para id Prestamo.");
         Limpieza::pausar();
+    }
+
+    Limpieza::limpiarBuffer();
+    if (gestorPrestamos->getPrestamos()->buscarEnListaPrestamo(idPrestamo) != nullptr) {
+      throw Exception("Ya existe un prestamo con este ID");
     }
 
 
@@ -1243,6 +1257,10 @@ void Coleccion::registrarPrestamoVideo(Usuario* usuario) {
         Limpieza::pausar();
     }
 
+    Limpieza::limpiarBuffer();
+    if (gestorPrestamos->getPrestamos()->buscarEnListaPrestamo(idPrestamo) != nullptr) {
+      throw Exception("Ya existe un prestamo con este ID");
+    }
 
     // obtener fecha del prestamo
     time_t fecha_hoy = time(nullptr);
