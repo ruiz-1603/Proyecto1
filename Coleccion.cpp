@@ -1401,7 +1401,6 @@ void Coleccion::cargarDatos() {
     cout << inventario->getBiblioteca()->mostrar();
 
     cout << "\nPrestamos cargados:\n";
-    cout << "------------------------------------------------------\n";
     cout << gestorPrestamos->getPrestamos()->mostrar();
 
     cout << "\nDatos cargados correctamente\n";

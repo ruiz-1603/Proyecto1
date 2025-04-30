@@ -15,7 +15,7 @@ void GestorArchivos<Tipo>::guardarPrestamos(Lista<Prestamo> *prestamos, const st
 
             string tipoMaterial = material->getTipo(); // retorna "Libro", "Revista" o "Video"
             string autor, estadoMat, palabrasClave, direccion;
-            int numCal, numCat, idUsuario;
+            int numCal, numCat, idUsuario, idPrestamo;
             int numRevista, volumenRevista;
             string tipoDigital, formato;
             string estadoDigital;
